@@ -17,6 +17,12 @@
         tr:nth-child(odd) {
             background-color: #dddddd;
         }
+        .c{
+            margin:30px
+        }
+        .d{
+            margin:10px;
+        }
 
 
     </style>
@@ -49,9 +55,11 @@
         <lable><strong><b> How often would you use our new product? </b></strong><br><input type="radio" name=" often "> Daily  </lable><br>
         <input type="radio" name=" often "> Weeky <br>
         <input type="radio" name=" often "> Monthly <br><br>
-        <lable><strong><b> What would you pay for the new product? </b></strong><br> $
+        <lable><strong><b> What would you pay for the new product? </b></strong><br></lable> $
             <input type="text" name=" pay " size="5"> .
-            <input type="text" name=" pay" size="2"><br>  Dollars</lable> .Cents <br><br>
+            <input type="text" name=" pay" size="2"><br>
+            <lable class="d"> Dolars</lable>.
+            <lable class="c"> cents </lable><br>
         <lable> <strong><b> What features would you like to see in the new product.</b></strong><br><textarea name="coment" rows=" 5 "cols="200"></textarea></lable><br><br>
         <p> please  rate your level of agreement with the following statements.</p><br>
         <table>
@@ -85,8 +93,7 @@
             </tr>
         </table> <br>
         <lable><input type="submit" name="submit" value="submit"></lable>
-
-
+        
     </fieldset>
 
 </form>
