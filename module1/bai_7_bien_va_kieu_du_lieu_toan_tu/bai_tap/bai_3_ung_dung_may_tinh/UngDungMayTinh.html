@@ -14,31 +14,29 @@
 <button id="operator4" onclick="divi()"> Division(/)</button><br><br>
 <p id="result"> Result: </p>
 <script>
-    function add()
-    {
+    function add() {
        let a=parseInt(document.getElementById('amount1').value);
        let b=parseInt(document.getElementById('amount2').value);
        let c=a+b;
         document.getElementById('result').innerHTML=('Result Addition:'+c);
     };
-    function sub()
-    {   let a=parseInt(document.getElementById('amount1').value);
+    function sub() {
+        let a=parseInt(document.getElementById('amount1').value);
         let b=parseInt(document.getElementById('amount2').value);
         let t=a-b;
         document.getElementById('result').innerHTML=('Result Subtraction:'+t);
     };
-    function multi()
-    {   let a=parseInt(document.getElementById('amount1').value);
+    function multi() {
+        let a=parseInt(document.getElementById('amount1').value);
         let b=parseInt(document.getElementById('amount2').value);
         let n=a*b;
         document.getElementById('result').innerHTML=('Result Multiplication:'+n);
     };
-    function divi()
-    {   let a=parseInt(document.getElementById('amount1').value);
+    function divi() {
+        let a=parseInt(document.getElementById('amount1').value);
         let b=parseInt(document.getElementById('amount2').value);
         let d=a/b;
         document.getElementById('result').innerHTML=('Result Division:'+d);
-
     }
 </script>
 </body>

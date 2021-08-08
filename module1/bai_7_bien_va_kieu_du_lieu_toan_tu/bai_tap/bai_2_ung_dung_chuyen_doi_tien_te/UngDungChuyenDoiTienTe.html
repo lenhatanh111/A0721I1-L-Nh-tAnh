@@ -44,35 +44,22 @@
         let a ;
         let s;
         a= parseInt(document.getElementById('amount').value);
-        if(document.getElementById('chose1').value=="vnd")
-        {
-           if( document.getElementById('chose2').value=="vnd")
-           {
+        if(document.getElementById('chose1').value=="vnd") {
+            if( document.getElementById('chose2').value=="vnd") {
                document.getElementById('print').innerHTML=('Result:'+a)
-           }
-           else
-           {
+           } else {
                s=a/23012;
                document.getElementById('print').innerHTML=('Result:'+s);
            }
-        }
-        if(document.getElementById('chose1').value=="usd")
-        {
-            if( document.getElementById('chose2').value=="usd")
-            {
+        } else {
+            if( document.getElementById('chose2').value=="usd") {
                 document.getElementById('print').innerHTML=('Result:'+a)
-            }
-            else
+            } else
             {
                 s=a*23012;
                 document.getElementById('print').innerHTML=('Result:'+s);
             }
         }
-
-
-
-
-
     }
 </script>
 
