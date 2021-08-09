@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <img id="myImage" src="https://thuviendohoa.vn/upload/images/items/hinh-anh-trai-bong-da-png-452.webp"width="300px" />
+    <p>Click button below to move the image to right</p>
+    <input type="button" value="Click Me" onclick="moveRight()" />
+</form>
+<script>
+    let imageOpj=null;
+    imageOpj=document.getElementById('myImage');
+    function init() {
+        imageOpj=document.getElementById('myImage');
+        imageOpj.style.position='relative';
+        imageOpj.style.left='0px';
+    }
+    function moveRight() {
+        imageOpj.style.left=parseInt(imageOpj.style.left)+10+'px';
+    }
+    window.onload=init;
+
+
+</script>
+</body>
+</html>
