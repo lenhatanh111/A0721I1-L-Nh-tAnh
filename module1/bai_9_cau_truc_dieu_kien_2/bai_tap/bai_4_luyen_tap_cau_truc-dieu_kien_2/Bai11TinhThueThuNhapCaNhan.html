@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let ThuNhap=parseInt(prompt('nhap so tien thu nhap 1 thang(trieu VND)'));
+    let TienThue;
+    if(ThuNhap<=5){
+        TienThue=ThuNhap*0.05;
+    }else if(ThuNhap<=10){
+        TienThue=0.25+((ThuNhap-5)*0.1);
+    }else if(ThuNhap<=18){
+        TienThue=0.75+(ThuNhap-10)*0.15;
+    }else if(ThuNhap<=32){
+        TienThue=1.95+(ThuNhap-18)*0.2;
+    }else if(ThuNhap<=52){
+        TienThue=4.75+(ThuNhap-32)*0.25;
+    }else if(ThuNhap<=80){
+        TienThue=9.75+(ThuNhap-52)*0.3;
+    }else{
+        TienThue=18.15+(ThuNhap-80)*0.35;
+    }
+    alert('tien thue TNCN phai nop:'+TienThue);
+</script>
+</body>
+</html>
