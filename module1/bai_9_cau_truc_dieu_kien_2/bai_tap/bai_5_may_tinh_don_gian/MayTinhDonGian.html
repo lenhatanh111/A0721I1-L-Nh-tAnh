@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td colspan="4" > <input id="HienThi" type="text"></td>
+    </tr>
+    <tr>
+        <td> <input type="button" style="height: 40px;width:40px" value="1" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="2" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="3" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="+" onclick="nhap(this.value)"></td>
+    </tr>
+    <tr>
+        <td> <input type="button" style="height: 40px;width:40px" value="4" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="5" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="6" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="-" onclick="nhap(this.value)"></td>
+    </tr>
+    <tr>
+        <td> <input type="button" style="height: 40px;width:40px" value="7" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="8" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="9" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="x" onclick="nhap('*')"></td>
+    </tr>
+    <tr>
+        <td> <input type="button" style="height: 40px;width:40px" value="c" onclick="xoa()"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="0" onclick="nhap(this.value)"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="=" onclick="tinh()"></td>
+        <td> <input type="button" style="height: 40px;width:40px" value="/" onclick="nhap(this.value)"></td>
+    </tr>
+</table>
+<script>
+    function nhap(so){
+        document.getElementById('HienThi').value+=so;
+    }
+    function tinh(){
+        let string=document.getElementById('HienThi').value;
+        document.getElementById('HienThi').value=eval(string);
+    }
+    function xoa(){
+        document.getElementById('HienThi').value=' ';
+    }
+</script>
+</body>
+</html>

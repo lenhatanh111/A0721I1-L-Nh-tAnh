@@ -6,16 +6,16 @@
 </head>
 <body>
 <script>
-    let a=parseInt(prompt('nhap chi so dien tieu thu(kWh)'));
+    let DienTieuThu=parseInt(prompt('nhap chi so dien tieu thu(kWh)'));
     let TienDien;
-    if(a<=100){
-        TienDien=a*1000;
-    }else if(a<=150){
-        TienDien=100*1000+((a-100)*1200);
-    }else if(a<=200){
-        TienDien=100*1000+(50*1200)+((a-150)*2000);
+    if(DienTieuThu<=100){
+        TienDien=DienTieuThu*1000;
+    }else if(DienTieuThu<=150){
+        TienDien=100*1000+((DienTieuThu-100)*1200);
+    }else if(DienTieuThu<=200){
+        TienDien=100*1000+(50*1200)+((DienTieuThu-150)*2000);
     }else{
-        TienDien=100*1000+50*1200+50*2000+((a-200)*2500);
+        TienDien=100*1000+50*1200+50*2000+((DienTieuThu-200)*2500);
     }
     alert('tien dien phai tra:'+TienDien);
 </script>

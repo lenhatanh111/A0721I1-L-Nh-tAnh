@@ -6,14 +6,14 @@
 </head>
 <body>
 <script>
-    let a= parseInt(prompt('nhap diem bai kiem tra giua ky'));
-    let b= parseInt(prompt('nhap diem bai kiem tra cuoi ky'));
-    let s=(a*0.4)+(b*0.6);
-    if(s>=8){
+    let GiuaKi= parseInt(prompt('nhap diem bai kiem tra giua ky'));
+    let CuoiKi= parseInt(prompt('nhap diem bai kiem tra cuoi ky'));
+    let DiemTrungBinh=(GiuaKi*0.4)+(CuoiKi*0.6);
+    if(DiemTrungBinh>=8){
         alert('hsg');
-    }else if(s>=6.5){
+    }else if(DiemTrungBinh>=6.5){
         alert('hs tt');
-    }else if(s>=5){
+    }else if(DiemTrungBinh>=5){
         alert('hstb');
     }else{
         alert('yeu');

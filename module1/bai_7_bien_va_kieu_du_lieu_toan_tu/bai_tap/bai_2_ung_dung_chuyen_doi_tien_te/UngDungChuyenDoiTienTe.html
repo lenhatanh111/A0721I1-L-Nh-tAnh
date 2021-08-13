@@ -41,23 +41,23 @@
 </table>
 <script>
     function change() {
-        let a ;
-        let s;
-        a= parseInt(document.getElementById('amount').value);
+        let amount ;
+        let result;
+        amount= parseInt(document.getElementById('amount').value);
         if(document.getElementById('chose1').value=="vnd") {
             if( document.getElementById('chose2').value=="vnd") {
-               document.getElementById('print').innerHTML=('Result:'+a)
+               document.getElementById('print').innerHTML=('Result:'+amount)
            } else {
-               s=a/23012;
-               document.getElementById('print').innerHTML=('Result:'+s);
+               result=amount/23012;
+               document.getElementById('print').innerHTML=('Result:'+result);
            }
         } else {
             if( document.getElementById('chose2').value=="usd") {
-                document.getElementById('print').innerHTML=('Result:'+a)
+                document.getElementById('print').innerHTML=('Result:'+amount)
             } else
             {
-                s=a*23012;
-                document.getElementById('print').innerHTML=('Result:'+s);
+                result=amount*23012;
+                document.getElementById('print').innerHTML=('Result:'+result);
             }
         }
     }
