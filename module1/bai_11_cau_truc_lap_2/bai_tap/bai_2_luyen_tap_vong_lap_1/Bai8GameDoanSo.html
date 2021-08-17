@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="choi"onclick="play()">
+<script>
+    function play() {
+        let min=parseInt(prompt("nhap khoang ban muon doan! min="));
+        let max=parseInt(prompt("max="));
+        let TaoSoNgauNhien=Math.floor(Math.random()*max)+min;
+        let doan=false;
+        while(doan==false){
+            let num=parseInt(prompt("nhap so bn doan!"));
+            if(num==TaoSoNgauNhien){
+                alert("chuc mung bn da doan dung!");
+                doan=true;
+            }else if (num<TaoSoNgauNhien){
+                alert("bn doan be hon roi");
+
+            }else {
+                alert("ban doan lon hon roi!");
+            }
+        }
+    }
+</script>
+</body>
+</html>

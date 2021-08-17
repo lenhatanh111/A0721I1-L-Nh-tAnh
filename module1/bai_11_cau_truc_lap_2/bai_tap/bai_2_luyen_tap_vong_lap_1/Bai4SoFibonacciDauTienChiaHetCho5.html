@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let element1=1;
+    let element2=1;
+    let element3;
+    let count=0;
+    while(count!=1){
+        element3= element1 + element2;
+        element1= element2;
+        element2= element3;
+        if(element3%5==0){
+            count++;
+        }
+    }
+    alert("fibonacci dau tien chia het cho 5"+element3);
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let element1=1;
+    let element2=1;
+    let element3;
+    let total=0
+    for(let i=0;i<18;i++){
+        element3=element1+element2;
+        element1=element2;
+        element2=element3;
+        total+=element3;
+
+    }
+    alert("tong 20 so fibonacci dau tien="+(total+2));
+</script>
+</body>
+</html>
