@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let TienVayBanDau=parseInt(prompt(' nhap so tien vay ban dau (vnd)'));
+    let LaiXuatThang=parseInt(prompt(' nhap lai xuat hang thang (%)'));
+    let SoThangChoVay=parseInt(prompt(' nhap so thang cho vay'));
+    let SoTienPhaiTra=TienVayBanDau;
+    let i;
+    for(i=1;i<=SoThangChoVay;i++){
+        SoTienPhaiTra+=(SoTienPhaiTra*(LaiXuatThang/100));
+    }
+    alert('so tien phai tra cho ngan hang la'+SoTienPhaiTra);
+</script>
+</body>
+</html>
