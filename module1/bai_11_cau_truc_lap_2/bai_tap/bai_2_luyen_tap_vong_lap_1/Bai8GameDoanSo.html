@@ -10,10 +10,13 @@
     function play() {
         let min=parseInt(prompt("nhap khoang ban muon doan! min="));
         let max=parseInt(prompt("max="));
-        let TaoSoNgauNhien=Math.floor(Math.random()*max)+min;
+        let TaoSoNgauNhien=Math.floor(Math.random()*max)+min;// let TaoSoNgauNhien=min+Math.round(Math.random()*(max-min));
+        alert(TaoSoNgauNhien);
         let doan=false;
+        let count =0;
         while(doan==false){
             let num=parseInt(prompt("nhap so bn doan!"));
+            count++;
             if(num==TaoSoNgauNhien){
                 alert("chuc mung bn da doan dung!");
                 doan=true;
@@ -22,6 +25,9 @@
 
             }else {
                 alert("ban doan lon hon roi!");
+            }
+            if(count==3){
+                break;
             }
         }
     }

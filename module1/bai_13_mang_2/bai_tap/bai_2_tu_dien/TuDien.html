@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let English=["cat","dog","cow","shark","dolphin","crab"];
+    let Vietnamese=["mèo","chó","bò","cá mập","cá heo","cua"];
+    let str=prompt("nhap tu tieng anh ban muon tra");
+    let check=false;
+    let index;
+    for (let i=0;i<English.length;i++){
+        if (str==English[i]){
+            check=true;
+            index=i;
+            break;
+        }
+    }if(check){
+        alert(Vietnamese[index]);
+    }else {
+        alert("tu ban tim k co trong tu dien");
+    }
+
+</script>
+</body>
+</html>
