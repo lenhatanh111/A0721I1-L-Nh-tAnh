@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let count=0;
+    let nums=parseInt(prompt("nhap so phan tu cua mang"));
+    let array=[];
+    for(let i=0;i<nums;i++){
+        let element=prompt("nhap phan tu thu "+i+" cho mang");
+        array.push(element);
+    }
+    for (let j=0;j<array.length;j++){
+        if (array[j]%1==0){
+            count++;
+        }
+    }
+    alert(count);
+</script>
+</body>
+</html>

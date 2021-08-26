@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array=[];
+    let nums=parseInt(prompt("nhap so phan tu cua mang"));
+    for(let i=0;i<nums;i++){
+        let element=prompt("nhap phan tu thu "+i+" cho mang");
+        array.push(element);
+    }
+    alert("mang ban nhap "+array);
+    let last=array.length-1;
+    for (let j=0;j<last;j++){
+        let temp=array[j];
+        array[j]=array[last];
+        array[last]=temp;
+        last--;
+    }
+    alert(array.join(""));
+</script>
+</body>
+</html>

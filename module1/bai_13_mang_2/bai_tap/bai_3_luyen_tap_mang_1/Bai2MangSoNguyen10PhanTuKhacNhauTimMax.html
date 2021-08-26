@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array=[];
+    let index;
+    let max;
+        for (let i=0;i<10;i++) {
+            element = parseInt(prompt("nhap cac phan tu khac nhau cua mang"));
+            array.push(element);
+        }
+    max=array[0];
+        for (let j=1;j<array.length;j++){
+           if(max<array[j]){
+               max=array[j];
+               index=j;
+           }
+        }
+    alert("mang ban nhap"+array);
+    document.write("phan tu lon nhat trong mang la "+max+" tai vi tri array["+index+"]");
+
+</script>
+</body>
+</html>

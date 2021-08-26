@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array=[];
+    let num=parseInt(prompt("nhap so phan tu cho mang"));
+    for (let i=0;i<num;i++){
+        element=parseInt(prompt("nhap gia tri cho array["+i+"]"));
+        array.push(element);
+    }
+    let max=array[0];
+    let total=array[0];
+
+    for (let j=1;j<array.length;j++){
+        if (array[j]>max){
+            max=array[j];
+        }
+        total+=array[j];
+    }
+    let medium=total/array.length;
+    alert("max= "+max+" trung binh="+medium);
+</script>
+</body>
+</html>
