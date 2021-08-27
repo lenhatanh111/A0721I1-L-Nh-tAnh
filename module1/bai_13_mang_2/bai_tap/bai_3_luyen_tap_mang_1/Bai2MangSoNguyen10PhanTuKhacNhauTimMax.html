@@ -9,10 +9,26 @@
     let array=[];
     let index;
     let max;
-        for (let i=0;i<10;i++) {
-            element = parseInt(prompt("nhap cac phan tu khac nhau cua mang"));
-            array.push(element);
+    let count=0;
+
+    let check;
+    do{
+        check=false;
+        let a =parseInt(prompt("nhap phan tu thu "+count+"cho mang"));
+        for (let j=0;j<count;j++){
+            if(a==array[j]){
+                check=true;
+                break;
+            }
         }
+        if (!check){
+            array[count]=a;
+            count++;
+        }
+    }while (count<10);
+    alert(array);
+
+
     max=array[0];
         for (let j=1;j<array.length;j++){
            if(max<array[j]){
