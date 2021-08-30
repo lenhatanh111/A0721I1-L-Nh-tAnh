@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function timMin(a,b,c) {
+        let min=a;
+        if(min>b){
+            min=b;
+        }else if (min>c){
+            min=c;
+        }
+        return min;
+    }
+    let a=parseInt(prompt("nhap a"));
+    let b=parseInt(prompt("nhap b"));
+    let c=parseInt(prompt("nhap c"));
+    let min= timMin(a,b,c);
+    alert(min);
+
+</script>
+</body>
+</html>

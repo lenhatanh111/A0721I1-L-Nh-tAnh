@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number=parseInt(prompt("nhap vao so nguyen bat ky"));
+    isPrime(number);
+
+    function isPrime(num) {
+        let flag=true;
+        if (num<2){
+           flag=false;
+        }else if (num==2){
+          flag=true;
+        }else {
+            for (let i=2;i<num;i++){
+                if (num%i==0){
+                    flag=false;
+                    break;
+                }
+            }
+        }
+        if (flag){
+            alert("is Prime!");
+        }else {
+            alert("is not Prime!");
+        }
+    }
+</script>
+</body>
+</html>
