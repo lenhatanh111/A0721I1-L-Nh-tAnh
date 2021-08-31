@@ -6,9 +6,7 @@
 </head>
 <body>
 <script>
-    function daoMang(num) {
-        let arr=[1,3,4,2,5,6];
-        arr.push(num);
+    function daoMang(arr) {
         let last=arr.length-1;
         for (let i=0;i<last;i++){
             let temp=arr[i];
@@ -18,8 +16,14 @@
         }
         alert(arr);
     }
-    let number=parseInt(prompt("nhap vao 1 so"));
-    daoMang(number);
+    let array=[];
+    let size=parseInt(prompt("nhap kich thuoc cua mang"));
+    for (let j=0;j<size;j++){
+      let element=parseInt(prompt("nhap phan tu thu "+j+" cua mang"));
+        array.push(element);
+    }
+    alert("mang ban vua nhap "+array);
+    daoMang(array);
 </script>
 </body>
 </html>
