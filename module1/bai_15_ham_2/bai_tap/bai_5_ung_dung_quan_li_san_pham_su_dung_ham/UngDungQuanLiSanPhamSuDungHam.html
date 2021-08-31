@@ -3,8 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table{
+            font-family: Arial,sans-serif;
+            border-collapse: collapse;
+            width:50%
+        }
+        td{
+            padding: 6px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        form{
+            background-color: #dddddd;
+            width: 30%;
+            height: 60px;
+        }
+
+    </style>
 </head>
 <body>
+<h3> Add New Product </h3>
+<p id="add new product"></p>
+<h3> Display All Product </h3>
+<p id="result"></p>
+<script>
+    let arr=[];
+    for (let i=0;i<arr.length;i++){
+        arr[i]="";
+    }
+    let form='<form>';
+    form+='<lable>'+'<br>';
+    form+='<input id="New Product" type="text" placeholder="New Product" style="margin-left: 10px">';
+    form+='<input type="button" value="Add" onclick="add()"style="background-color: lawngreen">';
+    form+='</lable>';
+    document.getElementById("add new product").innerHTML=form;
+    function display(tableStr) {
+        tableStr='<table style="border-collapse: collapse">';
+        tableStr+='<tr>';
+        tableStr+='<td>'+'<h4> Product Name </h4>'+'</td>';
+        for (let i=0;i<arr.length;i++){
+            tableStr+='<tr>';
+            tableStr+='<td style="width: 100px;height: 30px">'+arr[i]+'</td>';
+            tableStr+='<td style="width: 100px;height: 30px">'+'<input type="button" value="Edit" onclick="edit('+i+')" style="background-color: lawngreen">'+'</td>';
+            tableStr+='<td style="width: 100px;height: 30px">'+'<input type="button"value="Delete" onclick="xoa('+i+') " style="background-color: lawngreen">'+'</td>';
+            tableStr+='</tr>';
+        }
+        tableStr+='</table>';
+        document.getElementById("result").innerHTML=tableStr;
+    }
+    function add(product) {
+        product=document.getElementById("New Product").value;
+       arr.push(product);
+        display(product);
 
+    }
+    function edit(str) {
+       arr[str]=prompt("thay doi ten san pham");
+       display(str);
+    }
+    function xoa(product) {
+
+        for (let j = product; j < arr.length-1; j++) {
+            arr[j] = arr[j + 1];
+        }
+        arr.pop();
+        display(arr);
+
+
+    }
+</script>
 </body>
 </html>
