@@ -27,6 +27,7 @@
 <h3> Add New Product </h3>
 <p id="add new product"></p>
 <h3> Display All Product </h3>
+<span> So luong san pham:</span><span id="total"></span>
 <p id="result"></p>
 <script>
     let arr=[];
@@ -52,23 +53,40 @@
         }
         tableStr+='</table>';
         document.getElementById("result").innerHTML=tableStr;
+        document.getElementById("total").innerHTML=arr.length;
     }
     function add() {
        let product=document.getElementById("New Product").value;
-       arr.push(product);
-        display(product);
-        document.getElementById("New Product").value="";
+       if (product==""){
+           alert("ban can nhap ten san pham");
+       }else {
+           arr.push(product);
+           display(product);
+           document.getElementById("New Product").value="";
+       }
     }
     function edit(str) {
-       arr[str]=prompt("thay doi ten san pham");
+       let editProduct=prompt("thay doi ten san pham");
+       if (editProduct==""){
+           alert("lam on nhap ten san pham");
+       }else if (editProduct==null){
+           alert(" ban khong muon sua ten");
+       }else {
+           arr[str]=editProduct;
+       }
        display(str);
     }
     function xoa(product) {
-        for (let j = product; j < arr.length-1; j++) {
-            arr[j] = arr[j + 1];
+        let check= confirm(" ban co muon xoa san pham"+arr[product]);
+        if (check){
+            for (let j = product; j < arr.length-1; j++) {
+                arr[j] = arr[j + 1];
+            }
+            arr.pop();
+            display(arr);
+        }else {
+            alert("ban khong muon xoa san pham");
         }
-        arr.pop();
-        display(arr);
     }
 </script>
 </body>
