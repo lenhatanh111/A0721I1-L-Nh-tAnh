@@ -16,8 +16,8 @@
            }else {
                return false;
            }
-           str.pop();
-           str.shift();
+          str.slice(0,1);
+          str.slice(str.length-1,str.length);
            isPalindrome(str);
     }
     let string=prompt("nhap vao 1 tu de kiem tra");

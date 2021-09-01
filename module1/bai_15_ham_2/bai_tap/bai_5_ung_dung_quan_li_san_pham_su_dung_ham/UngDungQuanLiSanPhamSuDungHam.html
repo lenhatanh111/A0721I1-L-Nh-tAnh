@@ -57,21 +57,18 @@
        let product=document.getElementById("New Product").value;
        arr.push(product);
         display(product);
-
+        document.getElementById("New Product").value="";
     }
     function edit(str) {
        arr[str]=prompt("thay doi ten san pham");
        display(str);
     }
     function xoa(product) {
-
         for (let j = product; j < arr.length-1; j++) {
             arr[j] = arr[j + 1];
         }
         arr.pop();
         display(arr);
-
-
     }
 </script>
 </body>
