@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class temperature{
+        constructor(celsius) {
+           if(celsius<-273){
+               alert("loi nhap");
+           }else {
+               this.celsius=celsius;
+           }
+        }
+        celsiusToFahrenheit(){
+            return this.celsius*1.8+32;
+        }
+        celsiusToKelvin(){
+            return this.celsius+273;
+        }
+    }
+    let temperature1= new temperature(25);
+    alert("do F:"+temperature1.celsiusToFahrenheit()+", do K:"+temperature1.celsiusToKelvin());
+
+</script>
+</body>
+</html>
