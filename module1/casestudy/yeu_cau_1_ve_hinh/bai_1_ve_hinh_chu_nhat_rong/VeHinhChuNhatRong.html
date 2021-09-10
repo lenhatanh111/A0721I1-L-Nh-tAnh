@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let height =parseInt(prompt(" nhap chiu dai cho hinh chu nhat"));
+    let width=parseInt(prompt(" nhap chiu rong cho hinh chu nhat"));
+    for (let i=0;i<width;i++){
+        for (let j=0; j<height;j++){
+            if (i==0 || i==width-1 || j==0 || j==height-1){
+                document.writeln("*");
+            }else {
+                document.writeln("&nbsp&nbsp");
+            }
+        }
+        document.writeln("<br>");
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let string=prompt("nhap xau ky tu");
+    let newStr=[];
+    string.trim();
+    newStr.push(string[0].toUpperCase());
+    for (let j=0;j<string.length;j++){
+        if (string[j]==" "&& string[j+1]==" "){
+            string.slice(j);
+        }
+    }
+   for (let i=1;i<string.length;i++){
+
+       if (string[i]==" "){
+           newStr.push(string[i]);
+           newStr.push(string[i+1].toUpperCase());
+           i++;
+       }else {
+          newStr.push(string[i].toLowerCase());
+       }
+
+   }
+   alert("xau da chuyen doi:"+newStr.join(""));
+
+</script>
+</body>
+</html>
