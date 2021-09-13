@@ -6,27 +6,24 @@
 </head>
 <body>
 <script>
-    let string=prompt("nhap xau ky tu");
-    let newStr=[];
-    string.trim();
-    newStr.push(string[0].toUpperCase());
-    for (let j=0;j<string.length;j++){
-        if (string[j]==" "&& string[j+1]==" "){
-            string.slice(j);
-        }
-    }
-   for (let i=1;i<string.length;i++){
 
-       if (string[i]==" "){
-           newStr.push(string[i]);
-           newStr.push(string[i+1].toUpperCase());
-           i++;
-       }else {
-          newStr.push(string[i].toLowerCase());
+   function chuanHoaKiTu(string) {
+       let newStr=string.split(' ');
+       let array=[];
+
+       for (let j=0;j<newStr.length;j++){
+           if (newStr[j]!=""){
+               array.push(newStr[j])
+           }
        }
+       for (let i=0;i<array.length;i++){
+           array[i]=array[i][0].toUpperCase()+array[i].slice(1).toLowerCase();
+       }
+       alert(array.join(" "));
 
    }
-   alert("xau da chuyen doi:"+newStr.join(""));
+   let string=prompt("nhap xau ky tu");
+   chuanHoaKiTu(string);
 
 </script>
 </body>

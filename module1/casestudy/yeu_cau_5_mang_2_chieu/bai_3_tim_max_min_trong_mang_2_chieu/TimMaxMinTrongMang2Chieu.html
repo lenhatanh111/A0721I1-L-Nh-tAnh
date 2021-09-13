@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let row=parseInt(prompt("nhap so dong cua mang"));
+    let column=parseInt(prompt("nhap so cot cua mang"));
+    let arr= new Array(row);
+    for (let i=0;i<row;i++){
+        arr[i]=new Array(column);
+        for (let j=0;j<arr[i].length;j++){
+            arr[i][j]=parseInt(prompt("arr["+i+"]["+j+"]="));
+        }
+    }
+    let max=arr[0][0];
+    let min=arr[0][1];
+    for (let i=0;i<arr.length;i++){
+        for (let j=0;j<arr[i].length;j++) {
+            if (arr[i][j]>max){
+                max=arr[i][j];
+            }
+            if (arr[i][j]<min){
+                min=arr[i][j];
+            }
+        }
+    }
+    document.writeln("mang bn nhap arr= "+arr);
+    document.writeln("max= "+max+"<br>"+"min= "+min);
+</script>
+</body>
+</html>
