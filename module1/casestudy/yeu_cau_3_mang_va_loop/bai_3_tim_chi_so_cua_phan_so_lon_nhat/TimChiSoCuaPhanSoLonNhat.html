@@ -6,17 +6,17 @@
 </head>
 <body>
 <script>
-    let tuSo=[5,2,6,8,9];
-    let mauSo=[6,3,4,5,3];
-    let max=tuSo[0]-mauSo[0];
+    let tuSo = [5, 2, 6, 8];
+    let mauSo = [6, 3, 4, 5];
+    let max = tuSo[0] / mauSo[0];
     let index;
-    for (let i=0;i<tuSo.length;i++){
-        if ((tuSo[i]-mauSo[i])>max){
-            max=tuSo[i]-mauSo[i];
-            index=i;
+    for (let i = 0; i < tuSo.length; i++) {
+        if ((tuSo[i] / mauSo[i]) > max) {
+            max = tuSo[i] / mauSo[i];
+            index = i;
         }
     }
-    alert("vi tri phan so lon nhat la"+index);
+    alert("vi tri phan so lon nhat la" + index);
 </script>
 </body>
 </html>

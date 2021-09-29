@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="result"></p>
+<input type="button" value="them sach da co" onclick="addOldBook()">
+<input type="button" onclick="addNewBook()" value="them sach moi">
+<input type="button" onclick="deleteBook()" value="muon sach">
+<input type="button" onclick="displayBook()" value="hien thi sach nhiu nhat">
+
+<script>
+    class Book {
+        constructor(id, name, year, number, status) {
+            this.id = id;
+            this.name = name;
+            this.year = year;
+            this.number = number;
+            this.status = status;
+        }
+
+        setId(id) {
+            if (this.id.length == 5) {
+                for (let i = 0; i < this.id.length; i++) {
+                    if (this.id[0] >= 1 && this.id[0] <= 5) {
+                        this.id = id;
+                    }
+                }
+            }
+
+        }
+
+        getId() {
+            return this.id;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setYear(year) {
+            if (this.year.length == 4) {
+                this.year = year;
+            }
+        }
+
+        getYear() {
+            return this.year;
+        }
+
+        setNumber(number) {
+            this.number = number;
+        }
+
+        getNumber() {
+            return this.number;
+        }
+
+        setStatus(status) {
+            this.status = status;
+        }
+
+        getStatus() {
+            return this.status;
+        }
+
+    }
+
+    let book1 = new Book(12345, "toan", 2001, 1, true);
+    let book2 = new Book(23456, "van", 2003, 2, true);
+    let book3 = new Book(34567, "anh", 20010, 3, true);
+    let bookList = [book1, book2, book3];
+    display();
+
+    function addNewBook() {
+        let id = prompt("nhập mã sach");
+        let name = prompt("nhập tên sach");
+        let year = parseInt(prompt("nhập nam xuat ban"));
+        let number = parseInt(prompt("nhap so luong sach"));
+        let status = prompt("nhap tinh trang cua sach");
+        let newBook = new Book(id, name, year, number, status);
+        bookList.push(newBook);
+        display();
+    }
+
+    function display() {
+        let tableString = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>Ma So Sach </th>\n' +
+            '        <th>Ten sach</th>\n' +
+            '        <th>Nam xuat ban</th>\n' +
+            '        <th>So quyen</th>\n' +
+            '        <th>Tinh trang</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < bookList.length; i++) {
+            tableString += ' <tr>\n' +
+                '        <td>' + bookList[i].getId() + '</td>\n' +
+                '        <td>' + bookList[i].getName() + '</td>\n' +
+                '        <td>' + bookList[i].getYear() + '</td>\n' +
+                '        <td>' + bookList[i].getNumber() + '</td>\n' +
+                '        <td>' + bookList[i].getStatus() + '</td>\n' +
+                '    </tr>'
+        }
+        tableString += '</table>'
+        document.getElementById("result").innerHTML = tableString;
+    }
+
+    function deleteBook() {
+        let choose = parseInt(prompt("nhap ma so sach ma bn muon muon"));
+        let index;
+        for (let i = 0; i < bookList.length; i++) {
+            if (bookList[i].id == choose) {
+                index = i;
+            }
+
+        }
+        let confDelete = confirm("Bạn có muốn muon sach có tên: " + bookList[index].getName() + "?")
+        if (confDelete) {
+            bookList[index].number--;
+            if (bookList[index].number == 0) {
+                bookList[index].status = false;
+            }
+        } else {
+            alert("bạn đã không muon sach")
+        }
+        display();
+    }
+
+    function addOldBook() {
+        let id = prompt("nhập mã sach");
+        let name = prompt("nhập tên sach");
+        let year = parseInt(prompt("nhập nam xuat ban"));
+        let number = parseInt(prompt("nhap so luong sach"));
+        let status = prompt("nhap tinh trang cua sach");
+        for (let i = 0; i < bookList.length; i++) {
+            if (bookList[i].id == id && bookList[i].name == name && bookList[i].year == bookList[i].year && bookList[i].number == number) {
+                bookList[i].number++;
+            }
+
+        }
+
+    }
+    function displayBook() {
+        let max;
+        for (let i = 0; i < bookList.length; i++) {
+            max=bookList[0].number;
+            if (bookList[i].number>max) {
+                max=i;
+            }
+
+        }
+        alert(" sach nhiu nhat"+bookList[max].name);
+
+    }
+</script>
+</body>
+</html>

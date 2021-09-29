@@ -7,23 +7,24 @@
 <body>
 <script>
 
-   function chuanHoaKiTu(string) {
-       let newStr=string.split(' ');
-       let array=[];
+    function chuanHoaKiTu(string) {
+        let newStr = string.split(' ');
+        let array = [];
 
-       for (let j=0;j<newStr.length;j++){
-           if (newStr[j]!=""){
-               array.push(newStr[j])
-           }
-       }
-       for (let i=0;i<array.length;i++){
-           array[i]=array[i][0].toUpperCase()+array[i].slice(1).toLowerCase();
-       }
-       alert(array.join(" "));
+        for (let j = 0; j < newStr.length; j++) {
+            if (newStr[j] != "") {
+                array.push(newStr[j])
+            }
+        }
+        for (let i = 0; i < array.length; i++) {
+            array[i] = array[i][0].toUpperCase() + array[i].slice(1).toLowerCase();
+        }
+        alert(array.join(" "));
 
-   }
-   let string=prompt("nhap xau ky tu");
-   chuanHoaKiTu(string);
+    }
+
+    let string = prompt("nhap xau ky tu");
+    chuanHoaKiTu(string);
 
 </script>
 </body>

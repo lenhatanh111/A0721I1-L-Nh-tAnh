@@ -6,20 +6,20 @@
 </head>
 <body>
 <script>
-    let arrayA=[1,2,4,5,7,0];
-    let arrayB=[1,2,3,4,5,6,7,8,0];
-    let arrayC=[];
-    let check=false;
-    for (let i=0;i<arrayB.length;i++){
-        for (let j=0;j<arrayA.length;j++){
-            if (arrayB[i]!=arrayA[j]){
-              check=true;
-            }else {
-                check=false;
+    let arrayA = [1, 2, 4, 5, 7, 0];
+    let arrayB = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+    let arrayC = [];
+    let check = false;
+    for (let i = 0; i < arrayB.length; i++) {
+        for (let j = 0; j < arrayA.length; j++) {
+            if (arrayB[i] != arrayA[j]) {
+                check = true;
+            } else {
+                check = false;
                 break;
             }
         }
-        if (check){
+        if (check) {
             arrayC.push(arrayB[i]);
         }
     }
