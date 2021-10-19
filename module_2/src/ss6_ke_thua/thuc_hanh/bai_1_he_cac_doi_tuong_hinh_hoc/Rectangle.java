@@ -1,6 +1,8 @@
 package ss6_ke_thua.thuc_hanh.bai_1_he_cac_doi_tuong_hinh_hoc;
 
-public class Rectangle extends Shape {
+import ss7_abstract_class_and_interface.bai_tap.bai_1_trien_khai_interface_resizeable_cho_cac_lop_hinh_hoc.Resizeable;
+
+public class Rectangle extends Shape implements Resizeable {
     private double width = 1.0;
     private double length = 1.0;
 
@@ -48,7 +50,15 @@ public class Rectangle extends Shape {
                 + getWidth()
                 + " and length="
                 + getLength()
+                +"area= "
+                +getArea()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+
+    @Override
+    public void resize(double percent) {
+        this.length+=(this.length*percent/100);
+        this.width+=(this.width*percent/100);
     }
 }

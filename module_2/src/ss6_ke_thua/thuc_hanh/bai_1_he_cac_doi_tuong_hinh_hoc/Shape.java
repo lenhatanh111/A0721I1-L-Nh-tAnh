@@ -1,8 +1,8 @@
 package ss6_ke_thua.thuc_hanh.bai_1_he_cac_doi_tuong_hinh_hoc;
 
 public class Shape {
-    private String color;
-    private boolean filled;
+    public String color;
+    public boolean filled;
 
     public Shape() {
         this.color="green";
