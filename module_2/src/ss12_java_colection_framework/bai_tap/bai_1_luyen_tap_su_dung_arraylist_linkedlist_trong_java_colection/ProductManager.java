@@ -2,6 +2,7 @@ package ss12_java_colection_framework.bai_tap.bai_1_luyen_tap_su_dung_arraylist_
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class ProductManager {
@@ -42,7 +43,15 @@ public class ProductManager {
     }
 
     public void sortUpAscending() {
-        Collections.sort(products);
+//        Collections.sort(products);
+//        display();
+//        Collections.sort(products, new Comparator<Product>() {
+//            @Override
+//            public int compare(Product product, Product t1) {
+//                return product.getPrice()-t1.getPrice();
+//            }
+//        });
+        Collections.sort(products,(Product p1,Product p2)-> p1.getPrice()-p2.getPrice());
         display();
 
     }

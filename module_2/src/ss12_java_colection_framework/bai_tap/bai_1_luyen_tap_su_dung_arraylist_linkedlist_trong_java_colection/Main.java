@@ -13,12 +13,12 @@ public class Main {
 //        productManager.edit(003);
         System.out.println("tăng dần");
         productManager.sortUpAscending();
-
-        System.out.println("giảm dần");
-        productManager.sortDescending();
-
-        System.out.println("xóa");
-        productManager.delete(4);
+//
+//        System.out.println("giảm dần");
+//        productManager.sortDescending();
+//
+//        System.out.println("xóa");
+//        productManager.delete(4);
 
 
     }

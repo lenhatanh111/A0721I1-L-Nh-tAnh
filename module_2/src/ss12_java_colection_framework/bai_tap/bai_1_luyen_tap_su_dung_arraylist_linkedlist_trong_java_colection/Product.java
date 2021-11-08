@@ -2,10 +2,10 @@ package ss12_java_colection_framework.bai_tap.bai_1_luyen_tap_su_dung_arraylist_
 
 import java.util.Comparator;
 
-public class Product implements Comparable<Product> {
-    public int id;
-    public String name;
-    public int price;
+public class Product {
+   private int id;
+    private String name;
+    private int price;
 
     public Product() {
     }
@@ -49,8 +49,8 @@ public class Product implements Comparable<Product> {
                 ;
     }
 
-    @Override
-    public int compareTo(Product product) {
-        return this.getPrice() - product.getPrice();
-    }
+//    @Override
+//    public int compareTo(Product product) {
+//        return this.getPrice() - product.getPrice();
+//    }
 }
