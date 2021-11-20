@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProductManager {
-
+private static  ReadAndWriteObject readAndWriteObject = new ReadAndWriteObject();
+private static Scanner scanner = new Scanner(System.in);
     public static void add() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("nhập id");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("nhập tên sản phẩm");
@@ -17,13 +17,11 @@ public class ProductManager {
         String manufacturer = scanner.nextLine();
         ArrayList<Product> products = new ArrayList<>();
         products.add(new Product(id, name, price, manufacturer));
-        ReadAndWriteObject readAndWriteObject = new ReadAndWriteObject();
         readAndWriteObject.writeObject(products);
 
     }
 
     public static void display() {
-        ReadAndWriteObject readAndWriteObject = new ReadAndWriteObject();
         ArrayList<Product> list = readAndWriteObject.readObject();
         for (Product products : list) {
             System.out.println(products.toString());
@@ -31,10 +29,8 @@ public class ProductManager {
     }
 
     public static void search() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("nhập giá bạn muốn tìm");
         double price = scanner.nextDouble();
-        ReadAndWriteObject readAndWriteObject = new ReadAndWriteObject();
         ArrayList<Product> list = readAndWriteObject.readObject();
         boolean check = false;
         for (Product products : list) {
