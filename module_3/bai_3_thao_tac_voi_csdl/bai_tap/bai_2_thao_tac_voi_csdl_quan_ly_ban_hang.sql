@@ -10,3 +10,6 @@ left join product on order_detal.p_id=product.p_id;
 select customer.c_name,product.p_name from `order` left join customer on customer.c_id=`order`.c_id
 left join `order_detal` on `order`.o_id=order_detal.o_id
 left join product on order_detal.p_id=product.p_id;
+select customer.c_name from customer where customer.c_id not in (select `order`.c_id from `order`);
+select `order`.o_id, `order`.o_date,(order_detal.od_qty*product.p_price) as total_price from `order`left join order_detal on `order`.o_id=order_detal.o_id
+left join product on product.p_id=order_detal.p_id;
