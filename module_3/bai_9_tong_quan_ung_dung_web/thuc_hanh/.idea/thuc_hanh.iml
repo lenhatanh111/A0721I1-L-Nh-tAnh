@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$/src/main/java/ss9_tong_quan_ung_dung_web/thuc_hanh/bai_1_tao_trang_web_hien_thi_thoi_gian_he_thong/Servlet.java" />
-    <orderEntry type="inheritedJdk" />
-    <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-</module>
