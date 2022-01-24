@@ -1,18 +1,16 @@
 package com.codegym.service;
 
-import com.codegym.model.customer;
+import com.codegym.model.Customer;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface ICustomerService {
-    public void insertCustomer(customer customer) throws SQLException;
+    List<Customer> display();
 
-    public customer selectCustomer(int customer_id);
 
-    public List<customer> selectAllCustomer();
+    void create( String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address, String customer_type_id);
 
-    public boolean deleteCustomer(int customer_id) throws SQLException;
-
-    public boolean updateCustomer(customer customer) throws SQLException;
+    void delete(String customer_id);
+    void update( String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address, String customer_type_id);
+    List<Customer> search(String customer_name);
 }

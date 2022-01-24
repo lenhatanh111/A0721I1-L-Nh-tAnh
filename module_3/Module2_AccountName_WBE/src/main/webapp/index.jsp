@@ -14,9 +14,9 @@
   </div>
   <div id="head-link">
     <ul>
-      <li><a href="">Home</a></li>
+      <li><a href="/customer?action=home">Home</a></li>
       <li><a href="">Employee</a></li>
-      <li><a href="">Customer</a></li>
+      <li><a href="/customer?action=display">Customer</a></li>
       <li><a href="">Service</a></li>
       <li><a href="">Contract</a></li>
       <li>

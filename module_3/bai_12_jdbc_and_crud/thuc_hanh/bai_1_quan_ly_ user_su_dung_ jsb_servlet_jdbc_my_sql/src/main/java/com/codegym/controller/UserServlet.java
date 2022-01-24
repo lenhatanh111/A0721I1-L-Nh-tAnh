@@ -33,7 +33,7 @@ public class UserServlet extends HttpServlet {
         try {
             switch (action) {
                 case "create":
-                    insertUser(request, response);
+                   insertUser(request, response);
                     break;
                 case "edit":
                     updateUser(request, response);
