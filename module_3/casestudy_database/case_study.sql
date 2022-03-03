@@ -24,9 +24,9 @@ dia_chi varchar(45),
 ma_vi_tri int ,
 ma_trinh_do int,
 ma_bo_phan int,
-foreign key(ma_vi_tri) references vi_tri(ma_vi_tri),
-foreign key(ma_trinh_do) references trinh_do(ma_trinh_do),
-foreign key(ma_bo_phan) references bo_phan(ma_bo_phan)
+foreign key(ma_vi_tri) references vi_tri(ma_vi_tri) on update cascade on delete cascade,
+foreign key(ma_trinh_do) references trinh_do(ma_trinh_do) on update cascade on delete cascade,
+foreign key(ma_bo_phan) references bo_phan(ma_bo_phan) on update cascade on delete cascade
 );
 create table loai_khach(
 ma_loai_khach int primary key auto_increment,
@@ -42,7 +42,7 @@ so_cmnd varchar(45),
 sdt varchar(45),
 email varchar(45),
 dia_chi varchar(45),
-foreign key (ma_loai_khach) references loai_khach(ma_loai_khach)
+foreign key (ma_loai_khach) references loai_khach(ma_loai_khach) on update cascade on delete cascade
 );
 create table kieu_thue(
 ma_kieu_thue int primary key auto_increment,
@@ -64,8 +64,8 @@ tieu_chuan_phong varchar(45),
 mo_ta_tien_nghi_khac varchar(45),
 dien_tich_ho_boi double,
 so_tang int,
-foreign key(ma_kieu_thue) references kieu_thue(ma_kieu_thue),
-foreign key(ma_loai_dich_vu) references loai_dich_vu(ma_loai_dich_vu)
+foreign key(ma_kieu_thue) references kieu_thue(ma_kieu_thue)  on update cascade on delete cascade,
+foreign key(ma_loai_dich_vu) references loai_dich_vu(ma_loai_dich_vu) on update cascade on delete cascade
 );
 create table hop_dong(
 ma_hop_dong int primary key auto_increment,
@@ -75,9 +75,9 @@ tien_dat_coc double,
 ma_nhan_vien int,
 ma_khach_hang int,
 ma_dich_vu int,
-foreign key(ma_nhan_vien) references nhan_vien(ma_nhan_vien),
-foreign key(ma_khach_hang) references khach_hang(ma_khach_hang),
-foreign key(ma_dich_vu) references dich_vu(ma_dich_vu)
+foreign key(ma_nhan_vien) references nhan_vien(ma_nhan_vien)  on update cascade on delete cascade,
+foreign key(ma_khach_hang) references khach_hang(ma_khach_hang) on update cascade on delete cascade,
+foreign key(ma_dich_vu) references dich_vu(ma_dich_vu) on update cascade on delete cascade
 );
 create table dich_vu_di_kem(
 ma_dich_vu_di_kem int primary key auto_increment,
@@ -92,8 +92,8 @@ so_luong int,
 ma_dich_vu_di_kem int,
 ma_hop_dong int,
 
-foreign key(ma_dich_vu_di_kem) references dich_vu_di_kem(ma_dich_vu_di_kem),
-foreign key(ma_hop_dong) references hop_dong(ma_hop_dong)
+foreign key(ma_dich_vu_di_kem) references dich_vu_di_kem(ma_dich_vu_di_kem) on update cascade on delete cascade,
+foreign key(ma_hop_dong) references hop_dong(ma_hop_dong) on update cascade on delete cascade
 );
 
 
@@ -157,7 +157,8 @@ insert into dich_vu_di_kem values
 (3,"Thuê xe đạp",20000,"chiếc","tốt"),
 (4,"Buffet buổi sáng",15000,"suất","đầy đủ đồ ăn, tráng miệng"),
 (5,"Buffet buổi trưa",90000,"suất","đầy đủ đồ ăn, tráng miệng"),
-(6,"Buffet buổi tối",16000,"suất","đầy đủ đồ ăn, tráng miệng");
+(6,"Buffet buổi tối",16000,"suất","đầy đủ đồ ăn, tráng miệng"),
+(7,"massage",500000,"giờ","có đào ");
 
 insert into hop_dong_chi_tiet values 
 (1,5,4,2),
@@ -175,7 +176,8 @@ insert into hop_dong_chi_tiet values
 (13,14,6,9),
 (14,2,1,11),
 (15,1,2,7),
-(16,15,6,13);
+(16,15,6,13),
+(17,1,7,12);
 
 -- 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.--
 
@@ -235,5 +237,54 @@ from hop_dong hd join hop_dong_chi_tiet hdct on hd.ma_hop_dong=hdct.ma_hop_dong 
 
 select dvdk.ma_dich_vu_di_kem, dvdk.ten_dich_vu_di_kem, kh.ho_ten, kh.dia_chi from dich_vu_di_kem dvdk join hop_dong_chi_tiet hdct on dvdk.ma_dich_vu_di_kem=hdct.ma_dich_vu_di_kem join hop_dong hd 
 on hdct.ma_hop_dong= hd.ma_hop_dong join khach_hang kh on hd.ma_khach_hang=kh.ma_khach_hang join loai_khach lk on 
-kh.ma_loai_khach=lk.ma_loai_khach where lk.ten_loai_khach='dinamond' and  kh.dia_chi like '% quảng ngãi' or kh.dia_chi like '% vinh' group by kh.ma_khach_hang, dvdk.ten_dich_vu_di_kem;
--- (khong hien thi kh o quang ngai)????
+kh.ma_loai_khach=lk.ma_loai_khach where lk.ten_loai_khach='dinamond' and  kh.dia_chi like concat('%',convert('Quảng Ngãi',binary),'%') or kh.dia_chi like '% vinh' group by kh.ma_khach_hang, dvdk.ten_dich_vu_di_kem;
+
+-- 12.	Hiển thị thông tin ma_hop_dong, ho_ten (nhân viên), ho_ten (khách hàng), so_dien_thoai (khách hàng), ten_dich_vu, so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở dich_vu_di_kem),
+-- tien_dat_coc của tất cả các dịch vụ đã từng được khách hàng đặt vào 3 tháng cuối năm 2020 nhưng chưa từng được khách hàng đặt vào 6 tháng đầu năm 2021.
+
+select hd.ma_hop_dong, nv.ho_ten ,kh.ho_ten , kh.sdt, dv.ten_dich_vu, sum(hdct.so_luong) as so_luong_dich_vu_di_kem ,hd.tien_dat_coc
+from hop_dong hd join hop_dong_chi_tiet hdct on hd.ma_hop_dong=hdct.ma_hop_dong join nhan_vien nv on hd.ma_nhan_vien=nv.ma_nhan_vien
+ join khach_hang kh on kh.ma_khach_hang=hd.ma_khach_hang  join dich_vu dv on hd.ma_dich_vu=dv.ma_dich_vu where month(hd.ngay_lam_hop_dong)>9 
+ and year(hd.ngay_lam_hop_dong)=2020 and kh.ma_khach_hang not in (select kh.ma_khach_hang from khach_hang kh join hop_dong hd on
+ kh.ma_khach_hang=hd.ma_khach_hang join dich_vu dv on dv.ma_dich_vu =hd.ma_dich_vu where month(hd.ngay_lam_hop_dong)<=6
+ and year(hd.ngay_lam_hop_dong)=2021)
+ group by hd.ma_hop_dong;
+
+-- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
+
+select dvdk.ma_dich_vu_di_kem , dvdk.ten_dich_vu_di_kem, sum(hdct.so_luong) as so_luong_dich_vu_di_kem from hop_dong_chi_tiet hdct join
+dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem=dvdk.ma_dich_vu_di_kem group by hdct.ma_dich_vu_di_kem having 
+so_luong_dich_vu_di_kem>= all(select sum(hdct.so_luong) as so_luong_dich_vu_di_kem  from hop_dong_chi_tiet hdct join
+dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem=dvdk.ma_dich_vu_di_kem group by hdct.ma_dich_vu_di_kem);
+
+-- 14.	Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, 
+-- ten_dich_vu_di_kem, so_lan_su_dung (được tính dựa trên việc count các ma_dich_vu_di_kem).
+
+select hd.ma_hop_dong, ldv.ten_loai_dich_vu, dvdk.ten_dich_vu_di_kem, count(hdct.ma_hop_dong) as so_lan_su_dung from
+hop_dong hd join dich_vu dv on hd.ma_dich_vu=dv.ma_dich_vu join hop_dong_chi_tiet hdct on hdct.ma_hop_dong= hd.ma_hop_dong
+join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem=dvdk.ma_dich_vu_di_kem join loai_dich_vu ldv on dv.ma_loai_dich_vu=ldv.ma_loai_dich_vu 
+group by dvdk.ma_dich_vu_di_kem having so_lan_su_dung=1;
+
+-- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi 
+-- mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
+
+select nv.ma_nhan_vien, nv.ho_ten, td.ten_trinh_do, bp.ten_bo_phan, nv.sdt, nv.dia_chi, count(hd.ma_hop_dong) 
+as so_hop_dong_da_lap from nhan_vien nv join trinh_do td on nv.ma_trinh_do=td.ma_trinh_do join bo_phan bp 
+on bp.ma_bo_phan=nv.ma_bo_phan join hop_dong hd on hd.ma_nhan_vien = nv.ma_nhan_vien where year(hd.ngay_lam_hop_dong) between 2020 and 2021
+group by hd.ma_nhan_vien having so_hop_dong_da_lap <=3 ;
+
+-- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021 .	
+SET SQL_SAFE_UPDATES = 0;
+delete from nhan_vien nv  where nv.ma_nhan_vien not in (select hd.ma_nhan_vien from hop_dong hd 
+where year(hd.ngay_lam_hop_dong) between 2019 and 2021);
+
+-- 17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, chỉ cập nhật những khách hàng đã từng đặt phòng 
+-- với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
+
+SET SQL_SAFE_UPDATES = 0;
+update  khach_hang kh set kh.ma_loai_khach=1 where kh.ma_khach_hang in (select hd.ma_khach_hang from hop_dong hd  join dich_vu dv on dv.ma_dich_vu=hd.ma_dich_vu join hop_dong_chi_tiet hdct on hdct.ma_hop_dong=hd.ma_hop_dong
+join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem=hdct.ma_dich_vu_di_kem where dv.chi_phi_thue+hdct.so_luong*dvdk.gia >10000000 group by hd.ma_khach_hang );
+
+-- 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+
+
