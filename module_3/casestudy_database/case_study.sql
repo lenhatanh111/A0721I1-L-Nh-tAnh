@@ -107,7 +107,7 @@ insert into nhan_vien (ho_ten ,ngay_sinh,so_cmnd ,luong ,sdt ,email ,dia_chi ,ma
 ('Lê Văn Bình','1997-04-09',654231234,7000000,0934212314,'binhlv@gmail.com','222 Yên Bái, Đà Nẵng',1,2,2),
 ('Hồ Thị Yến','1995-12-12',999231723,14000000,0412352315,'thiyen@gmail.com','K234/11 Điện Biên Phủ, Gia Lai',1,3,2),
 ('Võ Công Toản','1980-04-04',123231365,17000000	,0374443232,'toan0404@gmail.com','77 Hoàng Diệu, Quảng Trị',1,4,4),
-('Nguyễn Bỉnh Phát','1999-12-09',454363232,6000000,0902341231,'phatphat@gmail.com' ,'43 Yên Bái, Đà Nẵng',2,1,1),
+('Nguyễn Bỉnh Phát','1999-12-09',454363232,6000000,0902341231,'phatphat@gmail.com' ,'Hải Châu, Đà Nẵng',2,1,1),
 ('Khúc Nguyễn An Nghi','2000-11-08',964542311,7000000,0978653213,'annghi20@gmail.com','294 Nguyễn Tất Thành, Đà Nẵng',2,2,3),
 ('Nguyễn Hữu Hà','1993-01-01',534323231	,8000000, 0941234553 ,'nhh0101@gmail.com','	4 Nguyễn Chí Thanh, Huế',2,3,2),
 ('Nguyễn Hà Đông','1989-09-03',	234414123,9000000,0642123111,'donghanguyen@gmail.com','111 Hùng Vương, Hà Nội',2,4,4),
@@ -149,7 +149,9 @@ insert into hop_dong values
 (10,"2021-04-12","2021-04-14",0,10,3,5),
 (11,"2021-04-25","2021-04-25",0,2,2,1),
 (12,"2021-05-25","2021-05-27",0,7,10,1),
-(13,"2021-01-28","2021-05-20",1000000,5,9,4);
+(13,"2021-01-28","2021-04-23",1000000,5,9,4),
+(14,"2019-12-12","2021-06-25",2000000,5,7,3),
+(15,"2019-12-12","2021-01-28",4000000,5,4,1);
 
 insert into dich_vu_di_kem values
 (1,"Karaoke",10000,"giờ","tiện nghi,hiện tại"),
@@ -174,10 +176,11 @@ insert into hop_dong_chi_tiet values
 (11,3,1,8),
 (12,9,4,10),
 (13,14,6,9),
-(14,2,1,11),
+(14,2,1,14),
 (15,1,2,7),
 (16,15,6,13),
-(17,1,7,12);
+(17,1,7,12),
+(18,5,6,15);
 
 -- 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.--
 
@@ -301,5 +304,28 @@ update dich_vu_di_kem dvdk set dvdk.gia=(dvdk.gia*2) where dvdk.ma_dich_vu_di_ke
 select ma_nhan_vien as id, ho_ten, email, sdt, ngay_sinh, dia_chi from nhan_vien 
 union all
 select ma_khach_hang as id, ho_ten, email, sdt, ngay_sinh, dia_chi from khach_hang ;
+
+-- 21.	Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả các nhân viên có địa chỉ là “Hải Châu” và đã từng lập hợp đồng cho một hoặc nhiều khách hàng bất kì với ngày lập hợp đồng là “12/12/2019”.
+
+create view v_nhan_vien as
+select * from nhan_vien nv where nv.dia_chi like '%Hải Châu%' and nv.ma_nhan_vien in 
+(select hd.ma_nhan_vien from hop_dong hd where hd.ngay_lam_hop_dong='2019-12-12');
+
+-- 22.	Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “Liên Chiểu” đối với tất cả các nhân viên được nhìn thấy bởi khung nhìn này.
+SET SQL_SAFE_UPDATES = 0;
+update v_nhan_vien set dia_chi='Liên Chiểu';
+
+-- 23.	Tạo Stored Procedure sp_xoa_khach_hang dùng để xóa thông tin của một khách hàng nào đó với ma_khach_hang được truyền vào như là 1 tham số của sp_xoa_khach_hang.
+
+DELIMITER //
+create procedure sp_xoa_khach_hang (in id int)
+begin
+delete from khach_hang kh where kh.ma_khach_hang=id;
+end //
+DELIMITER ;
+
+-- 24.	Tạo Stored Procedure sp_them_moi_hop_dong dùng để thêm mới vào bảng hop_dong với yêu cầu sp_them_moi_hop_dong phải thực hiện kiểm tra tính hợp lệ của dữ liệu bổ sung,
+-- với nguyên tắc không được trùng khóa chính và đảm bảo toàn vẹn tham chiếu đến các bảng liên quan.
+
 
 
