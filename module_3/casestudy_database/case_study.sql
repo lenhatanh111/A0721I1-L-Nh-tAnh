@@ -327,5 +327,68 @@ DELIMITER ;
 -- 24.	Tạo Stored Procedure sp_them_moi_hop_dong dùng để thêm mới vào bảng hop_dong với yêu cầu sp_them_moi_hop_dong phải thực hiện kiểm tra tính hợp lệ của dữ liệu bổ sung,
 -- với nguyên tắc không được trùng khóa chính và đảm bảo toàn vẹn tham chiếu đến các bảng liên quan.
 
+DELIMITER //
+create procedure sp_them_moi_hop_dong 
+(in id int, ngay_lam_hop_dong datetime, ngay_ket_thuc datetime, tien_dat_coc double, ma_nhan_vien int, ma_khach_hang int ,ma_dich_vu int)
+begin 
+if id in (select ma_hop_dong from hop_dong)
+then signal  SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'trung ma_hop_dong', MYSQL_ERRNO = 1001; 
+elseif ma_nhan_vien not in (select ma_nhan_vien from nhan_vien)
+      then signal  SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'khong ton tai ma_nhan_vien', MYSQL_ERRNO = 1002;
+elseif ma_khach_hang not in (select ma_khach_hang from khach_hang)
+then signal  SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'khong ton tai ma_khach_hang', MYSQL_ERRNO = 1003;
+elseif ma_dich_vu not in (select ma_dich_vu from dich_vu)
+      then signal  SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'khong ton tai ma_dich_vu', MYSQL_ERRNO = 1004;
+else 
+insert into hop_dong value (id, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu);
+end if;
+end //
+DELIMITER ;
+call sp_them_moi_hop_dong(19,"2020-07-14","2020-07-21",200000,10,3,1);
 
+-- 25.	Tạo Trigger có tên tr_xoa_hop_dong khi xóa bản ghi trong bảng hop_dong thì hiển thị tổng số lượng bản ghi còn lại có trong bảng hop_dong ra giao diện console của database.
+-- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
 
+set @sl =0;
+DELIMITER //
+create trigger tr_xoa_hop_dong after delete on hop_dong
+for each row
+begin
+set @sl= (select count(*) from hop_dong);
+end //
+DELIMITER ;
+select @sl;
+delete from hop_dong where ma_hop_dong=2; 
+
+ -- 26.	Tạo Trigger có tên tr_cap_nhat_hop_dong khi cập nhật ngày kết thúc hợp đồng, cần kiểm tra xem thời gian cập nhật có phù hợp hay không,
+ -- với quy tắc sau: Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày. Nếu dữ liệu hợp lệ thì cho phép cập nhật, 
+ -- nếu dữ liệu không hợp lệ thì in ra thông báo “Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày” trên console của database.
+
+DELIMITER //
+create trigger tr_cap_nhat_hop_dong before update on hop_dong
+for each row
+begin
+if year(ngay_lam_hop_dong) = year(ngay_ket_thuc) then
+ if month(ngay_lam_hop_dong)> month(ngay_ket_thuc) 
+  then signal  SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày', MYSQL_ERRNO = 1005;
+      end if;
+	elseif month(ngay_lam_hop_dong)= month(ngay_ket_thuc) then
+          if day(ngay_lam_hop_dong) > day(ngay_ket_thuc) or day(ngay_ket_thuc)-day(ngay_lam_hop_dong)<2
+          then signal  SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày', MYSQL_ERRNO = 1005;
+      end if;
+elseif year(ngay_lam_hop_dong) > year(ngay_ket_thuc)
+then signal  SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày', MYSQL_ERRNO = 1005;
+      end if;
+
+end //
+DELIMITER ;
+
+SET SQL_SAFE_UPDATES = 0;
+update hop_dong  set ngay_lam_hop_dong='2022-03-15' where ma_hop_dong=3;
