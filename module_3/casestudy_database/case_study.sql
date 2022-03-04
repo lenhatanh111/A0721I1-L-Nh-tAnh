@@ -286,5 +286,20 @@ update  khach_hang kh set kh.ma_loai_khach=1 where kh.ma_khach_hang in (select h
 join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem=hdct.ma_dich_vu_di_kem where dv.chi_phi_thue+hdct.so_luong*dvdk.gia >10000000 group by hd.ma_khach_hang );
 
 -- 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+SET SQL_SAFE_UPDATES = 0;
+delete from hop_dong_chi_tiet hdct where hdct.ma_hop_dong in(select hd.ma_hop_dong from hop_dong hd where year(hd.ngay_lam_hop_dong)<2021);
+delete from hop_dong hd where year(hd.ngay_lam_hop_dong)<2021;
+delete from khach_hang kh where kh.ma_khach_hang not in (select hd.ma_khach_hang from hop_dong hd group by hd.ma_hop_dong);
+
+-- 19.	Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+SET SQL_SAFE_UPDATES = 0;
+update dich_vu_di_kem dvdk set dvdk.gia=(dvdk.gia*2) where dvdk.ma_dich_vu_di_kem in
+(select ma_dich_vu_di_kem from hop_dong_chi_tiet  group by ma_dich_vu_di_kem having sum(so_luong)>10);
+
+-- 20.	Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
+
+select ma_nhan_vien as id, ho_ten, email, sdt, ngay_sinh, dia_chi from nhan_vien 
+union all
+select ma_khach_hang as id, ho_ten, email, sdt, ngay_sinh, dia_chi from khach_hang ;
 
 
