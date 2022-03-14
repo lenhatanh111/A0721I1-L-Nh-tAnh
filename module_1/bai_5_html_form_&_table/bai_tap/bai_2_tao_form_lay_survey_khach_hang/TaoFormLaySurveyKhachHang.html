@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> survey khách hàng </title>
+    <style>
+        table{
+            font-family: Arial,sans-serif;
+            border-collapse: collapse;
+            width:100%
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 6px;
+        }
+        tr:nth-child(odd) {
+            background-color: #dddddd;
+        }
+        .c{
+            margin:30px
+        }
+        .d{
+            margin:10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<form action="#"method="post">
+    <h2> Market Research Survey </h2>
+    <p> Please take a few moments to complete this saticfaction survey </p>
+    <fieldset>
+        <lable > What is your age range ?<br><select name="age" style="width:50% ">
+            <option> 18-24 </option>
+            <option> 25-34 </option>
+            <option> 35-50  </option>
+            <option> 50+ </option>
+        </select></lable><br><br>
+        <lable > What is your yearly income range ?<br><select name=" income " style="width:50% ">
+            <option> $0-$25,000 </option>
+            <option> $25,001-$50,000 </option>
+            <option> $50,001-$100,000  </option>
+            <option> $100,000+ </option>
+        </select></lable><br><br>
+        <lable><strong><b>Gender Identity</b></strong><br><input type="radio" name=" gender "> Male </lable><br>
+        <input type="radio" name=" gender "> Female<br>
+        <input type="radio" name=" gender "> Nonbinary<br>
+        <input type="radio" name=" gender "> Other <br>
+        <input type="text" name="other"><br><br>
+        <lable><strong><b> Which of the following products have your purchased in the last 2 months. Please check all that apply. </b></strong><br><input type="checkbox" name=" product "> Froduct 1  </lable><br>
+        <input type="checkbox" name=" product "> Product 2 <br>
+        <input type="checkbox" name=" product "> Product 3 <br><br>
+        <lable><strong><b> How often would you use our new product? </b></strong><br><input type="radio" name=" often "> Daily  </lable><br>
+        <input type="radio" name=" often "> Weeky <br>
+        <input type="radio" name=" often "> Monthly <br><br>
+        <lable><strong><b> What would you pay for the new product? </b></strong><br></lable> $
+            <input type="text" name=" pay " size="5"> .
+            <input type="text" name=" pay" size="2"><br>
+            <lable class="d"> Dolars</lable>.
+            <lable class="c"> cents </lable><br>
+        <lable> <strong><b> What features would you like to see in the new product.</b></strong><br><textarea name="coment" rows=" 5 "cols="200"></textarea></lable><br><br>
+        <p> please  rate your level of agreement with the following statements.</p><br>
+        <table>
+            <tr>
+                <th colspan="3"></th>
+                <th> Strongly Disagree</th>
+                <th> Disagree</th>
+                <th> Agree </th>
+                <th> Strongly Disagree </th>
+            </tr>
+            <tr>
+                <th colspan="3"> Our products are priced fairly</th>
+                <th><input type="radio" name="check" >1 </th>
+                <th><input type="radio"name="check">2</th>
+                <th><input type="radio"name="check" >3 </th>
+                <th><input type="radio"name="check">4 </th>
+            </tr>
+            <tr>
+                <th colspan="3"> Our products are high qualy</th>
+                <th><input type="radio"name="kt ">1 </th>
+                <th><input type="radio"name="kt ">2</th>
+                <th><input type="radio"name="kt ">3 </th>
+                <th><input type="radio"name="kt ">4 </th>
+            </tr>
+            <tr>
+                <th colspan="3"> You would recommend our product to a friend for or cowoker </th>
+                <th><input type="radio"name="te ">1 </th>
+                <th><input type="radio"name="te ">2</th>
+                <th><input type="radio"name="te ">3 </th>
+                <th><input type="radio"name="te ">4 </th>
+            </tr>
+        </table> <br>
+        <lable><input type="submit" name="submit" value="submit"></lable>
+        
+    </fieldset>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a=parseInt(prompt('nhap a:'));
+    let b=parseInt(prompt('nhap b:'));
+    let c=parseInt(prompt('nhap c:'));
+    let x1;
+    let x2;
+    if(a==0){
+        if(b==0){
+            if(c==0){
+                alert('pt vo so nghiem');
+            }else{
+                alert('pt vo nghiem');
+            }
+        }else{
+            if(c==0){
+                alert('nghiem cua phuong trinh X=0');
+            }else{
+                alert('nghiem cua phuong trinh X='+-c/b);
+            }
+        }
+    }else if(a>0){
+        if(b==0){
+            if(c==0){
+                alert('nghiem pt x=0');
+            }else if(c>0){
+                alert('pt vo nghiem');
+            }else{
+                x1=Math.sqrt(-c/a);
+                alert('pt co  nghiem  x1='+x1);
+            }
+        }else{
+            let delta1=(b*b)-4*a*c;
+            if(delta1==0){
+                alert('pt co nghiem kep  x1=x2='+-b/(2*a));
+            }else if(delta1>0){
+                x1=(-b+Math.sqrt(delta1))/2*a;
+                x2=(-b-Math.sqrt(delta1))/2*a;
+                alert('x1='+x1);
+                alert('x2='+x2);
+            }else{
+                alert('pt vo nghiem');
+            }
+        }
+    }else{
+        if(b==0){
+            if(c==0){
+                alert('nghiem pt x=0');
+            }else if(c>0){
+                x1=Math.sqrt(-c/a);
+                alert('pt co  nghiem phan x1='+x1);
+            }else{
+                alert('pt vn');
+            }
+    }else{
+            let delta1=(b*b)-4*a*c;
+            if(delta1==0){
+                alert('pt co nghiem kep  x1=x2='+-b/(2*a));
+            }else if(delta1>0){
+                x1=(-b+Math.sqrt(delta1))/2*a;
+                x2=(-b-Math.sqrt(delta1))/2*a;
+                alert('x1='+x1);
+                alert('x2='+x2);
+            }else{
+                alert('pt vo nghiem');
+            }
+        }
+    }
+</script>
+</body>
+</html>

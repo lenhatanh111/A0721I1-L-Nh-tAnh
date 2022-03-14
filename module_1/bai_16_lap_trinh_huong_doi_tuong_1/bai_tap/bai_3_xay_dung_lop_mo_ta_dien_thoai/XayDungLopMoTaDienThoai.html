@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class mobile{
+        constructor() {
+            this.pin=100;
+            this.status=true;
+            //vung nho soan tin
+            this.memoryDraft="";
+            // vung nho tin nhan da gui
+            this.memorySent=[];
+            // vung nho tin nhan da nhan
+            this.memoryImport=[];
+        }
+        checkStatus(){
+            if (this.status){
+                document.writeln("on"+"<br>");
+                return true;
+            }else {
+                document.writeln("off"+"<br>");
+                return false;
+            }
+        }
+        turnOnOff(){
+            this.status=!this.status;
+        }
+        sacPin(){
+            this.pin=100;
+        }
+        soanTin(string){
+            if (this.status) {
+                this.memoryDraft = string;
+                this.pin--;
+            }else {
+                alert("please turn on your phone");
+            }
+        }
+        nhanTinNhan(message){
+            if(this.status) {
+                this.memoryImport.push(message);
+                this.pin--;
+            }else {
+                alert("please turn on your phone");
+            }
+
+        }
+        guiTinNhan(moble,message){
+            if (this.status) {
+                this.soanTin(message);
+                moble.nhanTinNhan(this.memoryDraft);
+                this.memorySent.push(message);
+                this.memoryDraft = [];
+                this.pin--;
+            }else {
+                alert("please turn on your phone");
+            }
+        }
+        hienThiTinDen(){
+            if (this.status) {
+                for (let i = 0; i < this.memoryImport.length; i++) {
+                    document.writeln(this.memoryImport[i]+"<br>");
+                }
+                this.pin--;
+            }else {
+                alert("please turn on your phone");
+            }
+        }
+        hienThiTinNhanDaGui(){
+            if (this.status) {
+                for (let i = 0; i < this.memorySent.length; i++) {
+                    document.writeln(this.memorySent[i]+"<br>");
+                }
+                this.pin--;
+            }else {
+                alert("please turn on your phone");
+            }
+        }
+    }
+    let nokia = new mobile();
+    let iphone = new mobile();
+    nokia.guiTinNhan(iphone,"xin chào iphone");
+    nokia.turnOnOff();
+    nokia.guiTinNhan(iphone,"khỏe không bạn");
+    iphone.hienThiTinDen();
+    iphone.guiTinNhan(nokia,"xin chao nokia.Mình khỏe");
+    nokia.hienThiTinDen();
+    nokia.hienThiTinNhanDaGui();
+</script>
+</body>
+</html>

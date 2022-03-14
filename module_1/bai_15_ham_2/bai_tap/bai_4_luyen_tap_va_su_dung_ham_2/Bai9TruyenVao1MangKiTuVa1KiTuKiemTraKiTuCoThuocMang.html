@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function check(array,character) {
+        let count=0;
+        let flag=false;
+        for (let i=0;i<array.length;i++){
+            if (character==array[i]){
+                count++;
+                flag=true;
+            }
+        }
+        if (flag){
+            alert(count);
+        }else {
+            alert("-1");
+        }
+    }
+    let str=prompt("nhap chuoi ki tu ");
+    let char=prompt(" nhap 1 ki tu");
+    check(str,char);
+</script>
+</body>
+</html>

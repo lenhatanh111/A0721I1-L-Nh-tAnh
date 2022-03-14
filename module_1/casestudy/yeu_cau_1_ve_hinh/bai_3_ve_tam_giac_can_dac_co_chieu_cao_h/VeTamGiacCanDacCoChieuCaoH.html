@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let height=parseInt(prompt("nhap chieu cao cua tam giac"));
+    for(let i=0;i<height;i++){
+        for (let j=height-1;j>=i;j--){
+            document.write("&nbsp&nbsp");
+        }
+        for (let l=0;l<=2*i;l++){
+               document.write("*");
+        }
+        document.write("<br>");
+    }
+    document.write("<br>");
+</script>
+</body>
+</html>

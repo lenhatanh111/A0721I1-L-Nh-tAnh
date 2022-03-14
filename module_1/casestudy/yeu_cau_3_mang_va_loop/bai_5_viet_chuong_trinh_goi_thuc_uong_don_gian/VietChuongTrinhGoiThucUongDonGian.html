@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2> MENU:</h2>
+<script>
+    let menu=["cafe","cam vat","nuoc ep ca rot","nuoc ep ca chua","nuoc loc","nuoc dua","thoat goi mon"];
+    for (let i=0;i<menu.length;i++){
+        document.writeln((i+1)+":"+menu[i]);
+        document.writeln("<br>");
+    }
+   function chose() {
+       let total=0;
+       let chose;
+       let soLuong;
+       let gia;
+       do {
+           chose=parseInt(prompt(" xin moi chon"));
+           switch (chose) {
+
+               case 1:document.writeln("ban da chon :"+menu[chose-1]);
+                   gia=12;
+                   document.writeln("<br>"+"12k/ly");
+                   soLuong=parseInt(prompt("nhap so luong"));
+                   break;
+               case 2:document.writeln("ban da chon :"+menu[chose-1]);
+                   document.writeln("<br>"+"13k/ly");
+                   gia=13;
+                   soLuong=parseInt(prompt("nhap so luong"));
+                   break;
+               case 3:document.writeln("ban da chon :"+menu[chose-1]);
+                   document.writeln("<br>"+"14k/ly");
+                   gia=14;
+                   soLuong=parseInt(prompt("nhap so luong"));
+                   break;
+               case 4:document.writeln("ban da chon :"+menu[chose-1]);
+                   document.writeln("<br>"+"15k/ly");
+                   gia=15;
+                   soLuong=parseInt(prompt("nhap so luong"));
+                   break;
+               case 5:document.writeln("ban da chon :"+menu[chose-1]);
+                   document.writeln("<br>"+"16k/ly");
+                   gia=16;
+                   soLuong=parseInt(prompt("nhap so luong"));
+                   break;
+               case 6:document.writeln("ban da chon :"+menu[chose-1]);
+                   document.writeln("<br>"+"17k/ly");
+                   gia=17;
+                   soLuong=parseInt(prompt("nhap so luong"));
+                   break;
+               case 7: soLuong=0;
+               break;
+           }
+           document.writeln("so luong:"+soLuong);
+           document.writeln("<br>")
+           total+=(gia*soLuong);
+       }
+       while (chose<7);
+       document.writeln("tong tien="+total+"K(vnd)");
+   }
+</script>
+<button id="chonMon" onclick="chose()"> xin moi chon mon!</button>
+</body>
+</html>

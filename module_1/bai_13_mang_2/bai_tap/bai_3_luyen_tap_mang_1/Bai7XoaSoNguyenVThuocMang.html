@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array=[];
+    for(let i=0;i<10;i++){
+        let element=parseInt(prompt("nhap phan tu thu "+i+" cho mang"));
+        array.push(element);
+    }
+    let numV=parseInt(prompt("nhap so nguyen V can tim"));
+    for(let j=0;j<array.length;j++) {
+        if (array[j] == numV) {
+
+            for (let k = j; k < array.length - 1; k++) {
+                array[k] = array[k + 1];
+            }
+            array[array.length - 1] = 0;
+            j--;
+        }
+    }
+    alert(array);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="number" oninput="result()">
+<select id="change1">
+    <option value="feet">feet</option>
+    <option value="meter">meter</option>
+</select>to
+<select id="change2">
+    <option value="feet">feet</option>
+    <option value="meter">meter</option>
+</select><br>
+<p>Result: <span id="result"></span></p>
+
+<script>
+    function result() {
+        let ojChange1=document.getElementById("change1").value;
+        let ojChange2=document.getElementById("change2").value;
+        let input=document.getElementById("number").value;
+        let meter;
+        let feet;
+        if (ojChange1=="feet"&& ojChange2=="meter"){
+             meter=0.305*input;
+            document.getElementById("result").innerHTML=meter;
+        }else if (ojChange1=="meter"&& ojChange2=="feet"){
+             feet=0.305*input;
+            document.getElementById("result").innerHTML= feet;
+        }else if (ojChange1=="meter" &&ojChange2=="meter"){
+            document.getElementById("result").innerHTML=input;
+        }else if (ojChange1=="feet"&& ojChange2=="feet"){
+            document.getElementById("result").innerHTML=input;
+        }
+
+    }
+</script>
+</body>
+</html>

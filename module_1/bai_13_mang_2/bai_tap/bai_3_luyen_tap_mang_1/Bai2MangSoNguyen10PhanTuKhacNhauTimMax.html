@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array=[];
+    let index;
+    let max;
+    let count=0;
+
+    let check;
+    do{
+        check=false;
+        let a =parseInt(prompt("nhap phan tu thu "+count+"cho mang"));
+        for (let j=0;j<count;j++){
+            if(a==array[j]){
+                check=true;
+                break;
+            }
+        }
+        if (!check){
+            array[count]=a;
+            count++;
+        }
+    }while (count<10);
+    alert(array);
+
+
+    max=array[0];
+        for (let j=1;j<array.length;j++){
+           if(max<array[j]){
+               max=array[j];
+               index=j;
+           }
+        }
+    alert("mang ban nhap"+array);
+    document.write("phan tu lon nhat trong mang la "+max+" tai vi tri array["+index+"]");
+
+</script>
+</body>
+</html>

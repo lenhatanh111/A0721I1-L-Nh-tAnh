@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let num1 = parseInt(prompt("nhap so nguyen duong 1:"));
+    let num2 = parseInt(prompt("nhap so nguyen duong 2:"));
+    kiemTraCapSoThanThiet(num1, num2);
+    if (kiemTraCapSoThanThiet(num1, num2)) {
+        alert("la cap so than thiet");
+    } else {
+        alert("khong phai cap so than thiet");
+    }
+
+    function kiemTraCapSoThanThiet(number1, number2) {
+        let sum1 = 0;
+        let sum2 = 0;
+        if (number1 < 0 || number2 < 0) {
+            alert("so ban nhap khong phai so nguyen duong")
+        } else {
+            for (let i = 1; i <= number1 / 2; i++) {
+                if (number1 % i == 0) {
+                    sum1 += i;
+                }
+            }
+            for (let j = 1; j <= number2 / 2; j++) {
+                if (number2 % j == 0) {
+                    sum2 += j;
+                }
+            }
+
+        }
+        if (sum1 == number2 && sum2 == number1) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+</script>
+</body>
+</html>

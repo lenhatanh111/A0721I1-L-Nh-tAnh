@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+let count=0;
+    let num=2;
+    let text=" ";
+    while (count<20){
+        ktSNT(num);
+        if(ktSNT(num)){
+            count++;
+            text+=num+ ",";
+        }
+        num++;
+    }
+    alert(text);
+
+    function ktSNT(number) {
+
+        check=true;
+
+        if(number<2){
+            check=false;
+        }else{
+            for(let i=2;i<number;i++){
+                if(number%i==0){
+                    check=false;
+                    break;
+                }
+            }
+        }
+        if(check){
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

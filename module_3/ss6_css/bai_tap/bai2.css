@@ -1,0 +1,16 @@
+.blue{
+    color: blue;
+
+}
+.bold{
+    font-weight: bold;
+
+}
+body{
+    width: 70%;
+}
+
+h1{
+border-bottom: 1px solid black;
+}
+

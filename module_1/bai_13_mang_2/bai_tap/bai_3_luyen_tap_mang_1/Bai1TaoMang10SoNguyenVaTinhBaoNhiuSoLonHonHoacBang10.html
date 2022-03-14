@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array=[];
+    let count=0;
+    for(let i=0;i<10;i++){
+        let element=parseInt(prompt("nhap phan tu thu "+i+"cho mang"));
+        array.push(element);
+    }
+  for(let j=0;j<array.length;j++){
+      if(array[j]>=10){
+          count++;
+      }
+  }
+  alert("mang ban vua nhap "+array+" co "+count+" phan tu >=10");
+</script>
+</body>
+</html>

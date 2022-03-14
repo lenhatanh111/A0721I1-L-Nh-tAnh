@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let sum = 0;
+    let avg = 0;
+    let num = parseInt(prompt("nhap so luong phan tu cho mang"));
+    if (num <= 50) {
+        for (let i = 0; i < num; i++) {
+            array[i] = parseInt(prompt("nhap array[" + i + "]="));
+            if (array[i] % 2 != 0 && i % 2 == 0) {
+                sum += array[i];
+            }
+        }
+        avg = sum / array.length;
+        alert("mang ban vua nhap" + array);
+        alert(" trung binh cong cac so le o vi tri chan cua mang la:" + avg);
+    } else {
+        alert("mang toi da 50 phan tu");
+    }
+
+</script>
+</body>
+</html>

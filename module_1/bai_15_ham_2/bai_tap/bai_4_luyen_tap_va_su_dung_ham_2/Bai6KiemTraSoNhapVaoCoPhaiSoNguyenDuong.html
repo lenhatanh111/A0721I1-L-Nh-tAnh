@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function checkInteger(number) {
+        if (Number.isInteger(parseInt(number))){
+            if (number>=0){
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+    let num=prompt("nhap 1 so");
+    if (checkInteger(num)){
+        alert("la so nguyen duong")
+    }else {
+        alert("k phai so nguyen duong");
+    }
+</script>
+</body>
+</html>

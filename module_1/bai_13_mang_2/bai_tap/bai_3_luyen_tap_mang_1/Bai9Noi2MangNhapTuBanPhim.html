@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrayA=[];
+    for(let i=0;i<10;i++){
+        let element=parseInt(prompt("nhap phan tu thu "+i+" cho mang A"));
+        arrayA.push(element);
+    }
+    let arrayB=[];
+    for(let i=0;i<10;i++){
+        let element=parseInt(prompt("nhap phan tu thu "+i+" cho mang B"));
+        arrayB.push(element);
+    }
+    let arrayC=arrayA.concat(arrayB);
+    alert(arrayC);
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function daoMang(arr) {
+        let last=arr.length-1;
+        for (let i=0;i<last;i++){
+            let temp=arr[i];
+            arr[i]=arr[last];
+            arr[last]=temp;
+            last--;
+        }
+        alert(arr);
+    }
+    let array=[];
+    let size=parseInt(prompt("nhap kich thuoc cua mang"));
+    for (let j=0;j<size;j++){
+      let element=parseInt(prompt("nhap phan tu thu "+j+" cua mang"));
+        array.push(element);
+    }
+    alert("mang ban vua nhap "+array);
+    daoMang(array);
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let nums=parseInt(prompt("nhap so phan tu cua mang"));
+    let array=[];
+    for(let i=0;i<nums;i++){
+        let element=prompt("nhap phan tu thu "+i+" cho mang");
+        array.push(element);
+    }
+    for (let j=0;j<array.length;j++){
+        if (array[j]=="-"){
+            array[j]="_";
+        }
+    }
+    alert(array.join(""));
+</script>
+</body>
+</html>

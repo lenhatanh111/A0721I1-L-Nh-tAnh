@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function chuanHoaKiTu(string) {
+        let newStr = string.split(' ');
+        let array = [];
+
+        for (let j = 0; j < newStr.length; j++) {
+            if (newStr[j] != "") {
+                array.push(newStr[j])
+            }
+        }
+        for (let i = 0; i < array.length; i++) {
+            array[i] = array[i][0].toUpperCase() + array[i].slice(1).toLowerCase();
+        }
+        alert(array.join(" "));
+
+    }
+
+    let string = prompt("nhap xau ky tu");
+    chuanHoaKiTu(string);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="good" type="range" value="0" min="0"max="1" onclick="doi(1)" style="width: 40px">good<br><br>
+<input id="cheap" type="range" value="0"min="0"max="1" onclick="doi(2)"style="width: 40px">cheap<br><br>
+<input id="fast" type="range" value="0"min="0"max="1" onclick="doi(3)" style="width: 40px">fast<br><br>
+<script>
+    let opjRange1=document.getElementById('good')
+    let opjRange2=document.getElementById('cheap')
+    let opjRange3=document.getElementById('fast')
+    function doi(chose) {
+        switch (chose) {
+            case 1: if(opjRange1.value=='0'){
+                opjRange1.value='1';
+                if(opjRange1.value=='1'&& opjRange2.value=='1'){
+                    opjRange3.value='0';
+                }
+            }else{
+                opjRange1.value='0';
+            }
+            break;
+            case 2: if(opjRange2.value=='0'){
+                opjRange2.value='1';
+                if(opjRange2.value=='1'&& opjRange3.value=='1'){
+                    opjRange1.value='0';
+                }
+            }else{
+                opjRange2.value='0';
+            }
+                break;
+            case 3: if(opjRange3.value=='0'){
+                opjRange3.value='1';
+                if(opjRange3.value=='1'&& opjRange1.value=='1'){
+                    opjRange2.value='0';
+                }
+            }else{
+                opjRange3.value='0';
+            }
+                break;
+        }
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <lable>Height: <input id="height" type="text"></lable>
+    <lable>Weigh: <input id="weigh" type="text"></lable>
+    <input type="button" value="submit" onclick="bmi()">
+    <p id="print"> </p>
+    <h2 id="output" style="color: blue"> </h2>
+
+    <script>
+        function bmi() {
+            let height = parseInt(document.getElementById('height').value);
+            let weigh = parseInt(document.getElementById('weigh').value);
+            let bmi =weigh/(height*height);
+            document.getElementById('print').innerHTML=('bmi ='+bmi);
+            if(bmi<18){
+                document.getElementById('output').innerText=('UnderWeigh');
+            }
+            else if(bmi<25.0){
+                document.getElementById('output').innerText=('Normal');
+            }
+            else if(bmi<30){
+                document.getElementById('output').innerText=('OverWeight');
+            }
+            else{
+                document.getElementById('output').innerText=('Obese');
+            }
+        }
+
+    </script>
+
+</form>
+</body>
+</html>

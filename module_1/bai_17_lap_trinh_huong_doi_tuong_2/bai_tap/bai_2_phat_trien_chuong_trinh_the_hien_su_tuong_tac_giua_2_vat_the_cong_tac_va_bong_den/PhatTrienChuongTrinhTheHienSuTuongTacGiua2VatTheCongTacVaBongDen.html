@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="images/pic_bulboff.gif" id="lamp">
+<h3 id="result"> bong den dang tat</h3>
+<button onclick="turnOn_turnOff()"> TurnOn_Off </button>
+<script>
+    class switchButton{
+        constructor(status) {
+            this.status=status;
+        }
+        switchOn_Off(){
+            this.status=!this.status;
+        }
+
+    }
+    class electricLamp{
+        constructor(switchButton) {
+            this.button=switchButton;
+        }
+        turnOn_Off(){
+            if(this.button.status){
+                document.getElementById("result").innerText=" bong den dang bat";
+                document.getElementById("lamp").src="images/pic_bulbon.gif";
+            }else {
+                document.getElementById("result").innerText=" bong den dang tat";
+                document.getElementById("lamp").src="images/pic_bulboff.gif";
+            }
+        }
+    }
+    let switchButton1= new switchButton(false);
+    let lamp=new electricLamp(switchButton1);
+    function turnOn_turnOff() {
+        switchButton1.switchOn_Off();
+        lamp.turnOn_Off();
+
+    }
+</script>
+
+</body>
+</html>

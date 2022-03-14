@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let string=prompt("nhap xau ky tu");
+    let count=string.length;
+    for (let i=0;i<string.length;i++){
+        for (let j=i+1;j<string.length;j++){
+            if (string[i]==string[j]){
+                count--;
+            }
+        }
+    }
+    console.log(count);
+</script>
+</body>
+</html>

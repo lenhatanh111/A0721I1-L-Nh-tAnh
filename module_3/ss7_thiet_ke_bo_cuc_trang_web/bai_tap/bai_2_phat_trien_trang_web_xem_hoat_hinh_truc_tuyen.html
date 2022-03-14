@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,html{
+            height: 100%;
+        }
+        .head{
+            background: orange;
+            height: 50px;
+        }
+        .height-full{
+            height: 100%;
+        }
+        .left{
+            background: #0f6674;
+            height: 100%;
+        }
+        .right{
+            background: #0f6674;
+            height: 100%;
+        }
+        .contain{
+            background: #7abaff;
+            height: 100%;
+
+
+        }
+        .row{
+            /*float: left;*/
+            display: flex; /* cho các phần tử con nổi lên*/
+            flex-wrap: wrap; /* không đủ chỗ thì xuống hàng*/
+
+        }
+        @media only screen and (min-width:741px)and (max-width:1240px){
+            .col-m-1 {width: 8.33333%;}
+            .col-m-2 {width: 16.66667%;}
+            .col-m-3 {width: 25%;}
+            .col-m-4 {width: 33.33333%;}
+            .col-m-5 {width: 41.66667%;}
+            .col-m-6 {width: 50%;}
+            .col-m-7 {width: 58.33333%;}
+            .col-m-8 {width: 66.66667%;}
+            .col-m-9 {width: 75%;}
+            .col-m-10 {width: 83.33333%;}
+            .col-m-11 {width: 91.66667%;}
+            .col-m-12 {width: 100%}}
+        nav ul {
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+           margin-left: 70px;
+            padding: 10px;
+
+        }
+        div ul li{
+            display: inline;
+            padding: 10px;
+
+        }
+        footer{
+            padding: 10px;
+            color: white;
+            background-color: black;
+        }
+        div video {
+            padding: 20px;
+        }
+        div p{
+            padding: 20px;
+        }
+        footer p{
+            text-align: center;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="row head">
+    <img src="logo.jpg" height="50px"/></div>
+<div class="row ">
+    <nav>
+        <ul>
+            <li>Phim hoạt hình</li>
+            <li>|</li>
+            <li>Phim hoạt hình yêu thích </li>
+            <li>|</li>
+            <li>Nhân vật hoạt hình</li>
+            <li>|</li>
+            <li>Góp ý</li>
+        </ul>
+    </nav>
+</div>
+<div class="row height-full">
+ <div class="left col-m-4">
+    <ul>
+        <li>
+            <img src="tom & jerry.jpg"width="80%" height="100px"/><br>
+            <a href="https://www.youtube.com/watch?v=cqyziA30whE">Tom & Jerry | Best Buddies</a>
+        </li>
+        <li>
+            <img src="doraemon.jpg"  width="80%" height="100px"/><br>
+        <a href="https://www.youtube.com/watch?v=qtviSeCDV_M">[S7] Doraemon Tập 316 - Một Nửa Của Một Nửa Của Một Nửa, Ký Ức Về Con Lật Đật</a>
+        </li>
+        <li>
+            <img src="7_vien_ngoc_rong.png" height="100px" width="80%"/><br>
+            <a href="https://www.youtube.com/watch?v=f5rtTxEcyoE">Super Dragon Ball Heroes Tập 41 Vietsub - Chiến đấu trong vòng thời gian - Big Bang Công Pháo</a>
+        </li>
+    </ul>
+ </div>
+    <div class="col-m-8 contain">
+        <div class="row">
+            <video src="tom_and_jerry.mp4"  controls="controls" width="80%"></video>
+        </div>
+        <div class="row">
+        <p >
+            Đang lướt Facebook thì thằng Phúc gọi đến nói rằng anh hai của nó vừa mới bị tai nạn giao thông đang trong cơn nguy kịch,
+            bệnh viện cũng đã trả về, nên nó phải cấp tốc về quê ngay với hy vọng có thể gặp mặt người anh nó lần cuối và nó có ý muốn rủ mình đi cùng.
+            Phải nói mình có thằng bạn không chê vào đâu được, đám cưới, đám hỏi, sinh nhật những đám vui thì nó không rủ, đám buồn thì nó lại rủ.
+            Nhưng dù sao thì hai đứa cũng thân với nhau và cùng quê, cả hai ra Vũng Tàu làm việc được ít năm. Vì không cùng lập trường nên mỗi thằng một công việc.
+            Vả lại mình cũng đang thất nghiệp chẳng có gì làm sẵn có dịp nên về Trà Vinh thăm ông nội.
+            Ba mẹ mình đã định cư ở Mỹ nên căn nhà dưới quê chỉ còn một mình ông.
+        </p>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2020 Design by Nhat Anh. Video source copied on youtube</p>
+</footer>
+</body>
+</html>

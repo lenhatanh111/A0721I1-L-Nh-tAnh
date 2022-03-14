@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="huan1.jpg"  id="hinh1"style="height: 100px;width: 500px"onclick="doihinh(1)"></img>
+<img src="kha1.jpg"id="hinh2"style="height: 100px;width: 500px"onclick="doihinh(2)"></img>
+<img src="tien3.jpg"id="hinh3"style="height: 100px;width: 500px"onclick="doihinh(3)"></img>
+<script>
+    let opjHinh1=document.getElementById('hinh1');
+    let opjHinh2=document.getElementById('hinh2');
+    let opjHinh3=document.getElementById('hinh3');
+    function doihinh(chose) {
+        switch (chose) {
+            case 1: if(opjHinh1.getAttribute('src')=='huan1.jpg'){
+                opjHinh1.src='kha1.jpg';
+            }else if(opjHinh1.getAttribute('src')=='kha1.jpg'){
+                opjHinh1.src='tien1.jpg';
+            }else{
+                opjHinh1.src='huan1.jpg';
+            }
+                setTimeout(check,2000)
+                break;
+            case 2: if(opjHinh2.getAttribute('src')=='huan3.jpg'){
+                opjHinh2.src='kha2.jpg';
+            }else if(opjHinh2.getAttribute('src')=='kha2.jpg'){
+                opjHinh2.src='tien2.jpg';
+            }else{
+                opjHinh2.src='huan3.jpg';
+            }
+                setTimeout(check,2000)
+                break;
+            case 3: if(opjHinh3.getAttribute('src')=='huan2.jpg'){
+                opjHinh3.src='kha3.jpg';
+            }else if(opjHinh3.getAttribute('src')=='kha3.jpg'){
+                opjHinh3.src='tien3.jpg';
+            }else{
+                opjHinh3.src='huan2.jpg';
+            }
+                setTimeout(check,2000)
+                break;
+
+        }
+
+    }
+    function check() {
+        if(opjHinh1.getAttribute('src')=='kha1.jpg' && opjHinh2.getAttribute('src')=='kha2.jpg' && opjHinh3.getAttribute('src')=='kha3.jpg'){
+            alert('kha thang');
+        }else if(opjHinh1.getAttribute('src')=='huan1.jpg' && opjHinh2.getAttribute('src')=='huan3.jpg' && opjHinh3.getAttribute('src')=='huan2.jpg'){
+            alert('huan thang');
+        }else if(opjHinh1.getAttribute('src')=='tien1.jpg' && opjHinh2.getAttribute('src')=='tien2.jpg' && opjHinh3.getAttribute('src')=='tien3.jpg'){
+            alert('tien thang');
+        }
+
+    }
+</script>
+
+</body>
+</html>

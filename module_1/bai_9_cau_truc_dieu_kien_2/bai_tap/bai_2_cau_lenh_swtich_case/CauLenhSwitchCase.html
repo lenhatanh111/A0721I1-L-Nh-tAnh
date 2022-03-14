@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <label> <input id="value" type="text"></label>
+   <input type="button" value=" Tinh so ngay" onclick="tinh()"><br><br>
+    <p id="print" style="color: blue"> </p>
+</form>
+<script>
+    function tinh() {
+        let month=parseInt((document.getElementById('value').value));
+        switch (month) {
+            case 1:
+                document.getElementById('print').innerText=('tháng 1 có 31 ngày');
+                break;
+            case 2:
+                document.getElementById('print').innerText=('tháng 2 có 28 ngày');
+                break;
+            case 3:
+                document.getElementById('print').innerText=('tháng 3 có 31 ngày');
+                break;
+            case 4:
+                document.getElementById('print').innerText=('tháng 4 có 30 ngày');
+                break;
+            case 5:
+                document.getElementById('print').innerText=('tháng 5 có 31 ngày');
+                break;
+            case 6:
+                document.getElementById('print').innerText=('tháng 6 có 30 ngày');
+                break;
+            case 7:
+                document.getElementById('print').innerText=('tháng 7 có 31 ngày');
+                break;
+            case 8:
+                document.getElementById('print').innerText=('tháng 8 có 31 ngày');
+                break;
+            case 9:
+                document.getElementById('print').innerText=('tháng 9 có 30 ngày');
+                break;
+            case 10 :
+                document.getElementById('print').innerText=('tháng 10  có 31 ngày');
+                break;
+            case 11 :
+                document.getElementById('print').innerText=('tháng 11  có 30  ngày');
+                break;
+            case 12 :
+                document.getElementById('print').innerText=('tháng 12  có 31 ngày');
+                break;
+
+        }
+
+    }
+</script>
+
+</body>
+</html>

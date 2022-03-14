@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function isPalindrome(str) {
+        let first=0
+
+        let last=str.length-1;
+
+           if (str[first]==str[last]){
+               return true;
+           }else {
+               return false;
+           }
+
+          str.slice(1,str.length-1);
+           alert(str);
+           isPalindrome(str);
+    }
+    let string=prompt("nhap vao 1 tu de kiem tra");
+    let result= isPalindrome(string);
+    if (result){
+        alert(" la tu doi xung");
+    }else {
+        alert(" k phai tu doi xung ");
+    }
+
+</script>
+</body>
+</html>

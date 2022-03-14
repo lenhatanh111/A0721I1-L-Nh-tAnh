@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td{
+            padding:20px;
+        }
+        th{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th> Amount </th>
+        <th> From currency </th>
+        <th> To currency </th>
+        <th> </th>
+    </tr>
+    <tr>
+        <td>
+            <input id="amount" type="text" size="25">
+        </td>
+        <td> <select id="chose1">
+            <option value="vnd" name="vietnam "> Viet Nam</option>
+            <option value="usd" name="dola "> Usd</option>
+        </select></td>
+        <td><select id="chose2">
+            <option value="usd" name="dola "> Usd</option>
+            <option value="vnd" name="vietnam "> Viet Nam</option>
+        </select>
+        </td>
+        <td> <button onclick="change()">covert</button></td>
+    </tr>
+    <tr>
+       <td id="print" style="color:blue"> Result:</td>
+    </tr>
+</table>
+<script>
+    function change() {
+        let amount ;
+        let result;
+        amount= parseInt(document.getElementById('amount').value);
+        if(document.getElementById('chose1').value=="vnd") {
+            if( document.getElementById('chose2').value=="vnd") {
+               document.getElementById('print').innerHTML=('Result:'+amount)
+           } else {
+               result=amount/23012;
+               document.getElementById('print').innerHTML=('Result:'+result);
+           }
+        } else {
+            if( document.getElementById('chose2').value=="usd") {
+                document.getElementById('print').innerHTML=('Result:'+amount)
+            } else
+            {
+                result=amount*23012;
+                document.getElementById('print').innerHTML=('Result:'+result);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

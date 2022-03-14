@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="300"style="border: 1px solid red";></canvas>
+<p id="resultPerimeter"></p>
+<p id="resultArea"></p>
+<script>
+    class rectangle{
+        constructor(width,height) {
+            this.width=width;
+            this.height=height;
+        }
+        getWidth(){
+            return this.width;
+        }
+        getHeight(){
+            return this.height;
+        }
+        setWidth(width){
+            this.width=width;
+        }
+        setHeight(height){
+            this.height=height;
+        }
+        perimeter(){
+            let perimeter=(this.width+this.height)*2;
+            document.getElementById("resultPerimeter").innerText="Result Perimeter:"+perimeter;
+            return perimeter;
+        }
+        area(){
+            let area=this.height*this.width;
+            document.getElementById("resultArea").innerText="Result Area:"+area;
+            return area;
+        }
+        createRectangle(){
+            let ctx=document.getElementById("myCanvas").getContext("2d");
+            ctx.fillRect(100,100,this.width,this.height);
+        }
+
+    }
+    let rectangle1= new rectangle(100,50);
+    rectangle1.setWidth(50);
+    rectangle1.getWidth();
+    rectangle1.setHeight(100);
+    rectangle1.getHeight();
+    rectangle1.createRectangle();
+    rectangle1.perimeter();
+    rectangle1.area();
+</script>
+</body>
+</html>

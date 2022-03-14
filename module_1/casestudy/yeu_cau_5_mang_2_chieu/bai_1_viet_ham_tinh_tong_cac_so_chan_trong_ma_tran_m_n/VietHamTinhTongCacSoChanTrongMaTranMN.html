@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function tinhTongChan(row,column) {
+        let sum=0;
+        let arr=[];
+        for (let i=0;i<row;i++){
+            for (let j=0;j<column;j++){
+                element=parseInt(prompt("nhap phan tu arr["+i+"]["+j+"]="));
+                arr.push(element);
+                if (element%2==0){
+                    sum+=element;
+                }
+            }
+        }
+        document.writeln("mang ban da nhap arr="+arr);
+        document.writeln("<br>"+"tong cac phan tu chan="+sum);
+    }
+    let row=parseInt(prompt("nhap so dong cho ma tran"));
+    let column=parseInt(prompt("nhap so cot cho ma tran"));
+    tinhTongChan(row,column);
+</script>
+</body>
+</html>
