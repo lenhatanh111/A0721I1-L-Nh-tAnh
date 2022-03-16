@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a146d865-3606-4224-a51b-7deb79db61fa" name="Default Changelist" comment="" />
+    <list default="true" id="a146d865-3606-4224-a51b-7deb79db61fa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/bai_tap/bai_1_tao_gallery_don_gian_dung_bootstrap.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/thuc_hanh/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/thuc_hanh/su_dung_bootstrap_xay_dung_form_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,6 +173,8 @@
       <workItem from="1647106783659" duration="119000" />
       <workItem from="1647106943182" duration="1178000" />
       <workItem from="1647108929153" duration="321000" />
+      <workItem from="1647261936950" duration="5790000" />
+      <workItem from="1647421339981" duration="1495000" />
     </task>
     <servers />
   </component>
