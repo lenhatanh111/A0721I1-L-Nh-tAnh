@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a146d865-3606-4224-a51b-7deb79db61fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/bai_tap/bai_1_tao_gallery_don_gian_dung_bootstrap.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/thuc_hanh/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/thuc_hanh/su_dung_bootstrap_xay_dung_form_login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/bai_tap/bai_2_xay_dung_landing_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/bai_tap/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +37,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -174,7 +173,12 @@
       <workItem from="1647106943182" duration="1178000" />
       <workItem from="1647108929153" duration="321000" />
       <workItem from="1647261936950" duration="5790000" />
-      <workItem from="1647421339981" duration="1495000" />
+      <workItem from="1647421339981" duration="4259000" />
+      <workItem from="1647432691561" duration="2731000" />
+      <workItem from="1647436104503" duration="1063000" />
+      <workItem from="1647437921504" duration="635000" />
+      <workItem from="1647579935227" duration="5767000" />
+      <workItem from="1647593600034" duration="2275000" />
     </task>
     <servers />
   </component>
