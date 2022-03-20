@@ -1,3 +1,4 @@
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,13 +10,15 @@ import java.io.PrintWriter;
 @WebServlet(name = "CalculatorServlet", urlPatterns = "/result")
 public class CalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-float list_price =Float.parseFloat(request.getParameter("list_price"));
-float discount_percent=Float.parseFloat(request.getParameter("discount_percent"));
-double result= list_price*discount_percent*0.01 ;
-        PrintWriter writer =response.getWriter();
-        writer.println("<html>");
-writer.println("<h1>Discount Amount : "+result+"</h1>");
-        writer.println("</html>");
+        double list_price = Double.parseDouble(request.getParameter("list_price"));
+        double discount_percent = Double.parseDouble(request.getParameter("discount_percent"));
+        double result = list_price * discount_percent * 0.01;
+        request.setAttribute("ket_qua",result);
+        request.setAttribute("gia",list_price);
+        request.setAttribute("chiet_khau",discount_percent);
+        RequestDispatcher requestDispatcher =request.getRequestDispatcher("hien_thi_ket_qua.jsp");
+        requestDispatcher.forward(request,response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
