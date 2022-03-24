@@ -12,14 +12,14 @@ import java.util.List;
 public class CustomerServlet extends HttpServlet {
    private static List<Customer> customerList=new ArrayList<>();
     static {
-        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai"));
-        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai"));
-        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai"));
-        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai"));
-        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai"));
-        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai"));
-        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai"));
-        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai"));
+        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai","/anh_chan_dung.jpg"));
+        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai","/anh_chan_dung.jpg"));
+        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai","/anh_chan_dung.jpg"));
+        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai","/anh_chan_dung.jpg"));
+        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai","/anh_chan_dung.jpg"));
+        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai","/anh_chan_dung.jpg"));
+        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai","/anh_chan_dung.jpg"));
+        customerList.add(new Customer("nhat anh","28/01/2000","quang ngai","/anh_chan_dung.jpg"));
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
