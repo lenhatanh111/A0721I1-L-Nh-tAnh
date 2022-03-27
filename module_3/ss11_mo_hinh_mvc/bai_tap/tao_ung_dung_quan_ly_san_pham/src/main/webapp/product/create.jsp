@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1>Create new product</h1>
-<p>
+<p style="color: olivedrab">
     <c:if test='${message != null}'>
         <span class="message">${message}</span>
     </c:if>
@@ -21,7 +21,7 @@
 <p>
     <a href="/products">Back to product list</a>
 </p>
-<form method="post">
+<form method="post" style="width: 300px">
     <fieldset>
         <legend>Product information</legend>
         <table STYLE="border-collapse: collapse">

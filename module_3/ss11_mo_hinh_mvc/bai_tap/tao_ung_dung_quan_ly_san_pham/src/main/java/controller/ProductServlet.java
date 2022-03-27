@@ -43,8 +43,15 @@ public class ProductServlet extends HttpServlet {
     private void searchByName(HttpServletRequest request, HttpServletResponse response) {
         String product_name =request.getParameter("productName");
       List<Product> productList = productService.findByName(product_name);
-       request.setAttribute("productList",productList);
-       RequestDispatcher requestDispatcher =request.getRequestDispatcher("product/found.jsp");
+        RequestDispatcher requestDispatcher;
+      if (productList.size()==0){
+          request.setAttribute("message","Not Found");
+          requestDispatcher = request.getRequestDispatcher("product/search.jsp");
+      }else {
+          request.setAttribute("productList", productList);
+           requestDispatcher = request.getRequestDispatcher("product/found.jsp");
+      }
+
         try {
             requestDispatcher.forward(request,response);
         } catch (ServletException e) {

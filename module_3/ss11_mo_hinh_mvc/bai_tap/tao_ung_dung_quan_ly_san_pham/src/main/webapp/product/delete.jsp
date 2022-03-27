@@ -16,12 +16,12 @@
 <p>
     <a href="/products">Back to product list</a>
 </p>
-<p>
+<p style="color: olivedrab">
     <c:if test='${message != null}'>
         <span class="message">${message}</span>
     </c:if>
 </p>
-<form method="post">
+<form method="post" style="width: 300px">
     <h3>Are you sure?</h3>
 
     <fieldset>

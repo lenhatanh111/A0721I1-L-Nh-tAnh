@@ -15,7 +15,7 @@
 <body>
 <h1>Product</h1>
 <p>
-    <a href="/products?action=create">Create new product</a>
+    <a href="/products">Back to product list</a>
 </p>
 
 <table class="table table-striped">
@@ -25,15 +25,19 @@
         <td>price</td>
         <td>Status</td>
         <td>Producer</td>
+        <td>Edit</td>
+        <td>Delete</td>
 
     </tr>
     <c:forEach items='${productList}' var="product">
         <tr>
             <td>${product.getId()}</td>
-            <td>${product.getName()}</td>
+            <td><a href="/products?action=view&id=${product.getId()}">${product.getName()}</a></td>
             <td>${product.getPrice()}</td>
             <td>${product.getStatus()}</td>
             <td>${product.getProducer()}</td>
+            <td><a href="/products?action=edit&id=${product.getId()}">edit</a></td>
+            <td><a href="/products?action=delete&id=${product.getId()}">delete</a></td>
 
         </tr>
     </c:forEach>
