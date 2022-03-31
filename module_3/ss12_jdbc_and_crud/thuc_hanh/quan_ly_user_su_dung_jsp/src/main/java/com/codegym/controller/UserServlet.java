@@ -35,6 +35,7 @@ public class UserServlet extends HttpServlet {
                     case "edit":
                         updateUser(request, response);
                         break;
+
                 }
             } catch (SQLException ex) {
                 throw new ServletException(ex);
@@ -58,6 +59,7 @@ public class UserServlet extends HttpServlet {
                     case "delete":
                         deleteUser(request, response);
                         break;
+
                     default:
                         listUser(request, response);
                         break;
@@ -109,7 +111,12 @@ public class UserServlet extends HttpServlet {
         String country = request.getParameter("country");
 
         User book = new User(id, name, email, country);
-        userDAO.updateUser(book);
+       boolean check = userDAO.updateUser(book);
+       if (check){
+          request.setAttribute("message", "Update successful");
+       }else {
+           request.setAttribute("message", "update failed");
+       }
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         dispatcher.forward(request, response);
     }
@@ -117,7 +124,12 @@ public class UserServlet extends HttpServlet {
     private void deleteUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        userDAO.deleteUser(id);
+        boolean check= userDAO.deleteUser(id);
+         if (check){
+            request.setAttribute("message", "delete successful");
+        }else {
+            request.setAttribute("message", "delete failed");
+        }
 
         List<User> listUser = userDAO.selectAllUsers();
         request.setAttribute("listUser", listUser);
