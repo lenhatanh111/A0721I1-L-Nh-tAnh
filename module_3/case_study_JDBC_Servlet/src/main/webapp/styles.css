@@ -1,0 +1,74 @@
+body,html{
+    height: 100%;
+}
+.head{
+    background: orange;
+    height: 50px;
+
+}
+.height-full{
+    height: 100%;
+}
+.left{
+    background: #0f6674;
+    height: 100%;
+}
+.right{
+    background: #0f6674;
+    height: 100%;
+}
+.contain{
+    background: #7abaff;
+    height: 100%;
+
+
+
+}
+.row{
+    /*float: left;*/
+    display: flex; /* cho các phần tử con nổi lên*/
+    flex-wrap: wrap; /* không đủ chỗ thì xuống hàng*/
+
+}
+
+    .col-m-1 {width: 8.33333%;}
+    .col-m-2 {width: 16.66667%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33333%;}
+    .col-m-5 {width: 41.66667%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33333%;}
+    .col-m-8 {width: 66.66667%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33333%;}
+    .col-m-11 {width: 91.66667%;}
+    .col-m-12 {width: 100%}
+nav ul {
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 30px;
+    padding: 10px;
+
+}
+
+div ul li{
+    display: inline;
+    padding: 5px;
+
+}
+footer{
+    padding: 10px;
+    color: white;
+    background-color: black;
+}
+
+div p{
+    padding: 20px;
+}
+footer p{
+    text-align: center;
+}
+
