@@ -163,6 +163,7 @@
                                 <input type="text" name="id_card" size="45"
                                        value="<c:out value='${customer.customer_id_card}' />"
                                 />
+                                <span>${messList[0]}</span>
                             </td>
                         </tr>
                         <tr>
@@ -171,6 +172,7 @@
                                 <input type="text" name="phone" size="45"
                                        value="<c:out value='${customer.customer_phone}' />"
                                 />
+                                <span>${messList[1]}</span>
                             </td>
                         </tr>
                         <tr>
@@ -179,6 +181,7 @@
                                 <input type="text" name="email" size="45"
                                        value="<c:out value='${customer.customer_email}' />"
                                 />
+                                <span>${messList[2]}</span>
                             </td>
                         </tr>
                         <tr>

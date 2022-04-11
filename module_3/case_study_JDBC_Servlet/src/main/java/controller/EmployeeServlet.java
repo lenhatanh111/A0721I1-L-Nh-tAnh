@@ -82,7 +82,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void addEmployee(HttpServletRequest request, HttpServletResponse response) {
-        boolean check =false;
+        boolean check =true;
         String name=request.getParameter("name");
         String birthday=request.getParameter("birthday");
         String id_card=request.getParameter("id_card");
@@ -95,18 +95,26 @@ public class EmployeeServlet extends HttpServlet {
         int division_id=Integer.parseInt(request.getParameter("division_id"));
 
         Employee employee = new Employee(name,birthday,id_card,salary,phone,email,address,position_id,education_degree_id,division_id,email);
-
+        List<String> messList = null;
         try {
-            check= employeeService.insertEmployee(employee);
-            if (check){
-                request.setAttribute("message", "Add New Employee successful");
-            }else {
-                request.setAttribute("message", "Add New Employee failed");
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("employee/addEmployee.jsp");
-            dispatcher.forward(request, response);
+            messList=employeeService.insertEmployee(employee);
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        for (String message: messList) {
+            if (!message.equals("")){
+                check=false;
+            }
+        }
+        String message="them moi thanh cong";
+        if (!check){
+            message="them moi that bai";
+        }
+        request.setAttribute("message",message);
+        request.setAttribute("messList",messList);
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("employee/addEmployee.jsp");
+        try {
+            requestDispatcher.forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -130,17 +138,26 @@ public class EmployeeServlet extends HttpServlet {
         String username=request.getParameter("email");
         Employee employee = new Employee(id,name,birthday,id_card,salary,phone,email,address,position_id,education_degree_id,division_id,username);
 
+        List<String> messList = null;
         try {
-            check= employeeService.updateEmployee(employee);
-            if (check){
-                request.setAttribute("message", "Update successful");
-            }else {
-                request.setAttribute("message", "update failed");
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("employee/editEmployee.jsp");
-            dispatcher.forward(request, response);
+            messList=employeeService.updateEmployee(employee);
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        for (String message: messList) {
+            if (!message.equals("")){
+                check=false;
+            }
+        }
+        String message="chinh sua thanh cong";
+        if (!check){
+            message="chinh sua that bai";
+        }
+        request.setAttribute("message",message);
+        request.setAttribute("messList",messList);
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("employee/editEmployee.jsp");
+        try {
+            requestDispatcher.forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

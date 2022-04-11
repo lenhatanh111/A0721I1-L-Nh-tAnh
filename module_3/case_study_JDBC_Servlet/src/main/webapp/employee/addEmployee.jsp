@@ -166,6 +166,7 @@
                                 <input type="text" name="id_card" size="45"
                                        value="<c:out value='${employee.employee_id_card}' />"
                                 />
+                                <span>${messList[0]}</span>
                             </td>
                         </tr>
                         <tr>
@@ -174,6 +175,7 @@
                                 <input type="text" name="salary" size="45"
                                        value="<c:out value='${employee.employee_salary}' />"
                                 />
+
                             </td>
                         </tr>
                         <tr>
@@ -182,6 +184,7 @@
                                 <input type="text" name="phone" size="45"
                                        value="<c:out value='${employee.employee_phone}' />"
                                 />
+                                <span>${messList[1]}</span>
                             </td>
                         </tr>
                         <tr>
@@ -190,6 +193,7 @@
                                 <input type="text" name="email" size="45"
                                        value="<c:out value='${employee.employee_email}' />"
                                 />
+                                <span>${messList[2]}</span>
                             </td>
                         </tr>
                         <tr>

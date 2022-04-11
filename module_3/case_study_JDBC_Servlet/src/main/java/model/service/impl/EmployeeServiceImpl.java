@@ -1,18 +1,43 @@
 package model.service.impl;
 
+import common.Validate;
 import model.bean.Employee;
 import model.repository.IEmployeeRepository;
 import model.repository.impl.EmployeeRepositoryImpl;
 import model.service.IEmployeeService;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeServiceImpl implements IEmployeeService {
 IEmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
     @Override
-    public boolean insertEmployee(Employee employee) throws SQLException {
-        return employeeRepository.insertEmployee(employee);
+    public List<String> insertEmployee(Employee employee) throws SQLException {
+        List<String> messList =new ArrayList<>();
+        boolean check=true;
+        if (Validate.checkIDCard(employee.getEmployee_id_card())){
+            messList.add("");
+        }else {
+            check =false;
+            messList.add("CMND khong dung dinh dang");
+        }
+        if (Validate.checkPhone(employee.getEmployee_phone())){
+            messList.add("");
+        }else {
+            check =false;
+            messList.add("SDT khong dung dinh dang");
+        }
+        if (Validate.checkEmail(employee.getEmployee_email())){
+            messList.add("");
+        }else {
+            check =false;
+            messList.add("Email khong dung dinh dang");
+        }
+        if (check){
+            employeeRepository.insertEmployee(employee);
+        }
+        return messList;
     }
 
     @Override
@@ -36,7 +61,30 @@ IEmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
     }
 
     @Override
-    public boolean updateEmployee(Employee employee) throws SQLException {
-        return employeeRepository.updateEmployee(employee);
+    public List<String> updateEmployee(Employee employee) throws SQLException {
+        List<String> messList =new ArrayList<>();
+        boolean check=true;
+        if (Validate.checkIDCard(employee.getEmployee_id_card())){
+            messList.add("");
+        }else {
+            check =false;
+            messList.add("CMND khong dung dinh dang");
+        }
+        if (Validate.checkPhone(employee.getEmployee_phone())){
+            messList.add("");
+        }else {
+            check =false;
+            messList.add("SDT khong dung dinh dang");
+        }
+        if (Validate.checkEmail(employee.getEmployee_email())){
+            messList.add("");
+        }else {
+            check =false;
+            messList.add("Email khong dung dinh dang");
+        }
+        if (check){
+            employeeRepository.updateEmployee(employee);
+        }
+        return messList;
     }
 }

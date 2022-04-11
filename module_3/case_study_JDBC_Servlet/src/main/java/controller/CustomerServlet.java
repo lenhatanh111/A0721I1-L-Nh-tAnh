@@ -60,7 +60,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void addCustomer(HttpServletRequest request, HttpServletResponse response) {
-        boolean check =false;
+
         String name=request.getParameter("name");
         String birthday=request.getParameter("birthday");
         Integer gender=Integer.parseInt(request.getParameter("gender"));
@@ -70,26 +70,40 @@ public class CustomerServlet extends HttpServlet {
         String address=request.getParameter("address");
         int type_id=Integer.parseInt(request.getParameter("type_id"));
         Customer customer = new Customer(name,birthday,gender,id_card,phone,email,address,type_id);
+
+
+        List<String> messList = null;
         try {
-            check= customerService.insertCustomer(customer);
-            if (check){
-                request.setAttribute("message", "Add New Customer successful");
-            }else {
-                request.setAttribute("message", "Add New Customer failed");
+            messList = customerService.insertCustomer(customer);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        boolean check =true;
+        for (String mess: messList) {
+            if (!mess.equals("")){
+                check =false;
             }
+        }
+        String message = "Them moi thanh cong";
+        if (!check) {
+            message = "them moi khong thanh cong";
+        }
+        request.setAttribute("message",message);
+        request.setAttribute("messList",messList);
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("customer/addCustomer.jsp");
+        try {
             dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            e.printStackTrace();
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
-        boolean check =false;
+
         int id = Integer.parseInt(request.getParameter("id"));
         String name=request.getParameter("name");
         String birthday=request.getParameter("birthday");
@@ -100,17 +114,29 @@ public class CustomerServlet extends HttpServlet {
         String address=request.getParameter("address");
         int type_id=Integer.parseInt(request.getParameter("type_id"));
         Customer customer = new Customer(id,name,birthday,gender,id_card,phone,email,address,type_id);
+        List<String> messList = null;
         try {
-           check= customerService.updateCustomer(customer);
-            if (check){
-                request.setAttribute("message", "Update successful");
-            }else {
-                request.setAttribute("message", "update failed");
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("customer/editCustomer.jsp");
-            dispatcher.forward(request, response);
+            messList = customerService.updateCustomer(customer);
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+        boolean check =true;
+        for (String mess: messList) {
+            if (!mess.equals("")){
+                check =false;
+            }
+        }
+        String message = "Chinh sua thanh cong";
+        if (!check) {
+            message = "chinh sua khong thanh cong";
+        }
+        request.setAttribute("message",message);
+        request.setAttribute("messList",messList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/editCustomer.jsp");
+        try {
+            dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

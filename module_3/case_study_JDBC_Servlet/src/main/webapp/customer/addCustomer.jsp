@@ -159,18 +159,21 @@
                             <th>Customer id card:</th>
                             <td>
                                 <input type="text" name="id_card" size="45"/>
+                                <span>${messList[0]}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Customer Phone:</th>
                             <td>
                                 <input type="text" name="phone" size="45"/>
+                                <span>${messList[1]}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Customer Email:</th>
                             <td>
                                 <input type="text" name="email" size="45"/>
+                                <span>${messList[2]}</span>
                             </td>
                         </tr>
                         <tr>
