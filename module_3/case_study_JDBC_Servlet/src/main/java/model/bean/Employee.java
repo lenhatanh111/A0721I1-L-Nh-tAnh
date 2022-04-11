@@ -18,7 +18,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String employee_name, String employee_birthday, String employee_id_card, Double employee_salary, String employee_phone, String employee_email, String employee_address, int position_id, int education_degree_id, int division_id) {
+    public Employee(String employee_name, String employee_birthday, String employee_id_card, Double employee_salary, String employee_phone, String employee_email, String employee_address, int position_id, int education_degree_id, int division_id,String usernaem) {
         this.employee_name = employee_name;
         this.employee_birthday = employee_birthday;
         this.employee_id_card = employee_id_card;
@@ -29,6 +29,7 @@ public class Employee {
         this.position_id = position_id;
         this.education_degree_id = education_degree_id;
         this.division_id = division_id;
+        this.username=usernaem;
 
     }
 

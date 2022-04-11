@@ -95,8 +95,10 @@ customer_id int ,
 service_id int,
 foreign key(employee_id) references employee(employee_id) on update cascade on delete cascade,
 foreign key(customer_id) references customer(customer_id) on update cascade on delete cascade,
-foreign key(service_id) references service(service_id) on update cascade on delete cascade
+foreign key(service_id) references service(service_id) on update cascade on delete set null
 );
+insert into attach_service (attach_service_name,attach_service_cost,attach_service_unit,attach_service_status) 
+values ("Karaoke",10000,1,"tiện nghi, hiện tại"),("Thuê xe máy",10000,1,"hỏng 1 xe"),("Thuê xe đạp",20000,1,"tốt"),("Buffet buổi sáng",15000,1,"đầy đủ đồ ăn, tráng miệng");
 
 
 
@@ -109,7 +111,7 @@ attach_service_status varchar(45)
 );
 
 create table contract_detail(
-contract_detail_int int primary key auto_increment,
+contract_detail_id int primary key auto_increment,
 contract_id int ,
 attach_service_id int ,
 quantity int,
@@ -167,5 +169,55 @@ drop trigger create_account;
 SET SQL_SAFE_UPDATES = 0;
 delete from `user`;
 
+DELIMITER //
+create trigger auto_insert_account_when_update
+before update on employee
+for each row
+begin
+if new.employee_email <>old.employee_email  then
 
+ insert into `user`(username, password) values (new.employee_email,'123123');
+ -- update `user` set username =new.employee_email where  `user`.username not in (select username from employee);
 
+end if;
+end //
+DELIMITER ;
+-- DELIMITER //
+-- create trigger auto_update_username
+-- before update on employee
+-- for each row
+-- begin
+-- if new.employee_email <>old.employee_email  then
+
+--  update employee set username =new.employee_email where  username not in (select username from `user`);
+
+-- end if;
+-- end //
+-- DELIMITER ;
+drop trigger auto_update_username;
+SET SQL_SAFE_UPDATES = 0;
+update employee set employee_email="annguyen@gmail.com";
+delete from `employee`;
+drop table contract_detail;
+
+select c.customer_id,c.customer_name,c.customer_birthday,c.customer_gender,c.customer_id_card,c.customer_phone,c.customer_email,c.customer_address ,ats.attach_service_name,s.service_name
+from customer c inner join contract ct on c.customer_id=ct.customer_id inner join service s on s.service_id = ct.service_id inner join contract_detail cd
+on ct.contract_id =cd.contract_id inner join attach_service ats on ats.attach_service_id = cd.attach_service_id;
+SET SQL_SAFE_UPDATES = 0;
+update employee set employee_name=?, employee_birthday=?, employee_id_card=?, employee_salary=?,employee_phone =?,employee_email =?,employee_address=?, position_id=?,education_degree_id=?,division_id=?,username=? where employee_id=?;
+
+update service set service_name="co them bep nuong" where service_id=(select ct.service_id from contract ct where ct.customer_id=15);
+update contract set service_id = null where customer_id=18;
+select * from service  where service_id=(select ct.service_id from contract ct where ct.customer_id=?);
+insert into contract value(1,"2018-02-24","2020-01-12",0,50000,9,15,2);
+delete from service where service_id=10 ;
+drop database case_study_jdbc; 
+update contract  set service_id = null where customer_id=1 and service_id =1;
+select * from service  where service_name like"%Room Twin 01%" and service_id in (select ct.service_id from contract ct where ct.customer_id=1);
+select service_id from contract;
+select * from service  where service_id=(select ct.service_id from contract ct where ct.customer_id=?);
+select contract_id from contract where customer_id=3 and service_id=3;
+drop table contract;
+SET SQL_SAFE_UPDATES = 0;
+delete from contract_detail;
+update employee set employee_email="nhatanh@gmail1.com" where employee_id=5;

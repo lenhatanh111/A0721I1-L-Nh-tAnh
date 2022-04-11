@@ -24,10 +24,24 @@
 <html>
 <head>
     <title>$Title$</title>
+    <link rel="stylesheet" href="bootstrap4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="DataTables-1.11.5/css/dataTables.bootstrap4.min.css">
     <script src="jquery/jquery-3.6.0.min.js"></script>
+    <script src="DataTables-1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables-1.11.5/js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="bootstrap4.6.0/css/bootstrap.css">
     <script src="bootstrap4.6.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        $(document).ready(function () {
+            $('#tableService').dataTable({
+                "dom":'lrtip',
+                "lengthChange": false,
+                "pageLength": 5
+            })
+
+        })
+    </script>
 </head>
 <body>
 <div class="row head">
@@ -87,10 +101,10 @@
                         <a class="nav-link active" href="/services">Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract</a>
+                        <a class="nav-link active" href="/contracts">Contract</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract Detail</a>
+                        <a class="nav-link active" href="/contract_details">Contract Detail</a>
                     </li>
                 </ul>
 
@@ -117,8 +131,9 @@
     <div class="col-m-10 contain">
         <div class="row" style="margin: 20px 10px 20px">
             <div align="center">
-                <table border="1" cellpadding="5">
+                <table border="1" cellpadding="5" id="tableService"  class="table table-striped table-bordered" style="width: 100%;">
                     <caption><h2>List of Services</h2></caption>
+                    <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -132,22 +147,25 @@
                         <th>Pool Area</th>
                         <th>Number Of Floors</th>
                     </tr>
-                    <c:forEach var="employee" items="${services}">
+                    </thead>
+                    <tbody>
+                    <c:forEach var="customer" items="${services}">
                         <tr>
-                            <td><c:out value="${employee.service_id}"/></td>
-                            <td><c:out value="${employee.service_name}"/></td>
-                            <td><c:out value="${employee.service_area}"/></td>
-                            <td><c:out value="${employee.service_cost}"/></td>
-                            <td><c:out value="${employee.service_max_people}"/></td>
-                            <td><c:out value="${employee.rent_type_id}"/></td>
-                            <td><c:out value="${employee.service_type_id}"/></td>
-                            <td><c:out value="${employee.standard_room}"/></td>
-                            <td><c:out value="${employee.description_other_convenience}"/></td>
-                            <td><c:out value="${employee.pool_area}"/></td>
-                            <td><c:out value="${employee.number_of_floors}"/></td>
+                            <td><c:out value="${customer.service_id}"/></td>
+                            <td><c:out value="${customer.service_name}"/></td>
+                            <td><c:out value="${customer.service_area}"/></td>
+                            <td><c:out value="${customer.service_cost}"/></td>
+                            <td><c:out value="${customer.service_max_people}"/></td>
+                            <td><c:out value="${customer.rent_type_id}"/></td>
+                            <td><c:out value="${customer.service_type_id}"/></td>
+                            <td><c:out value="${customer.standard_room}"/></td>
+                            <td><c:out value="${customer.description_other_convenience}"/></td>
+                            <td><c:out value="${customer.pool_area}"/></td>
+                            <td><c:out value="${customer.number_of_floors}"/></td>
 
                         </tr>
                     </c:forEach>
+                    </tbody>
                 </table>
             </div>
         </div>

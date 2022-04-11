@@ -12,6 +12,7 @@ public interface ICustomerRepository {
 
     public List<Customer> selectAllCustomers();
     public List<Customer> findCustomersByName(String name);
+    public List<Customer> selectAllCustomersAreUsingService();
 
     public boolean deleteCustomer(int id) throws SQLException;
 

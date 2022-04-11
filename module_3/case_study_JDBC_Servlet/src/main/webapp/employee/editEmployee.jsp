@@ -87,10 +87,10 @@
                         <a class="nav-link active" href="/services">Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract</a>
+                        <a class="nav-link active" href="/contracts">Contract</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract Detail</a>
+                        <a class="nav-link active" href="/contract_details">Contract Detail</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

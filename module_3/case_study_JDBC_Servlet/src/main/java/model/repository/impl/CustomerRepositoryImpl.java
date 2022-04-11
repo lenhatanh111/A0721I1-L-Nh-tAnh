@@ -20,6 +20,9 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     private static final String UPDATE_CUSTOMER = "update customer set customer_name =?, customer_birthday =?, customer_gender =?, customer_id_card =?, customer_phone =?, customer_email =?, customer_address =?, customer_type_id =? where customer_id=?;";
     private static final String DELETE_CUSTOMER_BY_ID = "delete from customer where customer_id =?;";
     private static final String FIND_CUSTOMERS_BY_NAME = "select * from customer where customer_name like ?;";
+    private static final String FIND_ALL_CUSTOMER_ARE_USING_SERVICE= "select c.customer_id,c.customer_name,c.customer_birthday,c.customer_gender,c.customer_id_card,c.customer_phone,c.customer_email,c.customer_address ,ats.attach_service_name,s.service_name\n" +
+            "from customer c inner join contract ct on c.customer_id=ct.customer_id inner join service s on s.service_id = ct.service_id inner join contract_detail cd\n" +
+            "on ct.contract_id =cd.contract_id inner join attach_service ats on ats.attach_service_id = cd.attach_service_id;";
 
 
     @Override
@@ -115,6 +118,32 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                 customers.add(new Customer(id, customer_name, birthday, gender, id_card, phone, email, address, type_id));
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customers;
+    }
+
+    @Override
+    public List<Customer> selectAllCustomersAreUsingService() {
+        List<Customer> customers = new ArrayList<>();
+        Connection connection = BaseRepository.getConnect();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_CUSTOMER_ARE_USING_SERVICE);
+            ResultSet resultSet =preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("customer_id");
+                String name = resultSet.getString("customer_name");
+                String birthday = resultSet.getString("customer_birthday");
+                Integer gender = resultSet.getInt("customer_gender");
+                String id_card =resultSet.getString("customer_id_card");
+                String phone =resultSet.getString("customer_phone");
+                String email =resultSet.getString("customer_email");
+                String address =resultSet.getString("customer_address");
+                String attach_service_name= resultSet.getString("attach_service_name");
+                String service_name= resultSet.getString("service_name");
+                customers.add(new Customer(id,name,birthday,gender,id_card,phone,email,address,attach_service_name,service_name));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

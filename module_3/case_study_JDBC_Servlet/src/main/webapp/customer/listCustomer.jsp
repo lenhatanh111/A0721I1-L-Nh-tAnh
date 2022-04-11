@@ -17,10 +17,26 @@
 <html>
 <head>
     <title>$Title$</title>
+    <link rel="stylesheet" href="bootstrap4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="DataTables-1.11.5/css/dataTables.bootstrap4.min.css">
     <script src="jquery/jquery-3.6.0.min.js"></script>
+    <script src="DataTables-1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables-1.11.5/js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="bootstrap4.6.0/css/bootstrap.css">
     <script src="bootstrap4.6.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        $(document).ready(function () {
+            $('#tableCustomer').dataTable({
+                "dom":'lrtip',
+                "lengthChange": false,
+                "pageLength": 5
+            })
+
+        })
+    </script>
+
+
 </head>
 <body>
 <div class="row head">
@@ -80,10 +96,10 @@
                         <a class="nav-link active" href="/services">Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract</a>
+                        <a class="nav-link active" href="/contracts">Contract</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract Detail</a>
+                        <a class="nav-link active" href="/contract_details">Contract Detail</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -123,8 +139,9 @@
                         <p>${message}</p>
                     </c:if>
                 </h2>
-                <table border="1" cellpadding="5">
+                <table border="1" cellpadding="5" id="tableCustomer" class="table table-striped table-bordered" style="width: 100%;">
                     <caption><h2>List of Customers</h2></caption>
+                    <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -137,23 +154,26 @@
                         <th>Type ID</th>
                         <th>Action</th>
                     </tr>
-                    <c:forEach var="employee" items="${customers}">
+                    </thead>
+                    <tbody>
+                    <c:forEach var="customer" items="${customers}">
                         <tr>
-                            <td><c:out value="${employee.customer_id}"/></td>
-                            <td><c:out value="${employee.customer_name}"/></td>
-                            <td><c:out value="${employee.customer_birthday}"/></td>
-                            <td><c:out value="${employee.customer_gender}"/></td>
-                            <td><c:out value="${employee.customer_id_card}"/></td>
-                            <td><c:out value="${employee.customer_phone}"/></td>
-                            <td><c:out value="${employee.customer_email}"/></td>
-                            <td><c:out value="${employee.customer_address}"/></td>
-                            <td><c:out value="${employee.customer_type_id}"/></td>
+                            <td><c:out value="${customer.customer_id}"/></td>
+                            <td><c:out value="${customer.customer_name}"/></td>
+                            <td><c:out value="${customer.customer_birthday}"/></td>
+                            <td><c:out value="${customer.customer_gender}"/></td>
+                            <td><c:out value="${customer.customer_id_card}"/></td>
+                            <td><c:out value="${customer.customer_phone}"/></td>
+                            <td><c:out value="${customer.customer_email}"/></td>
+                            <td><c:out value="${customer.customer_address}"/></td>
+                            <td><c:out value="${customer.customer_type_id}"/></td>
                             <td>
-                                <a href="/customers?action=edit&id=${employee.customer_id}">Edit</a>
-                                <button onclick="infoDelete('${employee.customer_id}','${employee.customer_name}')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                                <a href="/customers?action=edit&id=${customer.customer_id}">Edit</a>
+                                <button onclick="infoDelete('${customer.customer_id}','${customer.customer_name}')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
+                    </tbody>
                 </table>
             </div>
         </div>

@@ -15,8 +15,11 @@ import java.util.List;
 public class ServiceRepositoryImpl implements IServiceRepository {
     private static final String INSERT_IN_TO_SERVICE = "insert into service (service_name, service_area, service_cost, service_max_people,rent_type_id ,service_type_id ,standard_room, description_other_convenience,pool_area,number_of_floors) value\n" +
             "(?,?,?,?,?,?,?,?,?,?); ";
-
     private static final String SELECT_ALL_SERVICES = "select * from service ;";
+    private static final String SELECT_SERVICE_BY_NAME = "select * from service where service_name=?;";
+    private static final String FIND_SERVICE_BY_NAME = "select * from service where service_name=? ;";
+    private static final String DELETE_SERVICE_OF_CUSTOMER = "update contract  set service_id = null where customer_id=? and service_id =?";
+
     @Override
     public boolean insertService(Service service) throws SQLException {
         boolean check =false;
@@ -63,5 +66,78 @@ public class ServiceRepositoryImpl implements IServiceRepository {
         }
         return services;
     }
+
+
+
+    @Override
+    public List<Service> findServicesByName(String name) {
+        List<Service> services = new ArrayList<>();
+
+        Connection connection = BaseRepository.getConnect();
+        try {
+            PreparedStatement preparedStatement =connection.prepareStatement(FIND_SERVICE_BY_NAME);
+            preparedStatement.setString(1,"%"+name+"%");
+            ResultSet resultSet =preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id=resultSet.getInt("service_id");
+                String service_name= resultSet.getString("service_name");
+                int service_area = resultSet.getInt("service_area");
+                double cost= resultSet.getDouble("service_cost");
+                int rent_type_id = resultSet.getInt("rent_type_id");
+                int service_type_id = resultSet.getInt("service_type_id");
+                String standard_room = resultSet.getString("standard_room");
+                String description_other_convenience = resultSet.getString("description_other_convenience");
+                double pool_area = resultSet.getDouble("pool_area");
+                int number_of_floors = resultSet.getInt("number_of_floors");
+                int max_people =resultSet.getInt("service_max_people");
+                services.add(new Service(id,service_name,service_area,cost,max_people,rent_type_id,service_type_id,standard_room,description_other_convenience,pool_area,number_of_floors));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return services;
+    }
+
+    @Override
+    public Service selectServiceByName(String name) {
+      Service service=null;
+        Connection connection = BaseRepository.getConnect();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SERVICE_BY_NAME);
+            preparedStatement.setString(1,name);
+            ResultSet resultSet =preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int service_id=resultSet.getInt("service_id");
+                int service_area = resultSet.getInt("service_area");
+                double cost= resultSet.getDouble("service_cost");
+                int rent_type_id = resultSet.getInt("rent_type_id");
+                int service_type_id = resultSet.getInt("service_type_id");
+                String standard_room = resultSet.getString("standard_room");
+                String description_other_convenience = resultSet.getString("description_other_convenience");
+                double pool_area = resultSet.getDouble("pool_area");
+                int number_of_floors = resultSet.getInt("number_of_floors");
+                int max_people =resultSet.getInt("service_max_people");
+              service= new Service(service_id,name,service_area,cost,max_people,rent_type_id,service_type_id,standard_room,description_other_convenience,pool_area,number_of_floors);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return service;
+    }
+
+    @Override
+    public boolean deleteService(int id,int service_id) throws SQLException {
+        boolean check =false;
+        Connection connection = BaseRepository.getConnect();
+        PreparedStatement preparedStatement =connection.prepareStatement(DELETE_SERVICE_OF_CUSTOMER);
+        preparedStatement.setInt(1,id);
+        preparedStatement.setInt(2,service_id);
+        check =preparedStatement.executeUpdate()>0;
+
+        return check;
+    }
+
+
 
 }

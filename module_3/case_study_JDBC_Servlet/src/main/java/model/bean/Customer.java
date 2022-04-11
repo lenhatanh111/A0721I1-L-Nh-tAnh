@@ -10,6 +10,8 @@ public class Customer {
    String customer_email ;
    String customer_address ;
    int customer_type_id ;
+   String attach_service_name;
+   String service_name;
 
     public Customer() {
     }
@@ -23,6 +25,19 @@ public class Customer {
         this.customer_email = customer_email;
         this.customer_address = customer_address;
         this.customer_type_id = customer_type_id;
+    }
+
+    public Customer(int customer_id, String customer_name, String customer_birthday, Integer customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address, String attach_service_name, String service_name) {
+        this.customer_id = customer_id;
+        this.customer_name = customer_name;
+        this.customer_birthday = customer_birthday;
+        this.customer_gender = customer_gender;
+        this.customer_id_card = customer_id_card;
+        this.customer_phone = customer_phone;
+        this.customer_email = customer_email;
+        this.customer_address = customer_address;
+        this.attach_service_name = attach_service_name;
+        this.service_name = service_name;
     }
 
     public Customer(int customer_id, String customer_name, String customer_birthday, Integer customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address, int customer_type_id) {
@@ -107,5 +122,21 @@ public class Customer {
 
     public void setCustomer_type_id(int customer_type_id) {
         this.customer_type_id = customer_type_id;
+    }
+
+    public String getAttach_service_name() {
+        return attach_service_name;
+    }
+
+    public void setAttach_service_name(String attach_service_name) {
+        this.attach_service_name = attach_service_name;
+    }
+
+    public String getService_name() {
+        return service_name;
+    }
+
+    public void setService_name(String service_name) {
+        this.service_name = service_name;
     }
 }

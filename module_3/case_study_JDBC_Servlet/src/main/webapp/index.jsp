@@ -54,8 +54,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                </li>
+                        <a class="nav-link active" aria-current="page" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     </li>
@@ -73,10 +73,10 @@
                         <a class="nav-link active" href="/services">Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract</a>
+                        <a class="nav-link active" href="/contracts">Contract</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract Detail</a>
+                        <a class="nav-link active" href="/contract_details">Contract Detail</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -107,21 +107,26 @@
         </ul>
     </div>
     <div class="col-m-10 contain ">
-        <div class="row" style="margin: 20px 10px 20px;text-align: center; color: green">
-            <h2 >
-            <c:if test="${message !=null}">
-                <p>${message}</p>
-            </c:if>
+        <div class="row" style="margin: 20px 10px 20px;text-align: center">
+            <h2 style="color: green">
+                <c:if test="${message !=null}">
+                    <p>${message}</p>
+                </c:if>
             </h2>
         </div>
-            <div class="row" style="margin: 40px 10px 20px ;text-align: center">
-                <h1>
-                    WELCOME TO FURAMA RESORT
-                </h1>
-            </div>
+        <div class="row" style="margin: 40px 10px 20px ;text-align: center">
+            <h1>
+                WELCOME TO FURAMA RESORT
+            </h1>
+        </div>
+        <div class="row" style="margin: 40px 10px 20px ;text-align: center">
+            <h2 style="color: #ffc107">
+            <a href="/customer_service">Customers are using the service</a>
+            </h2>
+        </div>
     </div>
 </div>
-<footer >
+<footer>
     <p>&copy; 2020 Design by Nhat Anh.</p>
 </footer>
 </body>

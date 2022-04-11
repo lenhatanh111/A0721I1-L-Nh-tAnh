@@ -24,10 +24,24 @@
 <html>
 <head>
     <title>$Title$</title>
+    <link rel="stylesheet" href="bootstrap4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="DataTables-1.11.5/css/dataTables.bootstrap4.min.css">
     <script src="jquery/jquery-3.6.0.min.js"></script>
+    <script src="DataTables-1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables-1.11.5/js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="bootstrap4.6.0/css/bootstrap.css">
     <script src="bootstrap4.6.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        $(document).ready(function () {
+            $('#tableEmployee').dataTable({
+                "dom":'lrtip',
+                "lengthChange": false,
+                "pageLength": 5
+            })
+
+        })
+    </script>
 </head>
 <body>
 <div class="row head">
@@ -87,10 +101,10 @@
                         <a class="nav-link active" href="/services">Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract</a>
+                        <a class="nav-link active" href="/contracts">Contract</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">Contract Detail</a>
+                        <a class="nav-link active" href="/contract_details">Contract Detail</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -107,12 +121,12 @@
     </nav>
 </div>
 <div class="row height-full">
-    <div class="left col-m-2">
+    <div class="left col-m-1">
         <ul>
             <li>
-                <h2>
+                <h3>
                     <a href="/employees?action=add">Add New Employee</a>
-                </h2>
+                </h3>
             </li>
             <li>
 
@@ -122,7 +136,7 @@
             </li>
         </ul>
     </div>
-    <div class="col-m-10 contain">
+    <div class="col-m-11 contain">
         <div class="row" style="margin: 20px 10px 20px">
             <div align="center">
                 <h2 style="color: green">
@@ -130,8 +144,9 @@
                         <p>${message}</p>
                     </c:if>
                 </h2>
-                <table border="1" cellpadding="5">
+                <table border="1" cellpadding="5" id="tableEmployee"  class="table table-striped table-bordered" >
                     <caption><h2>List of Employees</h2></caption>
+                    <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -147,26 +162,29 @@
                         <th>UserName</th>
                         <th>Action</th>
                     </tr>
-                    <c:forEach var="employee" items="${employees}">
+                    </thead>
+                    <tbody>
+                    <c:forEach var="customer" items="${employees}">
                         <tr>
-                            <td><c:out value="${employee.employee_id}"/></td>
-                            <td><c:out value="${employee.employee_name}"/></td>
-                            <td><c:out value="${employee.employee_birthday}"/></td>
-                            <td><c:out value="${employee.employee_id_card}"/></td>
-                            <td><c:out value="${employee.employee_salary}"/></td>
-                            <td><c:out value="${employee.employee_phone}"/></td>
-                            <td><c:out value="${employee.employee_email}"/></td>
-                            <td><c:out value="${employee.employee_address}"/></td>
-                            <td><c:out value="${employee.position_id}"/></td>
-                            <td><c:out value="${employee.education_degree_id}"/></td>
-                            <td><c:out value="${employee.division_id}"/></td>
-                            <td><c:out value="${employee.username}"/></td>
+                            <td><c:out value="${customer.employee_id}"/></td>
+                            <td><c:out value="${customer.employee_name}"/></td>
+                            <td><c:out value="${customer.employee_birthday}"/></td>
+                            <td><c:out value="${customer.employee_id_card}"/></td>
+                            <td><c:out value="${customer.employee_salary}"/></td>
+                            <td><c:out value="${customer.employee_phone}"/></td>
+                            <td><c:out value="${customer.employee_email}"/></td>
+                            <td><c:out value="${customer.employee_address}"/></td>
+                            <td><c:out value="${customer.position_id}"/></td>
+                            <td><c:out value="${customer.education_degree_id}"/></td>
+                            <td><c:out value="${customer.division_id}"/></td>
+                            <td><c:out value="${customer.username}"/></td>
                             <td>
-                                <a href="/employees?action=edit&id=${employee.employee_id}">Edit</a>
-                                <button onclick="infoDelete('${employee.employee_id}','${employee.employee_name}')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                                <a href="/employees?action=edit&id=${customer.employee_id}">Edit</a>
+                                <button onclick="infoDelete('${customer.employee_id}','${customer.employee_name}')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete</button>
                             </td>
                         </tr>
                     </c:forEach>
+                    </tbody>
                 </table>
             </div>
         </div>

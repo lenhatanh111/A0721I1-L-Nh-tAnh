@@ -94,7 +94,7 @@ public class EmployeeServlet extends HttpServlet {
         int education_degree_id=Integer.parseInt(request.getParameter("education_degree_id"));
         int division_id=Integer.parseInt(request.getParameter("division_id"));
 
-        Employee employee = new Employee(name,birthday,id_card,salary,phone,email,address,position_id,education_degree_id,division_id);
+        Employee employee = new Employee(name,birthday,id_card,salary,phone,email,address,position_id,education_degree_id,division_id,email);
 
         try {
             check= employeeService.insertEmployee(employee);
@@ -127,7 +127,8 @@ public class EmployeeServlet extends HttpServlet {
         int position_id=Integer.parseInt(request.getParameter("position_id"));
         int education_degree_id=Integer.parseInt(request.getParameter("education_degree_id"));
         int division_id=Integer.parseInt(request.getParameter("division_id"));
-        Employee employee = new Employee(id,name,birthday,id_card,salary,phone,email,address,position_id,education_degree_id,division_id);
+        String username=request.getParameter("email");
+        Employee employee = new Employee(id,name,birthday,id_card,salary,phone,email,address,position_id,education_degree_id,division_id,username);
 
         try {
             check= employeeService.updateEmployee(employee);
