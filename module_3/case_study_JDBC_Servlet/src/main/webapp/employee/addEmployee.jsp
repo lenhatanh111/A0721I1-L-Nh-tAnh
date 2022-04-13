@@ -205,27 +205,33 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Position ID:</th>
+                            <th>Position :</th>
                             <td>
-                                <input type="text" name="position_id" size="15"
-                                       value="<c:out value='${employee.position_id}' />"
-                                />
+                                <select name="position_id">
+                                    <c:forEach items="${positionList}" var="position">
+                                        <option value="${position.position_id}">${position.position_name}</option>
+                                    </c:forEach>
+                                </select>
                             </td>
                         </tr>
                         <tr>
-                            <th>Education Degree ID:</th>
+                            <th>Education Degree :</th>
                             <td>
-                                <input type="text" name="education_degree_id" size="15"
-                                       value="<c:out value='${employee.education_degree_id}' />"
-                                />
+                                <select name="education_degree_id">
+                                    <c:forEach items="${education_degrees}" var="education_degree">
+                                        <option value="${education_degree.education_degree_id}">${education_degree.education_degree_name}</option>
+                                    </c:forEach>
+                                </select>
                             </td>
                         </tr>
                         <tr>
                             <th>Division ID:</th>
                             <td>
-                                <input type="text" name="division_id" size="15"
-                                       value="<c:out value='${employee.division_id}' />"
-                                />
+                                <select name="division_id">
+                                    <c:forEach items="${divisions}" var="division">
+                                        <option value="${division.division_id}">${division.division_name}</option>
+                                    </c:forEach>
+                                </select>
                             </td>
                         </tr>
                         <tr>

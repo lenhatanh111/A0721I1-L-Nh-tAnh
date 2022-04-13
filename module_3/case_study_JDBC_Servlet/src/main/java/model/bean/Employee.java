@@ -12,6 +12,9 @@ public class Employee {
     int position_id;
     int education_degree_id;
     int division_id;
+    String position_name;
+    String education_degree_name;
+    String division_name;
     String username;
 
 
@@ -31,6 +34,53 @@ public class Employee {
         this.division_id = division_id;
         this.username=usernaem;
 
+    }
+
+    public Employee(int employee_id, String employee_name, String employee_birthday, String employee_id_card, Double employee_salary, String employee_phone, String employee_email, String employee_address, String position_name, String education_degree_name, String division_name, String username) {
+        this.employee_id = employee_id;
+        this.employee_name = employee_name;
+        this.employee_birthday = employee_birthday;
+        this.employee_id_card = employee_id_card;
+        this.employee_salary = employee_salary;
+        this.employee_phone = employee_phone;
+        this.employee_email = employee_email;
+        this.employee_address = employee_address;
+        this.position_name = position_name;
+        this.education_degree_name = education_degree_name;
+        this.division_name = division_name;
+        this.username = username;
+    }
+
+    public Employee(int employee_id, String employee_name, String employee_birthday, String employee_id_card, Double employee_salary, String employee_phone, String employee_email, String employee_address, int position_id, int education_degree_id, int division_id, String position_name, String education_degree_name, String division_name, String username) {
+        this.employee_id = employee_id;
+        this.employee_name = employee_name;
+        this.employee_birthday = employee_birthday;
+        this.employee_id_card = employee_id_card;
+        this.employee_salary = employee_salary;
+        this.employee_phone = employee_phone;
+        this.employee_email = employee_email;
+        this.employee_address = employee_address;
+        this.position_id = position_id;
+        this.education_degree_id = education_degree_id;
+        this.division_id = division_id;
+        this.position_name = position_name;
+        this.education_degree_name = education_degree_name;
+        this.division_name = division_name;
+        this.username = username;
+    }
+
+    public Employee(String employee_name, String employee_birthday, String employee_id_card, Double employee_salary, String employee_phone, String employee_email, String employee_address, String position_name, String education_degree_name, String division_name, String username) {
+        this.employee_name = employee_name;
+        this.employee_birthday = employee_birthday;
+        this.employee_id_card = employee_id_card;
+        this.employee_salary = employee_salary;
+        this.employee_phone = employee_phone;
+        this.employee_email = employee_email;
+        this.employee_address = employee_address;
+        this.position_name = position_name;
+        this.education_degree_name = education_degree_name;
+        this.division_name = division_name;
+        this.username = username;
     }
 
     public Employee(int employee_id, String employee_name, String employee_birthday, String employee_id_card, Double employee_salary, String employee_phone, String employee_email, String employee_address, int position_id, int education_degree_id, int division_id) {
@@ -157,5 +207,29 @@ public class Employee {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPosition_name() {
+        return position_name;
+    }
+
+    public void setPosition_name(String position_name) {
+        this.position_name = position_name;
+    }
+
+    public String getEducation_degree_name() {
+        return education_degree_name;
+    }
+
+    public void setEducation_degree_name(String education_degree_name) {
+        this.education_degree_name = education_degree_name;
+    }
+
+    public String getDivision_name() {
+        return division_name;
+    }
+
+    public void setDivision_name(String division_name) {
+        this.division_name = division_name;
     }
 }

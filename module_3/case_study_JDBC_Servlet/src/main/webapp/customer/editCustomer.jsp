@@ -193,11 +193,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Customer Type ID:</th>
+                            <th>Customer Type:</th>
                             <td>
-                                <input type="text" name="type_id" size="15"
-                                       value="<c:out value='${customer.customer_type_id}' />"
-                                />
+                                <select name="type_id">
+                                    <c:forEach items="${customer_types}" var="customer_type">
+                                        <option value="${customer_type.customer_type_id}">${customer_type.customer_type_name}</option>
+                                    </c:forEach>
+                                </select>
                             </td>
                         </tr>
                         <tr>

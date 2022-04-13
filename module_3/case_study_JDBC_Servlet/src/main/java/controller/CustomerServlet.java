@@ -1,8 +1,11 @@
 package controller;
 
 import model.bean.Customer;
+import model.bean.Customer_type;
 import model.service.ICustomerService;
+import model.service.ICustomerTypeService;
 import model.service.impl.CustomerServiceImpl;
+import model.service.impl.CustomerTypeServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +20,7 @@ import java.util.List;
 @WebServlet(name = "CustomerServlet", urlPatterns = {"/customers"})
 public class CustomerServlet extends HttpServlet {
     private ICustomerService customerService = new CustomerServiceImpl();
+    private ICustomerTypeService customerTypeService = new CustomerTypeServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -174,7 +178,9 @@ public class CustomerServlet extends HttpServlet {
             }else {
                 request.setAttribute("message", "Delete failed");
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            List<Customer> customers=customerService.selectAllCustomers();
+            request.setAttribute("customers",customers);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("customer/listCustomer.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -186,6 +192,9 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showAddCustomerForm(HttpServletRequest request, HttpServletResponse response) {
+
+        List<Customer_type> customer_types =customerTypeService.findAll();
+        request.setAttribute("customer_types",customer_types);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/addCustomer.jsp");
         try {
             dispatcher.forward(request, response);
@@ -199,6 +208,8 @@ public class CustomerServlet extends HttpServlet {
     private void showEditCustomerForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
        Customer customer =customerService.selectCustomer(id);
+        List<Customer_type> customer_types =customerTypeService.findAll();
+        request.setAttribute("customer_types",customer_types);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/editCustomer.jsp");
         request.setAttribute("customer", customer);
         try {

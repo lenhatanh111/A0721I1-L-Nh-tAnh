@@ -151,7 +151,7 @@
                         <th>Phone</th>
                         <th>Email</th>
                         <th>Address</th>
-                        <th>Type ID</th>
+                        <th>Type </th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -166,7 +166,7 @@
                             <td><c:out value="${customer.customer_phone}"/></td>
                             <td><c:out value="${customer.customer_email}"/></td>
                             <td><c:out value="${customer.customer_address}"/></td>
-                            <td><c:out value="${customer.customer_type_id}"/></td>
+                            <td><c:out value="${customer.customer_type_name}"/></td>
                             <td>
                                 <a href="/customers?action=edit&id=${customer.customer_id}">Edit</a>
                                 <button onclick="infoDelete('${customer.customer_id}','${customer.customer_name}')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete</button>

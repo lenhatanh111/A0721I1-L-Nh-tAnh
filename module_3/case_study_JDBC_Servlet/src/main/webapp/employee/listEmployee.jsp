@@ -156,9 +156,9 @@
                         <th>Phone</th>
                         <th>Email</th>
                         <th>Address</th>
-                        <th>Position ID</th>
-                        <th>Education Degree ID</th>
-                        <th>Division ID</th>
+                        <th>Position </th>
+                        <th>Education Degree </th>
+                        <th>Division </th>
                         <th>UserName</th>
                         <th>Action</th>
                     </tr>
@@ -174,9 +174,9 @@
                             <td><c:out value="${customer.employee_phone}"/></td>
                             <td><c:out value="${customer.employee_email}"/></td>
                             <td><c:out value="${customer.employee_address}"/></td>
-                            <td><c:out value="${customer.position_id}"/></td>
-                            <td><c:out value="${customer.education_degree_id}"/></td>
-                            <td><c:out value="${customer.division_id}"/></td>
+                            <td><c:out value="${customer.position_name}"/></td>
+                            <td><c:out value="${customer.education_degree_name}"/></td>
+                            <td><c:out value="${customer.division_name}"/></td>
                             <td><c:out value="${customer.username}"/></td>
                             <td>
                                 <a href="/employees?action=edit&id=${customer.employee_id}">Edit</a>

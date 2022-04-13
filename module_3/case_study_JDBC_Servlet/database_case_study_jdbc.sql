@@ -153,9 +153,12 @@ create trigger auto_insert_account
 before insert on employee
 for each row
 begin
+if new.employee_email not in (select username from `user`) then
 insert into `user`(username, password) values (new.employee_email,'123123');
+end if;
 end //
 DELIMITER ;
+drop trigger auto_insert_account;
 -- DELIMITER //
 -- create trigger auto_delete_account
 -- before delete on employee
@@ -221,3 +224,4 @@ drop table contract;
 SET SQL_SAFE_UPDATES = 0;
 delete from contract_detail;
 update employee set employee_email="nhatanh@gmail1.com" where employee_id=5;
+select e.employee_id,e.employee_name, e.employee_birthday, e.employee_id_card, e.employee_salary,e.employee_phone ,e.employee_email ,e.employee_address, p.positon_name,ed.education_degree_name,d.division_name,username from employee e inner join position p on e.position_id=p.position_id inner join education_degree ed on e.education_degree_id =ed.education_degree_id inner join division d on e.division_id=d.division_id ;

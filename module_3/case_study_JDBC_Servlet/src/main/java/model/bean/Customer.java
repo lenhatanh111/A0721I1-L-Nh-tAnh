@@ -12,8 +12,36 @@ public class Customer {
    int customer_type_id ;
    String attach_service_name;
    String service_name;
+   String customer_type_name;
 
     public Customer() {
+    }
+
+    public Customer(int customer_id, String customer_name, String customer_birthday, Integer customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address, int customer_type_id, String attach_service_name, String service_name, String customer_type_name) {
+        this.customer_id = customer_id;
+        this.customer_name = customer_name;
+        this.customer_birthday = customer_birthday;
+        this.customer_gender = customer_gender;
+        this.customer_id_card = customer_id_card;
+        this.customer_phone = customer_phone;
+        this.customer_email = customer_email;
+        this.customer_address = customer_address;
+        this.customer_type_id = customer_type_id;
+        this.attach_service_name = attach_service_name;
+        this.service_name = service_name;
+        this.customer_type_name = customer_type_name;
+    }
+
+    public Customer(int customer_id, String customer_name, String customer_birthday, Integer customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address, String customer_type_name) {
+        this.customer_id = customer_id;
+        this.customer_name = customer_name;
+        this.customer_birthday = customer_birthday;
+        this.customer_gender = customer_gender;
+        this.customer_id_card = customer_id_card;
+        this.customer_phone = customer_phone;
+        this.customer_email = customer_email;
+        this.customer_address = customer_address;
+        this.customer_type_name = customer_type_name;
     }
 
     public Customer(String customer_name, String customer_birthday, Integer customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address, int customer_type_id) {
@@ -138,5 +166,13 @@ public class Customer {
 
     public void setService_name(String service_name) {
         this.service_name = service_name;
+    }
+
+    public String getCustomer_type_name() {
+        return customer_type_name;
+    }
+
+    public void setCustomer_type_name(String customer_type_name) {
+        this.customer_type_name = customer_type_name;
     }
 }

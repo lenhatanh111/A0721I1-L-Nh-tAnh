@@ -1,9 +1,14 @@
 package controller;
 
-import model.bean.Customer;
-import model.bean.Employee;
+import model.bean.*;
+import model.service.IDivisionService;
+import model.service.IEducationDegreeService;
 import model.service.IEmployeeService;
+import model.service.IPositionService;
+import model.service.impl.DivisionServiceImpl;
+import model.service.impl.EducationDegreeServiceImpl;
 import model.service.impl.EmployeeServiceImpl;
+import model.service.impl.PositionServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +23,9 @@ import java.util.List;
 @WebServlet(name = "EmployeeServlet" ,urlPatterns = {"/employees"})
 public class EmployeeServlet extends HttpServlet {
     IEmployeeService employeeService = new EmployeeServiceImpl();
+   IPositionService positionService = new PositionServiceImpl();
+    IEducationDegreeService educationDegreeService =new EducationDegreeServiceImpl();
+    IDivisionService divisionService =new DivisionServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -70,7 +78,9 @@ public class EmployeeServlet extends HttpServlet {
             }else {
                 request.setAttribute("message", "Delete failed");
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            List<Employee> employees=employeeService.selectAllEmployees();
+            request.setAttribute("employees",employees);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("employee/listEmployee.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,7 +133,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void editEmployee(HttpServletRequest request, HttpServletResponse response) {
-        boolean check =false;
+        boolean check =true;
         int id = Integer.parseInt(request.getParameter("id"));
         String name=request.getParameter("name");
         String birthday=request.getParameter("birthday");
@@ -185,7 +195,13 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void showAddEmployeeForm(HttpServletRequest request, HttpServletResponse response) {
+        List<Position> positions=positionService.findAll();
+        List<Education_degree> education_degrees=educationDegreeService.findAll();
+        List<Division> divisions=divisionService.findAll();
         RequestDispatcher dispatcher = request.getRequestDispatcher("employee/addEmployee.jsp");
+        request.setAttribute("positionList",positions);
+        request.setAttribute("education_degrees",education_degrees);
+        request.setAttribute("divisions",divisions);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -198,8 +214,14 @@ public class EmployeeServlet extends HttpServlet {
     private void showEditEmployeeForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Employee employee =employeeService.selectEmployee(id);
+        List<Position> positions=positionService.findAll();
+        List<Education_degree> education_degrees=educationDegreeService.findAll();
+        List<Division> divisions=divisionService.findAll();
         RequestDispatcher dispatcher = request.getRequestDispatcher("employee/editEmployee.jsp");
         request.setAttribute("employee", employee);
+        request.setAttribute("positions",positions);
+        request.setAttribute("education_degrees",education_degrees);
+        request.setAttribute("divisions",divisions);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -211,7 +233,9 @@ public class EmployeeServlet extends HttpServlet {
 
     private void showEmployeeList(HttpServletRequest request, HttpServletResponse response) {
         List<Employee> employees = employeeService.selectAllEmployees();
+
         request.setAttribute("employees",employees);
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("employee/listEmployee.jsp");
         try {
             dispatcher.forward(request,response);
