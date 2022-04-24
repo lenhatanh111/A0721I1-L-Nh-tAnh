@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IStatusRepository {
     public List<Status> findAll();
+    public String findName(int id);
 }

@@ -1,20 +1,36 @@
 package model.bean;
 
 public class Flat {
-    private int flat_id;
+    private String flat_id;
+    private String status_name;
     private int status_id;
     private int area;
     private int floor;
+    private String flat_type_name;
     private int flat_type_id;
     private double cost;
     private String start_date;
     private String end_date;
     private String description;
 
+
+
     public Flat() {
     }
 
-    public Flat(int flat_id, int status_id, int area, int floor, int flat_type_id, double cost, String start_date, String end_date, String description) {
+    public Flat(String flat_id, String status_name, int area, int floor, String flat_type_name, double cost, String start_date, String end_date, String description) {
+        this.flat_id = flat_id;
+        this.status_name = status_name;
+        this.area = area;
+        this.floor = floor;
+        this.flat_type_name = flat_type_name;
+        this.cost = cost;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.description = description;
+    }
+
+    public Flat(String flat_id, int status_id, int area, int floor, int flat_type_id, double cost, String start_date, String end_date, String description) {
         this.flat_id = flat_id;
         this.status_id = status_id;
         this.area = area;
@@ -25,6 +41,7 @@ public class Flat {
         this.end_date = end_date;
         this.description = description;
     }
+
 
     public Flat(int status_id, int area, int floor, int flat_type_id, double cost, String start_date, String end_date, String description) {
         this.status_id = status_id;
@@ -37,11 +54,11 @@ public class Flat {
         this.description = description;
     }
 
-    public int getFlat_id() {
+    public String getFlat_id() {
         return flat_id;
     }
 
-    public void setFlat_id(int flat_id) {
+    public void setFlat_id(String flat_id) {
         this.flat_id = flat_id;
     }
 
@@ -107,5 +124,21 @@ public class Flat {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getStatus_name() {
+        return status_name;
+    }
+
+    public void setStatus_name(String status_name) {
+        this.status_name = status_name;
+    }
+
+    public String getFlat_type_name() {
+        return flat_type_name;
+    }
+
+    public void setFlat_type_name(String flat_type_name) {
+        this.flat_type_name = flat_type_name;
     }
 }
