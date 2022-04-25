@@ -13,8 +13,8 @@
   <body>
   <h1>Caculator</h1>
   <form action="/calculator" method="get">
-    <input type="text" name="parameters1" value="${parameters1}">
-    <input type="text" name="parameters2" value="${parameters2}">
+    <input type="text" name="parameters1">
+    <input type="text" name="parameters2">
     <br><br>
     <input type="submit" name="calculation" value="add">
     <input type="submit" name="calculation" value="sub">
