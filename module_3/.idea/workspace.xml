@@ -20,12 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a146d865-3606-4224-a51b-7deb79db61fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ss9_tong_quan_ung_dung_web/thuc_hanh/bai_2_tao_trang_web_de_dang_nhap_va_hien_thi_loi_chao/src/main/java/LoginServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss9_tong_quan_ung_dung_web/thuc_hanh/bai_2_ung_dung_chuyen_doi_tien_te_sevlet/src/main/java/ConvertServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss9_tong_quan_ung_dung_web/thuc_hanh/bai_3_ung_dung_tu_dien_don_gian_servlet/src/main/java/DictionaryServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss8_bootstrap_co_ban/bai_tap/bai_2_xay_dung_landing_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/bai_tap/bai_2_xay_dung_landing_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss8_bootstrap_co_ban/bai_tap/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/ss8_bootstrap_co_ban/bai_tap/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module_4/ss1_tong_quan_spring_mvc/thuc_hanh/bai_2_ung_dung_quan_ly_danh_sach_khach_hang" beforeDir="false" afterPath="$PROJECT_DIR$/../module_4/ss1_tong_quan_spring_mvc/thuc_hanh/bai_2_ung_dung_quan_ly_danh_sach_khach_hang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module_4/ss2_controller/thuc_hanh/bai_4_ung_dung_quan_ly_khach_hang" beforeDir="false" afterPath="$PROJECT_DIR$/../module_4/ss2_controller/thuc_hanh/bai_4_ung_dung_quan_ly_khach_hang" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +180,7 @@
       <workItem from="1647579935227" duration="5767000" />
       <workItem from="1647593600034" duration="2275000" />
       <workItem from="1647691733775" duration="5984000" />
+      <workItem from="1651066105050" duration="865000" />
     </task>
     <servers />
   </component>
