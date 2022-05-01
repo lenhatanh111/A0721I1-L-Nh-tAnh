@@ -6,6 +6,16 @@
 </head>
 <body>
 <h1>Display all product</h1>
+    <p>
+        <a th:href="@{/product/create}">
+           Add new product
+       </a>
+    </p>
+<p>
+    <a th:href="@{/product}">
+       Back to List
+    </a>
+</p>
 <table border="1">
     <tr>
         <th>ID</th>
@@ -13,7 +23,9 @@
         <th>Cost</th>
         <th>Description</th>
         <th>Producer</th>
-        <th>Action</th>
+        <th>Edit</th>
+        <th>View</th>
+        <th>Delete</th>
     </tr>
     <tr  th:each="product : ${products}" th:object="${product}">
         <td th:text="*{id}"></td>
@@ -21,9 +33,10 @@
         <td th:text="*{cost}"></td>
         <td th:text="*{description}"></td>
         <td th:text="*{producer}"></td>
-        <td>
-            <a th:href="@{/product/view/(id=${product.id})}">View</a>
-        </td>
+        <td><a th:href="@{/product/{id}/edit(id=${product.getId()})}">edit</a></td>
+        <td><a th:href="@{/product/{id}/delete(id=${product.getId()})}">delete</a></td>
+        <td><a th:href="@{/product/{id}/view(id=${product.getId()})}">view</a></td>
+
     </tr>
 
 </table>
