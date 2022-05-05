@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listening </title>
+</head>
+<body>
+<h2>Listening
+    <input type="hidden" th:field="${music.name}"/>
+</h2>
+<a th:href="@{/music}">Back to list</a>
+<input type="hidden" th:field="${music.id}"/>
+<div>
+    <label>Name</label>
+    <input type="text" th:field="${music.name}"/>
+</div>
+<div>
+    <label>Singer</label>
+    <input type="text" th:field="${music.singer}"/>
+</div>
+<div>
+    <label>Music Type</label>
+    <input type="text" th:field="${music.music_type}"/>
+</div>
+<div>
+    <a th:href="${music.link}">Click to listening</a>
+</div>
+</body>
+</html>
