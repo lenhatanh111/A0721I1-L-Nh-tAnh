@@ -9,6 +9,10 @@
 </head>
 <body>
 <form method="post" action="/update">
+    <div class="mb-3" hidden>
+        <label for="exampleInputEmail7" class="form-label">ID</label>
+        <input name="id" type="text" th:value="${blog.id}" class="form-control" id="exampleInputEmail7" aria-describedby="emailHelp">
+    </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Title</label>
         <input name="title" type="text" th:value="${blog.title}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -25,15 +29,15 @@
         <label for="exampleInputEmail4" class="form-label">Release Date</label>
         <input name="releaseDate" type="date"th:value="${blog.releaseDate}" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp">
     </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Category</label>
-        <select name="category" id="exampleInputPassword1">
-            <option th:text="${blog.category.name}" th:value="${blog.category.getId()}" ></option>
-            <th:block th:each="item : ${categoryList}">
-                <option th:text="${item.name}" th:value="${item.id}"></option>
-            </th:block>
+    <div class="form-group">
+        <label>Category</label>
+        <select class="form-select" th:field="*{blog.category}" name="category">
+            <option th:each="c : ${categoryList}"
+                    th:value="${c.id}" th:text="${c.name}"
+            ></option>
         </select>
     </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </body>

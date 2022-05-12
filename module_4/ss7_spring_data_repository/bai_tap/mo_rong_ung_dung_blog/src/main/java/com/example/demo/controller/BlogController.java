@@ -42,7 +42,9 @@ public class BlogController {
     }
     @GetMapping("/create")
     public String showCreateForm(Model model){
-        model.addAttribute("blog",new Blog());
+        Blog blog=new Blog();
+        blog.setCategory(new Category());
+        model.addAttribute("blog",blog);
         return "/create";
     }
     @PostMapping("/create")
@@ -65,14 +67,14 @@ public class BlogController {
         model.addAttribute("blog",iBlogService.findById(blogId));
         return "/view";
     }
-    @GetMapping("/{blogId}/delete")
-    public String showDeleteForm(@PathVariable Long blogId,Model model){
-        model.addAttribute("blog",iBlogService.findById(blogId));
-        return "/delete";
-    }
+//    @GetMapping("/{blogId}/delete")
+//    public String showDeleteForm(@PathVariable Long blogId,Model model){
+//        model.addAttribute("blog",iBlogService.findById(blogId));
+//        return "/delete";
+//    }
     @PostMapping("/delete")
-    public String delete(Blog blog){
-        iBlogService.delete(blog.getId());
+    public String delete(@RequestParam("blogId") Long blogId){
+        iBlogService.delete(blogId);
         return "redirect:/";
     }
     @GetMapping("/sort")
