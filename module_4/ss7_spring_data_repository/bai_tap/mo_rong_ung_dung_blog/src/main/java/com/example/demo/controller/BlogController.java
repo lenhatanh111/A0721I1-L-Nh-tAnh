@@ -38,7 +38,8 @@ public class BlogController {
         model.addAttribute("blogs", blogs);
         model.addAttribute("key_author",key_author);
         model.addAttribute("key_category",key_category);
-        return "list" ;
+
+        return "/list" ;
     }
     @GetMapping("/create")
     public String showCreateForm(Model model){
