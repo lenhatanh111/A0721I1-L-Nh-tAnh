@@ -7,6 +7,7 @@ import com.example.demo.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ public class BlogController {
     public String getAllBlog(
             @RequestParam(defaultValue = "") String key_author,
             @RequestParam(defaultValue = "") String key_category
-            ,@PageableDefault(size = 2) Pageable pageable
+            ,@PageableDefault(size = 2, sort = {"release_date"}, direction = Sort.Direction.ASC) Pageable pageable
             , Model model) {
         Page<Blog> blogs = iBlogService.getAllBlog(key_author, key_category, pageable);
         model.addAttribute("blogs", blogs);
@@ -78,14 +79,14 @@ public class BlogController {
         iBlogService.delete(blogId);
         return "redirect:/";
     }
-    @GetMapping("/sort")
-    public String sortByReleaseDate(@PageableDefault(size = 2) Pageable pageable,Model model){
-        Page<Blog> blogs=iBlogService.getAllBlogSortByReleaseDate(pageable);
-        model.addAttribute("blogs",blogs);
-        return "/list";
-
-
-    }
+//    @GetMapping("/sort")
+//    public String sortByReleaseDate(@PageableDefault(size = 2) Pageable pageable,Model model){
+//        Page<Blog> blogs=iBlogService.getAllBlogSortByReleaseDate(pageable);
+//        model.addAttribute("blogs",blogs);
+//        return "/list";
+//
+//
+//    }
 
 
 }
