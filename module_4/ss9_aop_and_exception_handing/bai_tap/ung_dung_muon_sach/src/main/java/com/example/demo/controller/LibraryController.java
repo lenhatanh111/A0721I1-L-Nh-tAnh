@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LibraryController {
     @Autowired
     private LibraryService libraryService;
+
     @GetMapping("")
     public String getLibrary(@PageableDefault(size = 3, sort = {"name"}, direction = Sort.Direction.ASC) Pageable pageable
-            , Model model){
-        model.addAttribute("libraries",libraryService.getAllLibrary(pageable));
+            , Model model) {
+        model.addAttribute("libraries", libraryService.getAllLibrary(pageable));
         return "/list";
     }
 }

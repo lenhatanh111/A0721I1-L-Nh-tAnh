@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -10,6 +10,7 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+<h2 th:text="|Error message: ${message}|" style="color: red"></h2>
 <form method="post" action="/back">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Enter the code</label>
