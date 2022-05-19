@@ -21,6 +21,14 @@ public class BookServiceImpl implements BookService {
     @Override
     public void save(Book book) {
         List<Library> libraries = libraryService.findAll();
+        if (libraries.size() == 0) {
+            Library library = new Library();
+            library.setName(book.getTitle());
+            libraryService.save(library);
+            book.setLibrary(library);
+            bookRepository.save(book);
+            return;
+        }
         for (Library l : libraries) {
             if (l.getName().equals(book.getTitle())) {
                 book.setLibrary(l);
