@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/list.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+</head>
+<body>
+<p>
+    <a th:href="@{/smartphones/list}">Back to list</a>
+</p>
+<form id="add-smartphone">
+<table class="table">
+    <thead>
+    <tr>
+        <th hidden scope="col">Id</th>
+        <th scope="col">Producer</th>
+        <th scope="col">Model</th>
+        <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody >
+    <tr>
+        <td hidden scope="row"><input type="text" id="id" th:value="${smartphone.id} "></td>
+        <td scope="row"><input type="text" id="producer"th:value="${smartphone.producer}"  ></td>
+        <td scope="row"><input type="text" id="model" th:value="${smartphone.model}"></td>
+        <td scope="row"><input type="text" id="price" th:value="${smartphone.price}"></td>
+
+    </tr>
+    <tr>
+        <td><input type="submit" value="Update" onclick="updateSmartPhone()"></td>
+    </tr>
+    </tbody>
+</table>
+</form>
+<h1>Smartphone List</h1>
+<table id="smartphoneList">
+    <tr>
+        <td>Producer</td>
+        <td>Model</td>
+        <td>Price</td>
+
+    </tr>
+    <th:block th:each="smartphone: ${smartphones}">
+        <tr>
+            <td th:text="${smartphone.producer}"></td>
+            <td th:text="${smartphone.model}"></td>
+            <td th:text="${smartphone.price}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</html>
