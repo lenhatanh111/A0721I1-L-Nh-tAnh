@@ -80,34 +80,24 @@
     <thead>
     <tr>
         <th scope="col">Id</th>
-        <th scope="col">Start Date</th>
-        <th scope="col">End Date</th>
-        <th scope="col">Deposit</th>
-        <th scope="col">Total Money</th>
-        <th scope="col">Customer</th>
-        <th scope="col">Employee</th>
-        <th scope="col">Service</th>
-
+        <th scope="col">Quantity</th>
+        <th scope="col">Attach Service</th>
+        <th scope="col">Contract</th>
 
     </tr>
     </thead>
     <tbody>
-    <tr th:each="item : ${contracts}">
+    <tr th:each="item : ${contractDetails}">
         <td scope="row" th:text="${item.id}"></td>
-        <td scope="row" th:text="${item.contractStartDate}"></td>
-        <td scope="row" th:text="${item.contractEndDate}"></td>
-        <td scope="row" th:text="${item.contractDeposit}"></td>
-        <td scope="row" th:text="${item.contractTotalMoney}"></td>
-        <td scope="row" th:text="${item.customer.customerName}"></td>
-        <td scope="row" th:text="${item.employee.employeeName}"></td>
-        <td scope="row" th:text="${item.service.serviceName}"></td>
-
+        <td scope="row" th:text="${item.quantity}"></td>
+        <td scope="row" th:text="${item.attachService.attachServiceName}"></td>
+        <td scope="row" th:text="${item.contract.id}"></td>
     </tr>
     </tbody>
 </table>
-<a th:href="@{'/contract'(page=${contracts.number - 1})}" th:if="${contracts.hasPrevious()}">Previous</a>
-<span th:text="${contracts.number + 1}"></span>/<span th:text="${contracts.totalPages}"></span>
-<a th:href="@{'/contract'(page=${contracts.number + 1})}" th:if="${contracts.hasNext()}">Next</a>
+<a th:href="@{'/contractDetail'(page=${contractDetails.number - 1})}" th:if="${contractDetails.hasPrevious()}">Previous</a>
+<span th:text="${contractDetails.number + 1}"></span>/<span th:text="${contractDetails.totalPages}"></span>
+<a th:href="@{'/contractDetail'(page=${contractDetails.number + 1})}" th:if="${contractDetails.hasNext()}">Next</a>
 
 </body>
 </html>

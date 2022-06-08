@@ -44,6 +44,6 @@ repository.save(customer);
 
     @Override
     public List<Customer> findAllCustomer() {
-        return findAllCustomer();
+        return repository.findAll();
     }
 }

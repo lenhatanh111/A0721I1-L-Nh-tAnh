@@ -15,12 +15,12 @@
         <!--        </button>-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link active" aria-current="page" href="#">Home</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Link</a>-->
-                <!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/select}">Select All Customer is Using service</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Customer
@@ -37,7 +37,7 @@
                         Service
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item"th:href="@{/service}">Select all Service</a></li>
+                        <li><a class="dropdown-item" th:href="@{/service}">Select all Service</a></li>
                         <li><a class="dropdown-item" th:href="@{/service/create}">Add new Service</a></li>
 
                     </ul>
@@ -47,8 +47,8 @@
                         Employee
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Select all Employee</a></li>
-                        <li><a class="dropdown-item" href="#">Add new Employee</a></li>
+                        <li><a class="dropdown-item" th:href="@{/employee}">Select all Employee</a></li>
+                        <li><a class="dropdown-item"th:href="@{/employee/create}">Add new Employee</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -56,8 +56,8 @@
                         Contract
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Select all Contract</a></li>
-                        <li><a class="dropdown-item" href="#">Add new contract</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contract}">Select all Contract</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contract/create}">Add new contract</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -65,14 +65,15 @@
                         Contract Detail
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">select all contract detail</a></li>
-                        <li><a class="dropdown-item" href="#">Add new contract detail</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contractDetail}">select all contract detail</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contractDetail/create}">Add new contract detail</a></li>
                     </ul>
                 </li>
                 <!--                <li class="nav-item">-->
                 <!--                    <a class="nav-link disabled">Disabled</a>-->
                 <!--                </li>-->
             </ul>
+
         </div>
     </div>
 </nav>
@@ -81,43 +82,43 @@
         <tr>
             <td>Service Name</td>
             <td><input type="text" th:field="*{serviceName}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</td>-->
+                        <td th:if="${#fields.hasErrors('serviceName')}" th:errors="*{serviceName}"></td>
         </tr>
         <tr>
             <td>Area</td>
             <td><input type="text" th:field="*{serviceArea}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</td>-->
+                        <td th:if="${#fields.hasErrors('serviceArea')}" th:errors="*{serviceArea}"></td>
         </tr>
 
         <tr>
             <td>Cost</td>
             <td><input type="text" th:field="*{serviceCost}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
+                        <td th:if="${#fields.hasErrors('serviceCost')}" th:errors="*{serviceCost}"></td>
         </tr>
         <tr>
             <td>Max People</td>
             <td><input type="text" th:field="*{serviceMaxPeople}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone number Error</td>-->
+                        <td th:if="${#fields.hasErrors('serviceMaxPeople')}" th:errors="*{serviceMaxPeople}"></td>
         </tr>
         <tr>
             <td>Standard Room</td>
             <td><input type="text" th:field="*{standardRoom}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
+                        <td th:if="${#fields.hasErrors('standardRoom')}" th:errors="*{standardRoom}"></td>
         </tr>
         <tr>
             <td>Description</td>
             <td><input type="text" th:field="*{descriptionOtherConvenience}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
+                        <td th:if="${#fields.hasErrors('descriptionOtherConvenience')}" th:errors="*{descriptionOtherConvenience}"></td>
         </tr>
         <tr>
             <td>Pool Area</td>
             <td><input type="text" th:field="*{poolArea}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
+                        <td th:if="${#fields.hasErrors('poolArea')}" th:errors="*{poolArea}"></td>
         </tr>
         <tr>
             <td>Number of floors</td>
             <td><input type="text" th:field="*{numberOfFloors}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
+                        <td th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></td>
         </tr>
         <tr>
             <td>Rent Type</td>

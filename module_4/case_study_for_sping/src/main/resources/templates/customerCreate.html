@@ -15,19 +15,19 @@
         <!--        </button>-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link active" aria-current="page" href="#">Home</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Link</a>-->
-                <!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/select}">Select All Customer is Using service</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Customer
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" th:href="@{/customer}">Select all Customer</a></li>
-                        <li><a class="dropdown-item" href="#">Add new Customer</a></li>
+                        <li><a class="dropdown-item" th:href="@{/customer/create}">Add new Customer</a></li>
                         <!--                        <li><hr class="dropdown-divider"></li>-->
                         <!--                        <li><a class="dropdown-item" href="#">Something else here</a></li>-->
                     </ul>
@@ -37,8 +37,8 @@
                         Service
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Select all Service</a></li>
-                        <li><a class="dropdown-item" href="#">Add new Service</a></li>
+                        <li><a class="dropdown-item" th:href="@{/service}">Select all Service</a></li>
+                        <li><a class="dropdown-item" th:href="@{/service/create}">Add new Service</a></li>
 
                     </ul>
                 </li>
@@ -47,8 +47,8 @@
                         Employee
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Select all Employee</a></li>
-                        <li><a class="dropdown-item" href="#">Add new Employee</a></li>
+                        <li><a class="dropdown-item" th:href="@{/employee}">Select all Employee</a></li>
+                        <li><a class="dropdown-item"th:href="@{/employee/create}">Add new Employee</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -56,8 +56,8 @@
                         Contract
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Select all Contract</a></li>
-                        <li><a class="dropdown-item" href="#">Add new contract</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contract}">Select all Contract</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contract/create}">Add new contract</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -65,8 +65,8 @@
                         Contract Detail
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">select all contract detail</a></li>
-                        <li><a class="dropdown-item" href="#">Add new contract detail</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contractDetail}">select all contract detail</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contractDetail/create}">Add new contract detail</a></li>
                     </ul>
                 </li>
                 <!--                <li class="nav-item">-->
@@ -86,12 +86,12 @@
         <tr>
             <td>Name</td>
             <td><input type="text" th:field="*{customerName}"/></td>
-<!--            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</td>-->
+            <td th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></td>
         </tr>
         <tr>
             <td>Birthday</td>
             <td><input type="date" th:field="*{customerBirthday}"/></td>
-<!--            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</td>-->
+<!--            <td th:if="${#fields.hasErrors('customerBirthday')}" th:errors="*{customerBirthday}"></td>-->
         </tr>
         <tr>
             <td>Gender</td>
@@ -99,28 +99,28 @@
                 <input type="radio" th:field="*{customerGender}" value="true"/>Nam
                 <input type="radio" th:field="*{customerGender}" value="false"/>Nu
             </td>
-<!--            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>-->
+<!--            <td th:if="${#fields.hasErrors('customerGender')}" th:errors="*{customerGender}"></td>-->
 
         </tr>
         <tr>
             <td>ID card</td>
             <td><input type="text" th:field="*{customerIdCard}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
+                        <td th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}"></td>
         </tr>
         <tr>
             <td>Phone Number</td>
             <td><input type="text" th:field="*{customerPhone}"/></td>
-<!--            <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone number Error</td>-->
+            <td th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}">Phone number Error</td>
         </tr>
         <tr>
             <td>Email</td>
             <td><input type="text" th:field="*{customerEmail}"/></td>
-<!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
+            <td th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}">Email Error</td>
         </tr>
         <tr>
             <td>Address</td>
             <td><input type="text" th:field="*{customerAddress}"/></td>
-            <!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
+                        <td th:if="${#fields.hasErrors('customerAddress')}" th:errors="*{customerAddress}">Email Error</td>
         </tr>
         <tr>
             <td>Customer Type</td>
@@ -130,7 +130,7 @@
                     <option th:text="${item.customerTypeName}" th:value="${item.id}"></option>
                 </th:block>
             </select></td>
-            <!--            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>-->
+<!--                        <td th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}"></td>-->
         </tr>
     </table>
     <button type="submit" class="btn btn-primary">Submit</button>

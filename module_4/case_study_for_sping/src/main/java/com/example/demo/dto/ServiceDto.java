@@ -3,19 +3,41 @@ package com.example.demo.dto;
 import com.example.demo.model.RentType;
 import com.example.demo.model.ServiceType;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 
 public class ServiceDto {
     private int id;
+    @NotEmpty
+    @NotBlank
     private String serviceName;
+
+    @Min(0)
     private int serviceArea;
+
+    @Min(0)
     private double serviceCost;
+
+    @Min(0)
     private int serviceMaxPeople;
+    @NotEmpty
+    @NotBlank
     private String standardRoom;
+    @NotEmpty
+    @NotBlank
     private String descriptionOtherConvenience;
+
+    @Min(0)
     private double poolArea;
+
     private int numberOfFloors;
+//    @NotEmpty
+//    @NotBlank
     private RentType rentType;
+//    @NotEmpty
+//    @NotBlank
     private ServiceType serviceType;
 
     public ServiceDto() {

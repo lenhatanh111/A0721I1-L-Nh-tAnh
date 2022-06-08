@@ -3,18 +3,39 @@ package com.example.demo.dto;
 import com.example.demo.model.Customer;
 import com.example.demo.model.Employee;
 import com.example.demo.model.Service;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class ContractDto {
     int id;
-    Date contractStartDate;
-    Date contractEndDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @NotEmpty
+//    @NotBlank
+            Date contractStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @NotEmpty
+//    @NotBlank
+            Date contractEndDate;
+
+    @Min(0)
     double contractDeposit;
+
+    @Min(0)
     double contractTotalMoney;
+//        @NotEmpty
+//    @NotBlank
     private Customer customer;
+    //    @NotEmpty
+//    @NotBlank
     private Employee employee;
+    //    @NotEmpty
+//    @NotBlank
     private Service service;
 
     public ContractDto() {

@@ -9,4 +9,5 @@ import java.util.List;
 public interface ServiceService {
     void save(Service service);
     Page<Service> findAll(Pageable pageable);
+    List<Service> getAll();
 }

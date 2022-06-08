@@ -15,12 +15,12 @@
         <!--        </button>-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/select}">Select All Customer is Using service</a>
-                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" th:href="@{/select}">Select All Customer is Using service</a>
+                                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Customer
@@ -76,38 +76,5 @@
         </div>
     </div>
 </nav>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Start Date</th>
-        <th scope="col">End Date</th>
-        <th scope="col">Deposit</th>
-        <th scope="col">Total Money</th>
-        <th scope="col">Customer</th>
-        <th scope="col">Employee</th>
-        <th scope="col">Service</th>
-
-
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="item : ${contracts}">
-        <td scope="row" th:text="${item.id}"></td>
-        <td scope="row" th:text="${item.contractStartDate}"></td>
-        <td scope="row" th:text="${item.contractEndDate}"></td>
-        <td scope="row" th:text="${item.contractDeposit}"></td>
-        <td scope="row" th:text="${item.contractTotalMoney}"></td>
-        <td scope="row" th:text="${item.customer.customerName}"></td>
-        <td scope="row" th:text="${item.employee.employeeName}"></td>
-        <td scope="row" th:text="${item.service.serviceName}"></td>
-
-    </tr>
-    </tbody>
-</table>
-<a th:href="@{'/contract'(page=${contracts.number - 1})}" th:if="${contracts.hasPrevious()}">Previous</a>
-<span th:text="${contracts.number + 1}"></span>/<span th:text="${contracts.totalPages}"></span>
-<a th:href="@{'/contract'(page=${contracts.number + 1})}" th:if="${contracts.hasNext()}">Next</a>
-
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -9,7 +11,9 @@ public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+    @DateTimeFormat(pattern = "yyy-MM-dd")
     Date contractStartDate;
+    @DateTimeFormat(pattern = "yyy-MM-dd")
     Date contractEndDate;
     double contractDeposit;
     double contractTotalMoney;

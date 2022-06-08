@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Contract;
-import com.example.demo.repository.ContractRepository;
+import com.example.demo.model.ContractDetail;
+import com.example.demo.repository.ContractDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,21 +10,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ContractServiceImpl implements ContractService{
+public class ContractDetailServiceImpl implements ContractDetailService {
     @Autowired
-    private ContractRepository repository;
+    private ContractDetailRepository repository;
     @Override
-    public Page<Contract> findAll(Pageable pageable) {
+    public Page<ContractDetail> findAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
     @Override
-    public void save(Contract contract) {
-repository.save(contract);
+    public void save(ContractDetail contractDetail) {
+repository.save(contractDetail);
     }
 
     @Override
-    public List<Contract> getAll() {
+    public List<ContractDetail> getAll() {
         return repository.findAll();
     }
 }

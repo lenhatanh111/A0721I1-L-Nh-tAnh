@@ -14,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,11 +60,15 @@ public class EmployeeController {
         return "/employeeCreate";
     }
     @PostMapping("/create")
-    public String save(@ModelAttribute EmployeeDto employeeDto,Model model){
-        Employee employee=new Employee();
-        BeanUtils.copyProperties(employeeDto, employee);
-        service.save(employee);
-        return "redirect:/employee";
+    public String save(@ModelAttribute @Validated EmployeeDto employeeDto, BindingResult bindingResult, Model model){
+        if (bindingResult.hasFieldErrors()){
+            return "/employeeCreate";
+        }else {
+            Employee employee = new Employee();
+            BeanUtils.copyProperties(employeeDto, employee);
+            service.save(employee);
+            return "redirect:/employee";
+        }
     }
     @PostMapping("/delete")
     public String delete(@RequestParam("id") int id){
@@ -78,10 +84,13 @@ public class EmployeeController {
         return "/employeeEdit";
     }
     @PostMapping("/update")
-    public String update(@ModelAttribute EmployeeDto employeeDto,@RequestParam("id") int id){
+    public String update(@ModelAttribute @Validated EmployeeDto employeeDto,BindingResult bindingResult,@RequestParam("id") int id){
+        if (bindingResult.hasFieldErrors()){
+            return "/employeeEdit";
+        }else {
         Employee employee=service.findById(id);
         BeanUtils.copyProperties(employeeDto, employee);
         service.save(employee);
         return "redirect:/employee";
-    }
+    }}
 }

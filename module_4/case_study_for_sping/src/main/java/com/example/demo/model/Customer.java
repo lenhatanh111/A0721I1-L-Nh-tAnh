@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String customerName;
-    @DateTimeFormat(pattern = "yyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date customerBirthday;
     private boolean customerGender;
     private String customerIdCard;
@@ -22,6 +23,7 @@ public class Customer {
     @ManyToOne(targetEntity = CustomerType.class)
     private CustomerType customerType;
     @OneToMany(mappedBy = "customer")
+    @JsonBackReference
     List<Contract> contracts;
 
     public Customer() {

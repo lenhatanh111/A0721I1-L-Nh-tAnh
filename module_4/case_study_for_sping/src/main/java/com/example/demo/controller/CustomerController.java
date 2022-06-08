@@ -49,12 +49,14 @@ return "/customerCreate";
 
 }
     @PostMapping("/create")
-    public String create(@ModelAttribute CustomerDto customerDto, Model model) {
-
+    public String create(@ModelAttribute @Validated CustomerDto customerDto,BindingResult bindingResult, Model model) {
+        if (bindingResult.hasFieldErrors()){
+            return "/customerCreate";}
+        else {
             Customer customer = new Customer();
             BeanUtils.copyProperties(customerDto, customer);
             service.save(customer);
-            return "redirect:/customer";
+            return "redirect:/customer";}
     }
     @PostMapping("/delete")
     public String delete(@RequestParam("id") int id){
@@ -70,10 +72,14 @@ return "/customerCreate";
     return "/customerEdit";
    }
    @PostMapping("/update")
-    public String update(@ModelAttribute CustomerDto customerDto,@RequestParam("id") int id){
-    Customer customer=service.findById(id);
-       BeanUtils.copyProperties(customerDto, customer);
-       service.save(customer);
-       return "redirect:/customer";
+    public String update(@ModelAttribute @Validated CustomerDto customerDto,BindingResult bindingResult,@RequestParam("id") int id){
+       if (bindingResult.hasFieldErrors()){
+           return "/customerEdit";}
+       else {
+           Customer customer = service.findById(id);
+           BeanUtils.copyProperties(customerDto, customer);
+           service.save(customer);
+           return "redirect:/customer";
+       }
    }
 }

@@ -18,5 +18,6 @@ public interface EmployeeService {
     void delete(int id);
 
     Page<Employee> getAllEmployee(String name, String address, Pageable pageable);
+    List<Employee> findAll();
 
 }

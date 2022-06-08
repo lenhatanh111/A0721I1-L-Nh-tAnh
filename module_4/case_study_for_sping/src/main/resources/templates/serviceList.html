@@ -15,12 +15,12 @@
         <!--        </button>-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link active" aria-current="page" href="#">Home</a>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" href="#">Link</a>-->
-                <!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/select}">Select All Customer is Using service</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Customer
@@ -37,7 +37,7 @@
                         Service
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item"th:href="@{/service}">Select all Service</a></li>
+                        <li><a class="dropdown-item" th:href="@{/service}">Select all Service</a></li>
                         <li><a class="dropdown-item" th:href="@{/service/create}">Add new Service</a></li>
 
                     </ul>
@@ -47,8 +47,8 @@
                         Employee
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Select all Employee</a></li>
-                        <li><a class="dropdown-item" href="#">Add new Employee</a></li>
+                        <li><a class="dropdown-item" th:href="@{/employee}">Select all Employee</a></li>
+                        <li><a class="dropdown-item"th:href="@{/employee/create}">Add new Employee</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -56,8 +56,8 @@
                         Contract
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Select all Contract</a></li>
-                        <li><a class="dropdown-item" href="#">Add new contract</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contract}">Select all Contract</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contract/create}">Add new contract</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -65,14 +65,15 @@
                         Contract Detail
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">select all contract detail</a></li>
-                        <li><a class="dropdown-item" href="#">Add new contract detail</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contractDetail}">select all contract detail</a></li>
+                        <li><a class="dropdown-item" th:href="@{/contractDetail/create}">Add new contract detail</a></li>
                     </ul>
                 </li>
                 <!--                <li class="nav-item">-->
                 <!--                    <a class="nav-link disabled">Disabled</a>-->
                 <!--                </li>-->
             </ul>
+
         </div>
     </div>
 </nav>
