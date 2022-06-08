@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!--        <a class="navbar-brand" href="#">Navbar</a>-->
+        <!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--            <span class="navbar-toggler-icon"></span>-->
+        <!--        </button>-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link active" aria-current="page" href="#">Home</a>-->
+                <!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link" href="#">Link</a>-->
+                <!--                </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Customer
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/customer}">Select all Customer</a></li>
+                        <li><a class="dropdown-item" th:href="@{/customer/create}">Add new Customer</a></li>
+                        <!--                        <li><hr class="dropdown-divider"></li>-->
+                        <!--                        <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Service
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/service}">Select all Service</a></li>
+                        <li><a class="dropdown-item" th:href="@{/service/create}">Add new Service</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Employee
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/employee}">Select all Employee</a></li>
+                        <li><a class="dropdown-item" th:href="@{/employee/create}">Add new Employee</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Contract
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Select all Contract</a></li>
+                        <li><a class="dropdown-item" href="#">Add new contract</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Contract Detail
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">select all contract detail</a></li>
+                        <li><a class="dropdown-item" href="#">Add new contract detail</a></li>
+                    </ul>
+                </li>
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link disabled">Disabled</a>-->
+                <!--                </li>-->
+            </ul>
+            <form class="d-flex" method="get" action="/employee">
+                <input class="form-control me-2" type="search" placeholder="name" name="name" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="address" name="address" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">name</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">ID Card</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Division</th>
+        <th scope="col">Education Degree</th>
+        <th scope="col">Position</th>
+        <th scope="col">Username</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${employees}">
+        <td scope="row" th:text="${item.id}"></td>
+        <td scope="row" th:text="${item.employeeName}"></td>
+        <td scope="row" th:text="${item.employeeBirthday}"></td>
+        <td scope="row" th:text="${item.employeeIdCard}"></td>
+        <td scope="row" th:text="${item.employeeSalary}"></td>
+        <td scope="row" th:text="${item.employeePhone}"></td>
+        <td scope="row" th:text="${item.employeeEmail}"></td>
+        <td scope="row" th:text="${item.employeeAddress}"></td>
+        <td scope="row" th:text="${item.division.divisionName}"></td>
+        <td scope="row" th:text="${item.educationDegree.educationDegreeName}"></td>
+        <td scope="row" th:text="${item.position.positionName}"></td>
+        <td scope="row" th:text="${item.user.name}"></td>
+        <td><a th:href="@{/employee/{id}/update(id=${item.getId()})}">edit</a></td>
+        <td><button th:onclick="'javascript:infoDelete(' + ${item.id} + ')'" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+            Delete</button></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{'/employee'(page=${employees.number - 1},name=${name},address=${address})}" th:if="${employees.hasPrevious()}">Previous</a>
+<span th:text="${employees.number + 1}"></span>/<span th:text="${employees.totalPages}"></span>
+<a th:href="@{'/employee'(page=${employees.number + 1},name=${name},address=${address})}" th:if="${employees.hasNext()}">Next</a>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/employee/delete" method="post">
+                    <div class="modal-body">
+                        <span>Do you want to delete Employee? </span>
+                        <input type="text" id="id" name="id" hidden>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Xóa</button>
+                    </div>
+                </form>
+            </div>
+        </div>-->
+    </div>
+</div>
+</div>
+<script>
+    function infoDelete(id) {
+        document.getElementById("id").value=id;
+
+    }
+</script>
+</body>
+</html>
