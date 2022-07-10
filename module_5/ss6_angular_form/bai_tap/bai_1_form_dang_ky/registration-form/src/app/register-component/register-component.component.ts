@@ -38,7 +38,7 @@ registerForm=new FormGroup({
   confirmPassword : new FormControl("",[Validators.required,Validators.minLength(6),password]),
   country : new FormControl("",Validators.required),
   age : new FormControl("",[Validators.required,Validators.min(19)]),
-  gender : new FormControl("",Validators.required),
+  gender : new FormControl("male",Validators.required),
   phone : new FormControl("",[Validators.required,Validators.pattern("\\+84\\d{9,10}$")]),
 })
 

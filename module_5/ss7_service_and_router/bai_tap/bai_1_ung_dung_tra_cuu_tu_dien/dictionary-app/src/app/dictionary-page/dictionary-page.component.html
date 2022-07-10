@@ -1,0 +1,20 @@
+<h2>List words in dictionary</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">word</th>
+    <th scope="col">mean</th>
+    <th scope="col">detail</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let word of words; index as i">
+    <th scope="row">{{i+1}}</th>
+    <td>{{word.word}}</td>
+    <td>{{word.mean}}</td>
+    <td><a [routerLink]="['/dictionary', word.word]">{{word.word}}</a></td>
+  </tr>
+  </tbody>
+</table>
+<router-outlet></router-outlet>

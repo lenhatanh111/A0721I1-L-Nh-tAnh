@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "todos": [
+    {
+      "id" :1,
+      "content":"write",
+      "complete": true
+    },{
+      "id" :2,
+      "content":"read",
+      "complete": false
+    },
+    {
+      "id" :3,
+      "content":"listen",
+      "complete": true
+    },{
+      "id" :4,
+      "content":"speak",
+      "complete": true
+    }
+  ]
+}
