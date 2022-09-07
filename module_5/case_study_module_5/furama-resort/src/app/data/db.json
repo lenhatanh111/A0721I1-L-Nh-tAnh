@@ -1,0 +1,118 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "customerTypes": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ],
+  "customers": [
+    {
+      "id": "KH-0001",
+      "name": "le nhat anh",
+      "birthday": "28-01-2000",
+      "gender": true,
+      "idCard": "000000001",
+      "phoneNumber": "0352489513",
+      "email": "nhatanh@gmail.com",
+      "address": "quang ngai",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      }
+
+    },
+    {
+      "id": "KH-0001",
+      "name": "le nhat anh",
+      "birthday": "28-01-2000",
+      "gender": true,
+      "idCard": "000000001",
+      "phoneNumber": "0352489513",
+      "email": "nhatanh@gmail.com",
+      "address": "quang ngai",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      }
+
+    },
+    {
+      "id": "KH-0001",
+      "name": "le nhat anh",
+      "birthday": "28-01-2000",
+      "gender": true,
+      "idCard": "000000001",
+      "phoneNumber": "0352489513",
+      "email": "nhatanh@gmail.com",
+      "address": "quang ngai",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      }
+
+    },
+    {
+      "id": "KH-0002",
+      "name": "le nhat anh",
+      "birthday": "28-01-2000",
+      "gender": false,
+      "idCard": "000000002",
+      "phoneNumber": "0352489513",
+      "email": "nhatanh@gmail.com",
+      "address": "quang ngai",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      }
+
+    },
+    {
+      "id": "KH-0003",
+      "name": "le nhat anh",
+      "birthday": "28-01-2000",
+      "gender": true,
+      "idCard": "000000003",
+      "phoneNumber": "0352489513",
+      "email": "nhatanh@gmail.com",
+      "address": "quang ngai",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      }
+
+    }
+  ]
+}

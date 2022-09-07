@@ -3,11 +3,38 @@
 </h2>
 <div class="col-md-8 offset-md-2">
   <input type="text" class="form-control" [formControl]="content" (change)="change()">
-  <ul>
-    <li (click)="toggleTodo(i)"
-        [class.complete]="todo.complete"
-        *ngFor="let todo of todos; index as i">
-      {{todo.content}}
-    </li>
-  </ul>
-</div>
+
+  <table>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+    <tr *ngFor="let todo of todos; index as i">
+<td (click)="toggleTodo(i)"[class.complete]="todo.complete">
+    {{todo.content}}
+  </td>
+      <td><button type="button"  (click)="delete(todo.id)">delete</button></td>
+      <td><button type="button" [routerLink]="['/edit',todo.id]">edit</button></td>
+      </tr>
+    </table>
+  </div>
+<!--<div class="modal" tabindex="-1">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title"> Delete ToDo</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <p>Do you want to delete todo </p>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--        <button type="button" class="btn btn-primary" (click)="delete(send_id)">Save changes</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<router-outlet></router-outlet>

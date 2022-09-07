@@ -18,4 +18,8 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     Page<Customer> findAll(@Param("name") String name, @Param("address") String address,Pageable pageable);
 
     Customer findCustomerById(int id);
+//    @Transactional
+//    @Modifying
+    @Query(value = "update booking set booking.received = 1 where account.id =:id", nativeQuery = true)
+    void deleteMember(@Param("id") Long id);
 }

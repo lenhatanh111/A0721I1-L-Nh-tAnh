@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoComponent } from './component/todo-list/todo.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { TodoListComponent } from './component/todo-list/todo-list.component';
@@ -14,7 +13,6 @@ import { TodoDeleteComponent } from './component/todo-delete/todo-delete.compone
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent,
     TodoListComponent,
     TodoAddComponent,
     TodoEditComponent,

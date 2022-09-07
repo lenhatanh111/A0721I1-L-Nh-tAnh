@@ -1,0 +1,31 @@
+<h1>List of customers</h1>
+<table table table-striped>
+  <tr>
+    <td>ID</td>
+    <td>name</td>
+    <td>Birthday</td>
+    <td>Gender</td>
+    <td>ID Card</td>
+    <td>Phone Number</td>
+    <td>Email</td>
+    <td>Address</td>
+    <td>Customer Type</td>
+    <td>Action</td>
+  </tr>
+  <tr *ngFor="let customer of customers">
+    <td>{{customer.id}}</td>
+    <td>{{customer.name}}</td>
+    <td>{{customer.birthday}}</td>
+<!--    <td >{{customer.gender}}</td>-->
+    <td *ngIf="customer.gender">nam</td>
+    <td *ngIf="!customer.gender">nu</td>
+    <td>{{customer.idCard}}</td>
+    <td>{{customer.phoneNumber}}</td>
+    <td>{{customer.email}}</td>
+    <td>{{customer.address}}</td>
+    <td>{{customer.customerType.name}}</td>
+    <td><button type="button" [routerLink]="['customer/edit',customer.id]">edit</button>
+      <button type="button" [routerLink]="['customer/delete',customer.id]">delete</button></td>
+  </tr>
+</table>
+<router-outlet></router-outlet>

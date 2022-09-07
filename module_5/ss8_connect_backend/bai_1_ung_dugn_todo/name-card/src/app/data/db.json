@@ -18,21 +18,25 @@
   },
   "todos": [
     {
-      "id" :1,
-      "content":"write",
+      "id": 1,
+      "content": "speak",
       "complete": true
-    },{
-      "id" :2,
-      "content":"read",
-      "complete": false
+    }, {
+      "id": 2,
+      "content": "speak",
+      "complete": true
+    }, {
+      "id": 3,
+      "content": "speak",
+      "complete": true
+    }, {
+      "id": 4,
+      "content": "speak",
+      "complete": true
     },
     {
-      "id" :3,
-      "content":"listen",
-      "complete": true
-    },{
-      "id" :4,
-      "content":"speak",
+      "id": 5,
+      "content": "speak",
       "complete": true
     }
   ]

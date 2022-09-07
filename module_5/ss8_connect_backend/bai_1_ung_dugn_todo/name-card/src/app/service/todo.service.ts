@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Todo} from "../model/todo";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
+import {environment} from "../../environments/environment";
+import {catchError, tap} from "rxjs/operators";
 
-const URL='http://localhost:3000/todos';
+const URL=`${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
 })
@@ -17,13 +19,14 @@ export class TodoService {
     return this.http.post<Todo>(URL,todo);
   }
   findById(id : number):Observable<Todo>{
-    return this.http.get<Todo>(`${URL}/${id}`)
+    return this.http.get<Todo>(URL+"/"+id);
   }
   update(id: number, todo: Todo): Observable<Todo> {
-    return this.http.put<Todo>(`${URL}/${id}`, todo);
+    return this.http.put<Todo>(URL+"/"+id, todo);
   }
 
   delete(id: number): Observable<Todo> {
-    return this.http.delete<Todo>(`${URL}/${id}`);
+    return this.http.delete<Todo>(URL+"/"+id).pipe(tap(_=>console.log(`delete product by id = ${id}`)),
+      catchError(error => of (null)));
   }
 }
