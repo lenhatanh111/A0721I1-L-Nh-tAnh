@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+            crossorigin="anonymous"></script>
+    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />-->
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="css/MemberEdit.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+<div class="container-scroller">
+    <div>
+        Navbar
+    </div>
+    <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item nav-profile">
+                    <a href="#" class="nav-link">
+                        <div class="profile-image">
+                            <img class="img-xs rounded-circle"
+                                 src="https://tse1.mm.bing.net/th?id=OIP.uBlH_VgWPHHXNImlM0I-jwHaHa&pid=Api&P=0"
+                                 alt="profile image">
+                            <div class="dot-indicator bg-succes"></div>
+                        </div>
+                        <div class="text-wrapper">
+                            <p class="profile-name">Name User</p>
+                            <p class="designation">Role</p>
+                        </div>
+                        <div class="icon-container">
+                            <i class="icon-bubbles"></i>
+                            <div class="dot-indicator bg-danger"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item nav-category">
+                    <span class="nav-link">Vé</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                       aria-controls="ui-basic">
+                        <span class="menu-title">Vé</span>
+                        <i class="icon-layers menu-icon">
+                            <ion-icon name="ticket-outline"></ion-icon>
+                        </i>
+
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="#">Vé</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Quản Lý Đặt Vé</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item nav-category">
+                    <span class="nav-link">Nhân Viên</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="menu-title">Quản Lý Nhân Viên</span>
+                        <i class="icon-globe menu-icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </i>
+                    </a>
+                </li>
+                <li class="nav-item nav-category">
+                    <span class="nav-link">Thành Viên</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="MemberList.html">
+                        <span class="menu-title">Quản Lý Thành Viên</span>
+                        <i class="icon-globe menu-icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </i>
+                    </a>
+                </li>
+                <li class="nav-item nav-category">
+                    <span class="nav-link">Thống Kê</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="menu-title">Thống Kê</span>
+                        <i class="icon-globe menu-icon">
+                            <ion-icon name="bar-chart-outline"></ion-icon>
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-panel">
+            <div class="content-wrapper" id="background">
+                <div class="container">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card">
+
+                            <div class="card-body">
+                                <div style="text-align: center">
+                                    <h4 class="card-title mb-sm-0">Xác nhận nhận vé</h4>
+                                </div>
+                                <hr>
+
+                                <div class="d-flex">
+                                    <div class="col-4">
+                                        <img src="https://bazaarvietnam.vn/wp-content/uploads/2022/05/Harpers-Bazaar-Em-va-Trinh-poster_03.jpg"
+                                             alt="">
+                                    </div>
+                                    <div class="col-8">
+                                        <form>
+                                            <table class="table table-hover">
+                                                <tr>
+                                                    <th><h2> Em và Trịnh</h2></th>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">Màn hình :</th>
+                                                    <td scope="row">Scrn 02</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">Ngày chiếu :</th>
+                                                    <td scope="row">23/07/2022</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">Giờ chiếu :</th>
+                                                    <td scope="row">8:20</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">Ghế :</th>
+                                                    <td scope="row">B8 B9 C10</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">Giá :</th>
+                                                    <td scope="row">
+
+                                                        <li>B8 : 45,000 VND</li>
+                                                        <li>B9 : 55,000 VND</li>
+                                                        <li>C10 : 50,000 VND</li>
+
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th scope="col">Tổng cộng :</th>
+                                                    <td scope="row">180,000 VND</td>
+                                                </tr>
+
+                                                &nbsp;&nbsp;
+                                                <tr>
+                                                    <th><h2> Thông tin thành viên</h2></th>
+                                                    <td></td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>Mã thành viên :</th>
+                                                    <td>TV00001</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">CMND :</th>
+                                                    <td scope="row">268846664</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">Họ tên :</th>
+                                                    <td scope="row">Nguyễn Long</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="col">Điểm thành viên :</th>
+                                                    <td scope="row">18,000</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th scope="col">Số điện thoại :</th>
+                                                    <td scope="row">0905 123 456</td>
+                                                </tr>
+
+                                            </table>
+                                            <input class="btn btn-outline-danger" type="submit"
+                                                   value="Xác nhận nhận vé">
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        Footer
+    </div>
+</div>
+<script>
+    var password = document.getElementById('fakePassword');
+    var toggler = document.getElementById('toggler');
+    showHidePassword = () => {
+        if (password.type == 'password') {
+            password.setAttribute('type', 'text');
+            toggler.classList.add('fa-eye-slash');
+        } else {
+            toggler.classList.remove('fa-eye-slash');
+            password.setAttribute('type', 'password');
+        }
+    };
+    toggler.addEventListener('click', showHidePassword);
+
+    // $('.datepicker').datepicker({
+    //     weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+    //     showMonthsShort: true
+    // })
+</script>
+</body>
+</html>

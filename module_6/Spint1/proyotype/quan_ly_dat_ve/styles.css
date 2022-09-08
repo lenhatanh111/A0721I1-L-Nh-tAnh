@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: url(https://media.discordapp.net/attachments/925012908029657189/929269525755617300/bg-login.png?width=721&height=406);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-position: center;
+}
+
+.main {
+
+    padding: 30px 32px 20px;
+}
+
+/* Product */
+.main__product {
+    display: flex;
+    padding: 10px;
+}
+
+.main__product-img {
+    width: 40%;
+    padding-top: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+.main__product-info {
+    width: 60%;
+    padding: 10px;
+    background-color: rgba(15, 14, 14, 0.7);
+}
+
+/* Column layout */
+
+
+
+/* Mobile: width < 740px */
+@media only screen and (max-width: 46.1875em) {
+
+}
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+
+}
+.form-container {
+    padding: 40px 32px 20px;
+}
+.form-main {
+
+    background-color: rgba(15, 14, 14, 0.7);
+    text-align: left;
+    margin: 0 auto;
+    padding: 30px 50px 50px;
+}

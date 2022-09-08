@@ -1,0 +1,62 @@
+<table class="table table-hover">
+                      <tr>
+                        <th><h2>{{bookingDetail?.name}}</h2></th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Ngày chiếu :</th>
+                        <td scope="row">{{bookingDetail?.date_Show}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Giờ chiếu :</th>
+                        <td scope="row">{{bookingDetail?.time_Show}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Ghế :</th>
+                        <td scope="row">{{bookingDetail?.seat_Name}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">loai :</th>
+                        <td scope="row">{{bookingDetail?.vip}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Giá :</th>
+                        <td scope="row">
+                          <li>{{bookingDetail?.price}}</li>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Điểm đổi vé :</th>
+                        <td scope="row">{{bookingDetail?.point_Exchange}}</td>
+                      </tr>
+
+                      <tr>
+                        <th scope="col">Tổng cộng :</th>
+                        <td scope="row">{{bookingDetail?.total_Price}}</td>
+                      </tr>
+
+                      &nbsp;&nbsp;
+                      <tr>
+                        <th><h2> Thông tin thành viên</h2></th>
+                        <td></td>
+                      </tr>
+
+
+                      <tr>
+                        <th>Mã thành viên :</th>
+                        <td>{{bookingDetail?.account_Code}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">CMND :</th>
+                        <td scope="row">{{bookingDetail?.id_Card}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Họ tên :</th>
+                        <td scope="row">{{bookingDetail?.fullname}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Số điện thoại :</th>
+                        <td scope="row">{{bookingDetail?.phone}}</td>
+                      </tr>
+
+                    </table>

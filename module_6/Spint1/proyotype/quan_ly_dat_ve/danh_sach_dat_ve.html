@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách đặt vé</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div>
+<div style="color: white;margin-left: 30px">
+    <br>
+    <h2>
+        Quản lý đặt vé
+    </h2>
+</div>
+    <br>
+<div style="margin-left: 30px">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+    </form>
+</div>
+    <br>
+<div class="form-container">
+    <div class="form-main">
+    <table class="table table-hover">
+        <thead>
+        <tr style="color: #fff">
+            <th scope="col" >STT</th>
+            <th scope="col" >Mã đặt vé</th>
+            <th scope="col">Mã thành viên</th>
+            <th scope="col">Họ tên</th>
+            <th scope="col">CMND</th>
+            <th scope="col">Số điện thoại</th>
+            <th scope="col">Phim</th>
+            <th scope="col">Xuất chiếu</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr style="color: #fff">
+            <th scope="row">1</th>
+            <td>BV00001</td>
+            <td>TV00001</td>
+            <td>Nguyễn Long</td>
+            <td>2012656</td>
+            <td>035246655</td>
+            <td>Harry Potter</td>
+            <td>22/7/2020 8:40</td>
+            <td>
+                <input class="btn btn-outline-danger" type="submit" value="Nhận vé">
+            </td>
+        </tr>
+        <tr style="color: #fff">
+            <th scope="row">2</th>
+            <td>BV00002</td>
+            <td>TV00002</td>
+            <td>Nguyễn Hoàng</td>
+            <td>256265626</td>
+            <td>035246655</td>
+            <td>Em và Trịnh</td>
+            <td>22/7/2020 8:40</td>
+            <td>
+                <input class="btn btn-outline-danger" type="submit" value="Nhận vé">
+            </td>
+        </tr >
+        <tr style="color: #fff">
+            <th scope="row">3</th>
+            <td>BV00003</td>
+            <td>TV00003</td>
+            <td>Lê Nhật Anh</td>
+            <td>65494911</td>
+            <td>035246655</td>
+            <td>minions</td>
+            <td>22/7/2020 8:40</td>
+            <td>
+                <input class="btn btn-outline-danger" type="submit" value="Nhận vé">
+            </td>
+        </tr> <tr style="color: #fff">
+            <th scope="row">4</th>
+            <td>BV00004</td>
+            <td>TV000034</td>
+            <td>Lê An</td>
+            <td>65494911</td>
+            <td>035246655</td>
+            <td>John Wick 4</td>
+            <td>22/7/2020 8:40</td>
+            <td>
+                <input class="btn btn-outline-danger" type="submit" value="Nhận vé">
+            </td>
+        </tr> <tr style="color: #fff">
+            <th scope="row">5</th>
+            <td>BV00005</td>
+            <td>TV00005</td>
+            <td>Nguyen Van Hao</td>
+            <td>65494911</td>
+            <td>035246655</td>
+            <td>chua te cua nhung chiec nhan</td>
+            <td>22/7/2020 8:40</td>
+            <td>
+                <input class="btn btn-outline-danger" type="submit" value="Nhận vé">
+            </td>
+        </tr> <tr style="color: #fff">
+            <th scope="row">6</th>
+            <td>BV00006</td>
+            <td>TV00006</td>
+            <td>Tran Van Phong</td>
+            <td>65494911</td>
+            <td>035246655</td>
+            <td>cuop bien vung caribe</td>
+            <td>22/7/2020 8:40</td>
+            <td>
+                <input class="btn btn-outline-danger" type="submit" value="Nhận vé">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+</div>
+</body>
+</html>
