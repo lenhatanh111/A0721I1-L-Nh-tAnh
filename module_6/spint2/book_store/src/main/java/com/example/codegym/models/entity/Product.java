@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -21,6 +22,7 @@ public class Product {
     private String name;
 
     @Column(name = "description")
+    @Lob
     private String description;
 
     @Column(name = "unit_price")
@@ -28,10 +30,6 @@ public class Product {
 
     @Column(name = "image_url")
     private String imageUrl;
-
-    @Column(name = "image_store")
-    @Lob
-    private String imageStore;
 
     @Column(name = "active")
     private Boolean active;
@@ -49,7 +47,7 @@ public class Product {
 
     @ManyToOne
     @JsonBackReference
-    @LazyCollection(LazyCollectionOption.FALSE)
+//    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "category_id")
     private ProductCategory category;
 
@@ -64,26 +62,32 @@ public class Product {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     @JsonIgnore
     private Set<Rates> rates;
+    @ManyToOne(targetEntity = Publisher.class)
+    @JsonBackReference
+    private Publisher publisher;
+    @ManyToOne(targetEntity = Author.class)
+    @JsonBackReference
+    private Author author;
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
     public Product() {
     }
 
-    public Product(Long id, String name, String description, BigDecimal unitPrice, String imageUrl, String imageStore, Boolean active, int unitInStock, Date dateCreated, Date lastUpdated, ProductCategory category, Set<OrderDetail> orderDetails, Set<CartDetail> cartDetails, Set<Rates> rates) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.unitPrice = unitPrice;
-        this.imageUrl = imageUrl;
-        this.imageStore = imageStore;
-        this.active = active;
-        this.unitInStock = unitInStock;
-        this.dateCreated = dateCreated;
-        this.lastUpdated = lastUpdated;
-        this.category = category;
-        this.orderDetails = orderDetails;
-        this.cartDetails = cartDetails;
-        this.rates = rates;
-    }
 
     public Long getId() {
         return id;
@@ -124,14 +128,7 @@ public class Product {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-
-    public String getImageStore() {
-        return imageStore;
-    }
-
-    public void setImageStore(String imageStore) {
-        this.imageStore = imageStore;
-    }
+    
 
     public Boolean getActive() {
         return active;

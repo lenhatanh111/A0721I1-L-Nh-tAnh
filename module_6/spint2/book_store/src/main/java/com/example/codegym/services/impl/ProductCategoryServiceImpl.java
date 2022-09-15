@@ -23,60 +23,60 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Autowired
     ProductCategoryConverter productCategoryConverter;
 
-    @Override
-    public List<ProductCategoryDTO> getAll() {
-        List<ProductCategory> categories = productCategoryRepository.findByActiveTrue();
-        List<ProductCategoryDTO> categoryDTOs = new ArrayList<ProductCategoryDTO>();
-        for (ProductCategory category : categories) {
-            categoryDTOs.add(productCategoryConverter.toDTO(category));
-        }
-
-        return categoryDTOs;
-
-    }
-
-    @Override
-    public Page<ProductCategoryDTO> getAllPaginate(Integer page, Integer size) {
-        Pageable paging = PageRequest.of(page, size);
-        Page<ProductCategory> productsPage = productCategoryRepository.findByActiveTrue(paging);
-        Page<ProductCategoryDTO> productsDtoPage = productCategoryConverter.toPageProductDto(productsPage);
-        return productsDtoPage;
-    }
+//    @Override
+//    public List<ProductCategoryDTO> getAll() {
+//        List<ProductCategory> categories = productCategoryRepository.findByActiveTrue();
+//        List<ProductCategoryDTO> categoryDTOs = new ArrayList<ProductCategoryDTO>();
+//        for (ProductCategory category : categories) {
+//            categoryDTOs.add(productCategoryConverter.toDTO(category));
+//        }
+//
+//        return categoryDTOs;
+//
+//    }
 
     @Override
-    public ProductCategoryDTO save(ProductCategoryDTO productDTO) {
-        ProductCategory product = productCategoryConverter.toEntity(productDTO);
-        product = productCategoryRepository.save(product);
-        productDTO.setId(product.getId());
+    public List<ProductCategory> getAllPaginate() {
 
-        return productDTO;
+        List<ProductCategory> productsPage = productCategoryRepository.findAllByActiveTrue();
+
+        return productsPage;
     }
 
-    @Override
-    public ProductCategoryDTO update(ProductCategoryDTO product, Long id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void delete(Long id) {
-        ProductCategory existingProduct = productCategoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id :" + id));
-
-        existingProduct.setActive(false);
-        productCategoryRepository.save(existingProduct);
-    }
-
-    @Override
-    public ProductCategoryDTO findByid(Long id) {
-        ProductCategory existingProduct = productCategoryRepository.findByIdAndActiveTrue(id);
-        return productCategoryConverter.toDTO(existingProduct);
-    }
-
-    @Override
-    public ProductCategoryDTO getByName(String name) {
-        ProductCategory existingProduct = productCategoryRepository.findByCategoryNameAndActiveTrue(name);
-        return productCategoryConverter.toDTO(existingProduct);
-
-    }
+//    @Override
+//    public ProductCategoryDTO save(ProductCategoryDTO productDTO) {
+//        ProductCategory product = productCategoryConverter.toEntity(productDTO);
+//        product = productCategoryRepository.save(product);
+//        productDTO.setId(product.getId());
+//
+//        return productDTO;
+//    }
+//
+//    @Override
+//    public ProductCategoryDTO update(ProductCategoryDTO product, Long id) {
+//        // TODO Auto-generated method stub
+//        return null;
+//    }
+//
+//    @Override
+//    public void delete(Long id) {
+//        ProductCategory existingProduct = productCategoryRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id :" + id));
+//
+//        existingProduct.setActive(false);
+//        productCategoryRepository.save(existingProduct);
+//    }
+//
+//    @Override
+//    public ProductCategoryDTO findByid(Long id) {
+//        ProductCategory existingProduct = productCategoryRepository.findByIdAndActiveTrue(id);
+//        return productCategoryConverter.toDTO(existingProduct);
+//    }
+//
+//    @Override
+//    public ProductCategoryDTO getByName(String name) {
+//        ProductCategory existingProduct = productCategoryRepository.findByCategoryNameAndActiveTrue(name);
+//        return productCategoryConverter.toDTO(existingProduct);
+//
+//    }
 }

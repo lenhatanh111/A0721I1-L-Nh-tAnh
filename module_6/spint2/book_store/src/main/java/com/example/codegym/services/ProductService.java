@@ -1,30 +1,33 @@
 package com.example.codegym.services;
 
+import com.example.codegym.models.dto.GetProductDto;
 import com.example.codegym.models.dto.ProductDTO;
+import com.example.codegym.models.entity.Product;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface ProductService {
-    List<ProductDTO> getAll();
+//    Page<ProductDTO> getAllProduct();
 
-    Page<ProductDTO> getAllPaginate(Integer page, Integer size);
+    Page<Product> getAllPaginate(Pageable pageable);
 
-    Page<ProductDTO> getByName(String name, Integer page, Integer size);
+    Page<Product> getByName(String name,Pageable pageable );
 
-    Page<ProductDTO> getByCategory(Long id, Integer page, Integer size);
+    Page<Product> getByCategoryId(Long id,Pageable pageable);
 
-    List<ProductDTO> getByCategoryid(Long id);
+//    List<Product> getByCategoryid(Long id);
+//
+//    Page<Product> getNewProduct(Pageable pageable);
+//
+//    Page<Product> getByPriceDesc(Pageable pageable);
+//
+//    Page<Product> getByPriceAsc(Pageable pageable);
 
-    Page<ProductDTO> getNewProduct(Integer page, Integer size);
+    Page<Product> findByNameAndCategory(Long id, String name, Pageable pageable);
 
-    Page<ProductDTO> getByPriceDesc(Integer page, Integer size);
-
-    Page<ProductDTO> getByPriceAsc(Integer page, Integer size);
-
-    Page<ProductDTO> findByNameAndCategory(Long id, String name, Integer page, Integer size);
-
-    ProductDTO getById(Long id);
+    GetProductDto getById(Long id);
 
     ProductDTO save(ProductDTO product);
 

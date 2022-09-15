@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Film.iml" filepath="$PROJECT_DIR$/.idea/Film.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/a09cinema_backend-develop.iml" filepath="$PROJECT_DIR$/.idea/modules/a09cinema_backend-develop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/a09cinema_backend-develop.main.iml" filepath="$PROJECT_DIR$/.idea/modules/a09cinema_backend-develop.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/a09cinema_backend-develop.test.iml" filepath="$PROJECT_DIR$/.idea/modules/a09cinema_backend-develop.test.iml" />
     </modules>
   </component>
 </project>

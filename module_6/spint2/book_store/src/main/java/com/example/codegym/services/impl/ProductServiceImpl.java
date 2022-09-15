@@ -2,6 +2,7 @@ package com.example.codegym.services.impl;
 
 import com.example.codegym.common.converter.ProductConverter;
 import com.example.codegym.common.exception.ResourceNotFoundException;
+import com.example.codegym.models.dto.GetProductDto;
 import com.example.codegym.models.dto.ProductDTO;
 import com.example.codegym.models.entity.Product;
 import com.example.codegym.models.entity.ProductCategory;
@@ -26,23 +27,22 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductConverter productConverter;
 
+//    @Override
+//    public List<ProductDTO> getAll() {
+//        List<Product> products = productRepository.findByActiveTrue();
+//
+//        List<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
+//
+//        for (Product product : products) {
+//            productDTOs.add(productConverter.toDTO(product));
+//        }
+//
+//        return productDTOs;
+//    }
+
     @Override
-    public List<ProductDTO> getAll() {
-        List<Product> products = productRepository.findByActiveTrue();
-
-        List<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
-
-        for (Product product : products) {
-            productDTOs.add(productConverter.toDTO(product));
-        }
-
-        return productDTOs;
-    }
-
-    @Override
-    public ProductDTO getById(Long id) {
-
-        return productConverter.toDTO(productRepository.findByIdAndActiveTrue(id));
+    public GetProductDto getById(Long id) {
+        return productRepository.getProductById(id);
     }
 
     @Override
@@ -88,101 +88,91 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductDTO> getAllPaginate(Integer page, Integer size) {
+    public Page<Product> getAllPaginate(Pageable pageable) {
 
-        Pageable paging = PageRequest.of(page, size);
 
-        Page<Product> productsPage = productRepository.findByActiveTrue(paging);
-
-        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
+        Page<Product> productsDtoPage = productRepository.findByActiveTrue(pageable);
 
         return productsDtoPage;
     }
 
     @Override
-    public Page<ProductDTO> getByName(String name, Integer page, Integer size) {
-        Pageable paging = PageRequest.of(page, size);
+    public Page<Product> getByName(String name, Pageable pageable) {
 
-        Page<Product> productsPage = productRepository.findByNameContainingAndActiveTrue(name, paging);
+        Page<Product> productsPage = productRepository.findByNameContainingAndActiveTrue(name, pageable);
 
-        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
-
-        return productsDtoPage;
+        return productsPage;
     }
 
     @Override
-    public Page<ProductDTO> getByCategory(Long id, Integer page, Integer size) {
-        Pageable paging = PageRequest.of(page, size);
+    public Page<Product> getByCategoryId(Long id, Pageable pageable) {
 
-        Page<Product> productsPage = productRepository.findByCategoryIdAndActiveTrue(id, paging);
+        Page<Product> productsPage = productRepository.findByCategoryIdAndActiveTrue(id, pageable);
 
-        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
-
-        return productsDtoPage;
+        return productsPage;
     }
 
     @Override
-    public Page<ProductDTO> findByNameAndCategory(Long id, String name, Integer page, Integer size) {
+    public Page<Product> findByNameAndCategory(Long id, String name,Pageable pageable ) {
 
-        Pageable paging = PageRequest.of(page, size);
 
-        Page<Product> productsPage = productRepository.findByCategoryIdAndNameContainingAndActiveTrue(id, name, paging);
+        Page<Product> productsPage = productRepository.findByCategoryIdAndNameContainingAndActiveTrue(id, name, pageable);
 
-        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
 
-        return productsDtoPage;
+
+        return productsPage;
     }
 
-    @Override
-    public Page<ProductDTO> getNewProduct(Integer page, Integer size) {
-
-        Pageable paging = PageRequest.of(page, size, Sort.by("id").descending());
-
-        Page<Product> productsPage = productRepository.findByActiveTrue(paging);
-
-        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
-
-        return productsDtoPage;
-
-    }
-
-    @Override
-    public Page<ProductDTO> getByPriceDesc(Integer page, Integer size) {
-
-        Pageable paging = PageRequest.of(page, size, Sort.by("unitPrice").descending());
-
-        Page<Product> productsPage = productRepository.findByActiveTrue(paging);
-
-        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
-
-        return productsDtoPage;
-    }
-
-    @Override
-    public Page<ProductDTO> getByPriceAsc(Integer page, Integer size) {
-
-        Pageable paging = PageRequest.of(page, size, Sort.by("unitPrice").ascending());
-
-        Page<Product> productsPage = productRepository.findByActiveTrue(paging);
-
-        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
-
-        return productsDtoPage;
-    }
-
-    @Override
-    public List<ProductDTO> getByCategoryid(Long id) {
-
-        List<Product> products = productRepository.findByCategoryIdAndActiveTrue(id);
-
-        List<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
-
-        for (Product product : products) {
-            productDTOs.add(productConverter.toDTO(product));
-        }
-
-        return productDTOs;
-
-    }
+//    @Override
+//    public Page<Product> getNewProduct(Pageable pageable) {
+//
+//        Pageable paging = PageRequest.of(page, size, Sort.by("id").descending());
+//
+//        Page<Product> productsPage = productRepository.findByActiveTrue(paging);
+//
+//        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
+//
+//        return productsDtoPage;
+//
+//    }
+//
+//    @Override
+//    public Page<ProductDTO> getByPriceDesc(Integer page, Integer size) {
+//
+//        Pageable paging = PageRequest.of(page, size, Sort.by("unitPrice").descending());
+//
+//        Page<Product> productsPage = productRepository.findByActiveTrue(paging);
+//
+//        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
+//
+//        return productsDtoPage;
+//    }
+//
+//    @Override
+//    public Page<ProductDTO> getByPriceAsc(Integer page, Integer size) {
+//
+//        Pageable paging = PageRequest.of(page, size, Sort.by("unitPrice").ascending());
+//
+//        Page<Product> productsPage = productRepository.findByActiveTrue(paging);
+//
+//        Page<ProductDTO> productsDtoPage = productConverter.toPageProductDto(productsPage);
+//
+//        return productsDtoPage;
+//    }
+//
+//    @Override
+//    public List<ProductDTO> getByCategoryid(Long id) {
+//
+//        List<Product> products = productRepository.findByCategoryIdAndActiveTrue(id);
+//
+//        List<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
+//
+//        for (Product product : products) {
+//            productDTOs.add(productConverter.toDTO(product));
+//        }
+//
+//        return productDTOs;
+//
+//    }
 
 }

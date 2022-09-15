@@ -27,7 +27,6 @@ public class ProductDTO {
 
 	private String imageUrl;
 
-	private String imageStore;
 
 	@NotNull
 	private Boolean active;
@@ -57,7 +56,6 @@ public class ProductDTO {
 		this.description = description;
 		this.unitPrice = unitPrice;
 		this.imageUrl = imageUrl;
-		this.imageStore = imageStore;
 		this.active = active;
 		this.unitInStock = unitInStock;
 		this.dateCreated = dateCreated;
@@ -72,14 +70,7 @@ public class ProductDTO {
 	public void setRates(Set<RateDTO> rates) {
 		this.rates = rates;
 	}
-
-	public String getImageStore() {
-		return imageStore;
-	}
-
-	public void setImageStore(String imageStore) {
-		this.imageStore = imageStore;
-	}
+	
 
 	public Long getId() {
 		return id;

@@ -17,7 +17,7 @@ export class ManagerBookingListComponent implements OnInit {
   totalPages: number;
   size: number;
   message: string;
- searchForm: FormGroup = new FormGroup({
+  searchForm: FormGroup = new FormGroup({
     key: new FormControl('')
   });
   constructor(private managerBookingService: ManagerBookingService) {

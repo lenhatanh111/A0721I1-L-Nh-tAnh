@@ -83,8 +83,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.authorizeRequests().antMatchers("/api/auth/**").permitAll()
 			.antMatchers("/api/test/**").permitAll()
+			.antMatchers("/api/user/**").permitAll()
 			.antMatchers("/api/product/**").permitAll()
-			.antMatchers("/api/product-category/**").permitAll()
+			.antMatchers("/api/category/**").permitAll()
 			.antMatchers("/api/cart/**").permitAll()
 			.antMatchers("/api/cart-detail/**").permitAll()
 			.antMatchers("/api/order/**").permitAll()
@@ -142,5 +143,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		tokenResponseClient.setRestOperations(restTemplate);
 		return tokenResponseClient;
 	}
-
+//	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//
+//		auth
+//				.userDetailsService(userDetailsService)
+//				.passwordEncoder(passwordEncoder());
+//	}
 }

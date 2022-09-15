@@ -11,11 +11,11 @@ import java.util.List;
 @Repository
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Long> {
 
-    List<ProductCategory> findByActiveTrue();
+//    List<ProductCategory> findByActiveTrue();
 
-    Page<ProductCategory> findByActiveTrue(Pageable pageable);
+    List<ProductCategory> findAllByActiveTrue();
 
-    ProductCategory findByCategoryNameAndActiveTrue(String name);
-
-    ProductCategory findByIdAndActiveTrue(Long id);
+//    ProductCategory findByCategoryNameAndActiveTrue(String name);
+//
+//    ProductCategory findByIdAndActiveTrue(Long id);
 }

@@ -1,0 +1,41 @@
+<app-header></app-header>
+<!-- Login form Start -->
+<div class="container-fluid pt-5 pb-3">
+  <div style="display: block;padding: 0;margin: 0;">
+    <div style="background: repeat scroll 0 0 rgba(0,0,0,0);
+    box-shadow: 0 0 4px #444;
+    margin: 10px auto;
+    padding: 30px;
+    width: 940px;
+    min-height: 400px;">
+      <h2>Đăng nhập</h2>
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Tên đăng nhập</label><br>
+          <input autofocus formControlName="username" type="text" class="form-control" placeholder="Tài khoản">
+          <small *ngIf="formGroup.get('username').invalid && formGroup.get('username').touched" class="text-danger">Vui lòng nhập tài khoản!!</small>
+
+        </div>
+        <div class="form-group">
+          <label >Mật khẩu</label><br>
+          <input  formControlName="password" id="password-field" type="password" class="form-control" placeholder="Mật khẩu" required>
+          <small *ngIf="formGroup.get('password').invalid && formGroup.get('password').touched" class="text-danger">Vui lòng nhập password!!</small>
+        </div><br>
+        <button type="submit" style="background-color: #FFD333;border: 1px solid #FFD333; padding: 5px 10px; font-weight: bolder" >Đăng nhập</button>
+      </form>
+      <p>Chưa có tài khoản? hãy
+        <a href=""style="background-color: #FFD333;padding: 5px 10px"><strong style="color: black">Đăng ký</strong></a>hoặc <a href=""style=" background: linear-gradient(#476fc2,#314f8e);;padding: 5px 10px"><strong style="color: white">Đăng nhập qua Facebook</strong></a></p>
+      <div style="margin-top: 40px">
+<!--        <h4>Quên mật khẩu</h4>-->
+<!--        <form>-->
+<!--          <label>Email</label><br>-->
+<!--          <input type="text" name="email" value=""><br><br>-->
+<!--          <button type="submit" style="background-color: #FFD333;border: 1px solid #FFD333; padding: 5px 10px; font-weight: bolder" >Lấy lại mật khẩu</button>-->
+<!--        </form>-->
+
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
