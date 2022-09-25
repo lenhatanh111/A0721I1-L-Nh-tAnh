@@ -32,6 +32,12 @@ public class OrderDetail {
         this.product = product;
     }
 
+    public OrderDetail(Integer quantity, Order order, Product product) {
+        this.quantity = quantity;
+        this.order = order;
+        this.product = product;
+    }
+
     public Long getId() {
         return id;
     }

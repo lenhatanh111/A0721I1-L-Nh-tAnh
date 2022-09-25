@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {ProductCategory} from "../model/product-category";
 import {ProductDto} from "../dto/product-dto";
 import {ProductDetail} from "../dto/product-detail";
+import {Product} from "../model/product";
 const URL='http://localhost:8080/api/product'
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,8 @@ getAllProduct(page: number):Observable<ProductDto>{
   }
   getProductDetail(id: number):Observable<ProductDetail>{
     return this.http.get<ProductDetail>(URL+ '/detail/' + id );
+  }
+  getProductById(id: number):Observable<Product>{
+    return this.http.get<Product>(URL+ '/' + id );
   }
 }

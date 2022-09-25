@@ -88,6 +88,12 @@ public class ProductController {
 
     }
 //
+@GetMapping("/{id}")
+//@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+public ResponseEntity<Product> findProductById(@PathVariable(value = "id") long id) {
+    return ResponseEntity.ok(productService.getProductById(id));
+
+}
 
     @GetMapping("category/{id}")
     //@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")

@@ -11,11 +11,11 @@ import java.util.List;
 
 public interface OrderService {
 
-    OrderDTO save(OrderDTO orderDTO);
+    Order save(Order order);
 
     OrderDTO update(OrderDTO orderDTO);
 
-    Page<OrderDTO> getByUserId(Long id, Integer page, Integer size);
+    List<Order> getByUserId(Long id);
 
     OrderDTO getById(Long id);
 
@@ -28,4 +28,5 @@ public interface OrderService {
     List<ChartStatistical> setPerformanceWithChartList();
 
     List<ChartStatistical> totalsOfUses();
+
 }

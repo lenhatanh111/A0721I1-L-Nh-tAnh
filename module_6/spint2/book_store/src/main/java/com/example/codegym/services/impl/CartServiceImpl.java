@@ -20,12 +20,9 @@ public class CartServiceImpl implements CartService {
     CartConverter cartConverter;
 
     @Override
-    public List<CartDTO> findByUserId(Long id) {
+    public List<Cart> findByUserId(Long id) {
         List<Cart> carts = cartRepository.findByUserId(id);
-        List<CartDTO> cartDTOs = new ArrayList<CartDTO>();
-        for (Cart cart : carts) {
-            cartDTOs.add(cartConverter.toDTO(cart));
-        }
-        return cartDTOs;
+
+        return carts;
     }
 }

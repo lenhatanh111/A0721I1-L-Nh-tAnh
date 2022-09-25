@@ -34,17 +34,15 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public OrderDTO save(OrderDTO orderDTO) {
-        Order order = orderRepository.save(orderConverter.toEntity(orderDTO));
-        return orderConverter.toDTO(order);
+    public Order save(Order order) {
+        return orderRepository.save(order);
     }
 
     @Override
-    public Page<OrderDTO> getByUserId(Long id, Integer page, Integer size) {
-        Pageable paging = PageRequest.of(page, size);
-        Page<Order> orderPage = orderRepository.findByUserId(id, paging);
-        Page<OrderDTO> orderDtoPage = orderConverter.toPageDto(orderPage);
-        return orderDtoPage;
+    public List<Order> getByUserId(Long id) {
+
+        List<Order> orders = orderRepository.findByUserId(id);
+        return orders;
     }
 
     @Override

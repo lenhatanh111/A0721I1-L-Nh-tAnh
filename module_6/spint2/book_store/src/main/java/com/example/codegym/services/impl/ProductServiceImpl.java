@@ -88,6 +88,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product getProductById(Long id) {
+        return productRepository.findProductById(id);
+    }
+
+    @Override
     public Page<Product> getAllPaginate(Pageable pageable) {
 
 

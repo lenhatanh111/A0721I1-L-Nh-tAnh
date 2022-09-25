@@ -6,4 +6,5 @@ export interface CartDetail {
   quantity: number;
   cart: Cart;
   product: Product;
+  hibernateLazyInitializer: any;
 }

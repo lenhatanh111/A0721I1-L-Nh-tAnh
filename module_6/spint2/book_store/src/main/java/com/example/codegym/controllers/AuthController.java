@@ -40,10 +40,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/auth")
 public class AuthController {
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
     RoleRepository roleRepository;
@@ -62,49 +62,30 @@ public class AuthController {
     UserService userService;
 
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
         UserServiceImpl userService = (UserServiceImpl) authentication.getPrincipal();
-//        LocalUser localUser = (LocalUser) authentication.getPrincipal();
-        List<String> roles =  userService.getAuthorities().stream()
+        List<String> roles = userService.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-//        LocalUser localUser = null;
-//        try {
-//            localUser = (LocalUser) authentication.getPrincipal();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, GeneralUtils.buildUserInfo(localUser)));
         return ResponseEntity.ok(new JwtResponse(jwt, userService.getId(), userService.getUsername(), userService.getEmail(), roles));
     }
 
-//    @PostMapping("/signup")
-//    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-//        signUpRequest.setSocialProvider(SocialProvider.LOCAL);
-//        try {
-//            userService.registerNewUser(signUpRequest);
-//        } catch (UserAlreadyExistAuthenticationException e) {
-////			log.error("Exception Ocurred", e);
-//            return new ResponseEntity<>(new ApiResponse(false, "Email Address already in use!"), HttpStatus.BAD_REQUEST);
-//        }
-//        return ResponseEntity.ok().body(new ApiResponse(true, "User registered successfully"));
-//    }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest){
-        if (userRepository.existsByUsername(signupRequest.getUsername())){
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
+        if (userRepository.existsByUsername(signupRequest.getUsername())) {
             return ResponseEntity.
                     badRequest().
                     body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        if (userRepository.existsByEmail(signupRequest.getEmail())){
+        if (userRepository.existsByEmail(signupRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
@@ -116,7 +97,7 @@ public class AuthController {
         Set<String> strRoles = signupRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
-        if (strRoles == null){
+        if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
@@ -145,7 +126,6 @@ public class AuthController {
 
         user.setRoles(roles);
 
-//        sendMail.sendMail(user.getEmail(), "Đăng kí thành công", "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi");
 
         user.setProvider(String.valueOf(SocialProvider.LOCAL));
         user.setActive(true);
@@ -155,33 +135,6 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
-//    @PostMapping("/reset-password")
-//    public ResponseEntity<?> forgetPassword(@RequestBody LoginRequest loginRequest){
-//        if (userRepository.existsByUsername(loginRequest.getUsername()) != null) {
-//            Optional<User> user = userRepository.findByUsername(loginRequest.getUsername());
-////            if (!user.get().getActive()){
-////                return ResponseEntity.badRequest().body(new MessageResponse("Tài khoản của bạn đang bị khoá!"));
-////            }
-////            else {
-//                System.out.println(loginRequest.getUsername());
-//                String code = RandomString.make(64);
-//                userRepository.addVerificationCode(code, user.get().getUsername());
-//                String confirmUrl = "http://localhost:4200/verify-reset-password?code=" + code;
-//
-//                String subject = "Hãy xác thực email của bạn";
-//                String mailContent = "";
-//                mailContent = "Xin chào " + user.get().getUsername() + " Nhấn vào link sau để xác thực email của bạn: " +
-//                        confirmUrl + " ( nhấn vào đây)! " +
-//                        " \nOLL-SHOP XIN CẢM ƠN";
-////                sendMail.sendMail(user.get().getEmail(), subject, mailContent);
-//
-//                return ResponseEntity.ok(new MessageResponse("Sent email "));
-////            }
-//        }
-//        return ResponseEntity
-//                .badRequest()
-//                .body(new MessageResponse("Tài khoản không đúng"));
-//    }
 
     @PostMapping("/verify-password")
     public ResponseEntity<?> VerifyPassword(@RequestBody VerifyRequest code) {

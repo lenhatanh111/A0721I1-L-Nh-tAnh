@@ -11,7 +11,7 @@ export interface Product {
   unitInStock: number;
   dateCreated: any;
   lastUpdated: any;
-  category: ProductCategory;
+  // category: ProductCategory;
 
 
 }

@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -47,12 +48,12 @@ public class Order {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     @JsonIgnore
-    private Set<OrderDetail> orderDetails;
+    private List<OrderDetail> orderDetails;
 
     public Order() {
     }
 
-    public Order(Long id, String name, String address, String phone, BigDecimal amount, String description, String orderTrackingNumber, Integer status, Date dateOrdered, Date dateDeliveryDate, Date dateReceipt, User user, Set<OrderDetail> orderDetails) {
+    public Order(Long id, String name, String address, String phone, BigDecimal amount, String description, String orderTrackingNumber, Integer status, Date dateOrdered, Date dateDeliveryDate, Date dateReceipt, User user, List<OrderDetail> orderDetails) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -66,6 +67,10 @@ public class Order {
         this.dateReceipt = dateReceipt;
         this.user = user;
         this.orderDetails = orderDetails;
+    }
+
+    public Order(User user) {
+        this.user = user;
     }
 
     public Long getId() {
@@ -164,11 +169,11 @@ public class Order {
         this.user = user;
     }
 
-    public Set<OrderDetail> getOrderDetails() {
+    public List<OrderDetail> getOrderDetails() {
         return orderDetails;
     }
 
-    public void setOrderDetails(Set<OrderDetail> orderDetails) {
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
     }
 }

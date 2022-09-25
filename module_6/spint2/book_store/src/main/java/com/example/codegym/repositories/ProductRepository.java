@@ -32,5 +32,5 @@ public interface ProductRepository extends JpaRepository<Product, Long > {
             "inner join author a on product.author_id=a.id inner join publisher pub on pub.id=product.publisher_id where product.id=:id", nativeQuery = true)
     GetProductDto getProductById(@Param("id") Long id);
 //
-//    GetProductDto findById(long id);
+Product findProductById(Long id);
 }

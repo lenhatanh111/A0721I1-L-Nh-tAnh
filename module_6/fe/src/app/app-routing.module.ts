@@ -6,6 +6,7 @@ import {HomepageComponent} from "./component/homepage/homepage.component";
 import {CartComponent} from "./component/cart/cart.component";
 import {SearchComponent} from "./component/search/search.component";
 import {ProductOfCategoryComponent} from "./component/product-of-category/product-of-category.component";
+import {PaymentSucessComponent} from "./component/payment-sucess/payment-sucess.component";
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: "productOfCategory/:id",
     component: ProductOfCategoryComponent
+  },
+  {
+    path:"pay/success",
+    component: PaymentSucessComponent
   }
 ];
 

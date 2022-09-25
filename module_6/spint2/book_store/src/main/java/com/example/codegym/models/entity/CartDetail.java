@@ -10,6 +10,7 @@ public class CartDetail {
     private Long id;
 
     private Integer quantity;
+    private boolean isPayed;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")
@@ -22,12 +23,21 @@ public class CartDetail {
     public CartDetail() {
     }
 
-    public CartDetail(Long id, Integer quantity, Cart cart, Product product) {
+    public CartDetail(Long id, Integer quantity, boolean isPayed, Cart cart, Product product) {
         this.id = id;
         this.quantity = quantity;
+        this.isPayed = isPayed;
         this.cart = cart;
         this.product = product;
     }
+
+    public CartDetail(Integer quantity, boolean isPayed, Cart cart, Product product) {
+        this.quantity = quantity;
+        this.isPayed = isPayed;
+        this.cart = cart;
+        this.product = product;
+    }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -59,5 +69,13 @@ public class CartDetail {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public boolean isPayed() {
+        return isPayed;
+    }
+
+    public void setPayed(boolean payed) {
+        isPayed = payed;
     }
 }

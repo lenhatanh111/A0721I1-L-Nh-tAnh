@@ -65,7 +65,7 @@
           <img class="img-fluid w-100"
                src="{{product.imageUrl}}" alt="">
           <div class="product-action">
-            <a class="btn btn-outline-dark btn-square" routerLink="/cart"><i class="fa fa-shopping-cart"></i></a>
+            <a class="btn btn-outline-dark btn-square" (click)="addToCart(product.id)"><i class="fa fa-shopping-cart"></i></a>
 
             <a class="btn btn-outline-dark btn-square" [routerLink]="['/detail',product.id]"><i class="fa fa-info-circle"></i></a>
           </div>

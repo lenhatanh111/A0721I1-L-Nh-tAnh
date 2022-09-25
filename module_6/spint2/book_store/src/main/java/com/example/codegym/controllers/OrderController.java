@@ -1,6 +1,7 @@
 package com.example.codegym.controllers;
 
 import com.example.codegym.models.dto.OrderDTO;
+import com.example.codegym.models.entity.Order;
 import com.example.codegym.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,11 +16,11 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @PostMapping
-    public ResponseEntity<OrderDTO> save(@RequestBody OrderDTO orderDTO) {
-        OrderDTO _orderDTO = orderService.save(orderDTO);
-        return new ResponseEntity<OrderDTO>(_orderDTO, HttpStatus.CREATED);
-    }
+//    @PostMapping
+//    public ResponseEntity<Order> save(@RequestBody Order order) {
+//        Order order = orderService.save(or);
+//        return new ResponseEntity<OrderDTO>(_orderDTO, HttpStatus.CREATED);
+//    }
 
     @PutMapping
     public ResponseEntity<OrderDTO> update(@RequestBody OrderDTO orderDTO) {
@@ -35,14 +36,14 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
-    @GetMapping("/user")
-    public ResponseEntity<Page<OrderDTO>> findByUserId(@RequestParam("page") Integer page,
-                                                       @RequestParam("size") Integer size, @RequestParam("userId") Long id) {
-
-        Page<OrderDTO> orders = this.orderService.getByUserId(id, page, size);
-
-        return ResponseEntity.ok(orders);
-    }
+//    @GetMapping("/user")
+//    public ResponseEntity<Page<OrderDTO>> findByUserId(@RequestParam("page") Integer page,
+//                                                       @RequestParam("size") Integer size, @RequestParam("userId") Long id) {
+//
+//        Page<OrderDTO> orders = this.orderService.getByUserId(id, page, size);
+//
+//        return ResponseEntity.ok(orders);
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderDTO> findById(@PathVariable(value = "id") long id) {

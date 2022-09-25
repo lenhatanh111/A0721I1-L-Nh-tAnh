@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductServiceService} from "../../service/product-service.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {ProductDto} from "../../dto/product-dto";
 import {Product} from "../../model/product";
+import {CartDetailService} from "../../service/cart-detail.service";
+import {ToastrService} from "ngx-toastr";
+import {TokenStorageService} from "../../service/token-storage-service";
+import {CartService} from "../../service/cart.service";
 
 @Component({
   selector: 'app-homepage',
@@ -16,8 +20,13 @@ export class HomepageComponent implements OnInit {
   totalPages: number;
   size: number;
   message: string;
-  constructor(private productServiceService: ProductServiceService) {
+  user: any;
+  cart: any;
+  constructor(private productServiceService: ProductServiceService, private cartDetailService: CartDetailService,
+              private toast: ToastrService, private tokenStorageService: TokenStorageService,private cartService: CartService,
+              private router: Router) {
     this.getProductByName();
+this.getCart();
   }
 
   ngOnInit(): void {
@@ -49,7 +58,32 @@ export class HomepageComponent implements OnInit {
       }
     });
 
-
   }
+  addToCart(id: number){
+    this.user =this.tokenStorageService.getUser();
+    if (this.user==null){
+      this.router.navigateByUrl('/login');
+    }else {
+      this.cartDetailService.addToCartDetail(this.user.id,id).subscribe(cart=>{
+        this.toast.success("Thêm vào giỏ hàng thành công");
+        alert("Thêm vào giỏ hàng thành công")
+
+        this.router.navigateByUrl("/homepage")
+      },error => {
+        this.toast.error("Thêm vào giỏ hàng thất bại");
+        this.router.navigateByUrl("/homepage")
+      })
+    }
+  }
+  getCart() {
+    if (this.user != null) {
+      this.cartDetailService.getCartDetailByUserId(this.user.id).subscribe(cart => {
+        this.cart = cart;
+        console.log(this.cart)
+
+      })
+    }
+  }
+
 
 }

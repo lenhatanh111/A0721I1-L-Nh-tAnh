@@ -1,3 +1,5 @@
+import {Roles} from "./roles";
+
 export interface Users {
    id: number;
    name: string;
@@ -12,4 +14,5 @@ export interface Users {
   provider: string;
   dateCreated: any;
   lastUpdated: any;
+  roles: Roles[];
 }

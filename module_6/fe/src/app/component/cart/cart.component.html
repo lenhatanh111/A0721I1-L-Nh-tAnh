@@ -1,4 +1,4 @@
-
+<app-header></app-header>
 <div class="container-fluid">
   <div class="row px-xl-5">
     <div class="col-lg-8 table-responsive mb-5">
@@ -12,145 +12,98 @@
           <th>Xóa</th>
         </tr>
         </thead>
-        <tbody class="align-middle">
+        <tbody *ngFor="let cart of cart">
         <tr>
-          <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> Product Name</td>
-          <td class="align-middle">$150</td>
-          <td class="align-middle">
+          <td style="text-align: start"><img src="{{cart?.image_url}}" alt="" style="width: 50px;">{{cart.name}}</td>
+          <td>{{cart.unit_price}}</td>
+          <td>
             <div class="input-group quantity mx-auto" style="width: 100px;">
               <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-minus" >
+                <button class="btn btn-sm btn-primary btn-minus" (click)="reduced(cart.id,cart.quantity)"
+                        [disabled]="cart.quantity<=1">
                   <i class="fa fa-minus"></i>
                 </button>
               </div>
-              <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
+              <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center"
+                     value="{{cart.quantity}}">
               <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-plus">
+                <button class="btn btn-sm btn-primary btn-plus" (click)="decrease(cart.id,cart.quantity)">
                   <i class="fa fa-plus"></i>
                 </button>
               </div>
             </div>
           </td>
-          <td class="align-middle">$150</td>
-          <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-        </tr>
-        <tr>
-          <td class="align-middle"><img src="img/product-2.jpg" alt="" style="width: 50px;"> Product Name</td>
-          <td class="align-middle">$150</td>
+          <td class="align-middle">{{cart.quantity * cart.unit_price}}</td>
           <td class="align-middle">
-            <div class="input-group quantity mx-auto" style="width: 100px;">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-minus" >
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-plus">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
+            <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal"
+                    (click)="infoDelete(cart.id,cart.cd_id)"><i class="fa fa-times"></i></button>
           </td>
-          <td class="align-middle">$150</td>
-          <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
         </tr>
-        <tr>
-          <td class="align-middle"><img src="img/product-3.jpg" alt="" style="width: 50px;"> Product Name</td>
-          <td class="align-middle">$150</td>
-          <td class="align-middle">
-            <div class="input-group quantity mx-auto" style="width: 100px;">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-minus" >
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-plus">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </td>
-          <td class="align-middle">$150</td>
-          <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-        </tr>
-        <tr>
-          <td class="align-middle"><img src="img/product-4.jpg" alt="" style="width: 50px;"> Product Name</td>
-          <td class="align-middle">$150</td>
-          <td class="align-middle">
-            <div class="input-group quantity mx-auto" style="width: 100px;">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-minus" >
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-plus">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </td>
-          <td class="align-middle">$150</td>
-          <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-        </tr>
-        <tr>
-          <td class="align-middle"><img src="img/product-5.jpg" alt="" style="width: 50px;"> Product Name</td>
-          <td class="align-middle">$150</td>
-          <td class="align-middle">
-            <div class="input-group quantity mx-auto" style="width: 100px;">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-minus" >
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-plus">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </td>
-          <td class="align-middle">$150</td>
-          <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-        </tr>
+
+
         </tbody>
       </table>
     </div>
     <div class="col-lg-4">
-<!--      <form class="mb-30" action="">-->
-        <div>
+      <!--      <form class="mb-30" action="">-->
+      <div>
 
 
-          <h4>Giao tới</h4>
-          <span>Nguyễn Văn An </span>|<span> 0352489513</span>
-          <p>K34/37 Đoàn Phú Tứ, Phường Hòa Khánh Bắc</p>
+        <h4>Giao tới</h4>
+        <span>{{userDetail?.name}}</span> | <span> {{userDetail?.phone}}</span>
+        <p>{{userDetail?.address}}</p>
 
-        </div>
-<!--      </form>-->
+      </div>
       <div class="bg-light p-30 mb-5">
         <div class="border-bottom pb-2">
           <div class="d-flex justify-content-between mb-3">
             <h6>Tạm tính</h6>
-            <h6>$150</h6>
+            <h6>{{total?.total}}</h6>
           </div>
           <div class="d-flex justify-content-between">
             <h6 class="font-weight-medium">VAT</h6>
-            <h6 class="font-weight-medium">$10</h6>
+            <h6 class="font-weight-medium">{{total?.vat}}</h6>
           </div>
         </div>
+
         <div class="pt-2">
-          <div class="d-flex justify-content-between mt-2">
-            <h5>Tổng cộng</h5>
-            <h5>$160</h5>
+          <div class="d-flex justify-content-between">
+            <h5 class="font-weight-medium">Tong cong</h5>
+            <h6 class="font-weight-medium">{{total?.price}}</h6>
           </div>
-          <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Mua hàng</button>
+
+          <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" (click)="payment(total?.price)">Mua
+            hàng
+          </button>
+          <div *ngIf="link!=null" >
+            <a href="{{link}}"><img src="https://thumbs.dreamstime.com/b/paypal-logo-white-background-vector-image-eps-72682465.jpg"
+            style="width: 150px;height: 80px">
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Xác nhận xóa!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Bạn có muốn xóa: {{productName}} ra khỏi giỏ hàng không?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+          <button type="button" class="btn btn-primary" (click)="deleteProduct(cd_id)">Xóa</button>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <app-footer></app-footer>

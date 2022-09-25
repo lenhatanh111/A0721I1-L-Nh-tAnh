@@ -1,6 +1,7 @@
 package com.example.codegym.controllers;
 
 import com.example.codegym.models.dto.CartDTO;
+import com.example.codegym.models.entity.Cart;
 import com.example.codegym.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class CartController {
     CartService cartService;
 
     @GetMapping("user/{id}")
-    public List<CartDTO> getById(@PathVariable(value = "id") long id) {
+    public List<Cart> getById(@PathVariable(value = "id") long id) {
         return cartService.findByUserId(id);
     }
 

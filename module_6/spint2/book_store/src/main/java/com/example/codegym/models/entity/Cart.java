@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,12 +23,12 @@ public class Cart {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
     @JsonBackReference
-    private Set<CartDetail> cartDetails;
+    private List<CartDetail> cartDetails;
 
     public Cart() {
     }
 
-    public Cart(long id, BigDecimal amount, User user, Set<CartDetail> cartDetails) {
+    public Cart(long id, BigDecimal amount, User user, List<CartDetail> cartDetails) {
         this.id = id;
         this.amount = amount;
         this.user = user;
@@ -63,11 +64,11 @@ public class Cart {
         this.user = user;
     }
 
-    public Set<CartDetail> getCartDetails() {
+    public List<CartDetail> getCartDetails() {
         return cartDetails;
     }
 
-    public void setCartDetails(Set<CartDetail> cartDetails) {
+    public void setCartDetails(List<CartDetail> cartDetails) {
         this.cartDetails = cartDetails;
     }
 }

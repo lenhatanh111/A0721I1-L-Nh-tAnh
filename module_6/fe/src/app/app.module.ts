@@ -15,6 +15,7 @@ import { FooterComponent } from './component/header-footer/footer/footer.compone
 import {ToastrModule} from "ngx-toastr";
 import { SearchComponent } from './component/search/search.component';
 import { ProductOfCategoryComponent } from './component/product-of-category/product-of-category.component';
+import { PaymentSucessComponent } from './component/payment-sucess/payment-sucess.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ProductOfCategoryComponent } from './component/product-of-category/prod
     FooterComponent,
     SearchComponent,
     ProductOfCategoryComponent,
+    PaymentSucessComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import { ProductOfCategoryComponent } from './component/product-of-category/prod
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

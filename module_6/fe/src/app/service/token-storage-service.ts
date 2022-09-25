@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 const TOKEN_KEY = '';
 const USER_KEY = 'auth-account';
+const CART_KEY='cart';
+const AMOUNT_KEY='amount';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,14 @@ export class TokenStorageService {
     window.localStorage.removeItem(USER_KEY);
     window.localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
+  public saveAmountLocal(amount) {
+    window.localStorage.removeItem(AMOUNT_KEY);
+    window.localStorage.setItem(AMOUNT_KEY, JSON.stringify(amount));
+  }
+  public saveCartLocal(cart){
+    window.localStorage.removeItem(CART_KEY);
+    window.localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }
   public saveUserSession(user) {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
@@ -46,6 +56,20 @@ export class TokenStorageService {
       return JSON.parse(localStorage.getItem(USER_KEY));
     } else {
       return JSON.parse(sessionStorage.getItem(USER_KEY));
+    }
+  }
+  public getCart() {
+    if (localStorage.getItem(CART_KEY) !== null) {
+      return JSON.parse(localStorage.getItem(CART_KEY));
+    } else {
+      return JSON.parse(sessionStorage.getItem(CART_KEY));
+    }
+  }
+  public getAmount() {
+    if (localStorage.getItem(AMOUNT_KEY) !== null) {
+      return JSON.parse(localStorage.getItem(AMOUNT_KEY));
+    } else {
+      return JSON.parse(sessionStorage.getItem(AMOUNT_KEY));
     }
   }
 }

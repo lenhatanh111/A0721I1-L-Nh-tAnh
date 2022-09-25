@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-    Page<Order> findByUserId(Long id, Pageable pageable);
+    List<Order> findByUserId(Long id);
 
     @Query(value = "select product.name, month(orders.date_created),quantity \n" +
             "from order_detail\n" +
